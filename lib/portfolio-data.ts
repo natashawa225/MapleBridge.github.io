@@ -90,9 +90,9 @@ export const portfolioData = {
   // Project Overview
   project: {
     title: 'Suzhou Maple Bridge',
-    subtitle: 'A user-centered design journey for a cultural tourism experience',
+    subtitle: 'A cultural tourism experience designed around how people actually explore',
     description:
-      'An HCI case study that charts how we supported Maple Bridge visitors with calm, culturally grounded interactions—told through research, synthesis, and iterative concept evolution.',
+      'Visitors come to Maple Bridge to see its beauty — but often leave without understanding its meaning. This project explores how interaction design can support a more immersive and culturally grounded experience, without pulling attention away from the place itself.',
   },
 
   // ===== PHASE 1: OVERVIEW =====

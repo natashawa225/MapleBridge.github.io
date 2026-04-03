@@ -16,7 +16,7 @@ export function ProblemSpaceSection() {
       <div className="space-y-12">
         {/* Problem Statement */}
         <div className="space-y-6">
-          <h3 className="text-2xl font-semibold text-foreground">The Challenge</h3>
+          <h3 className="text-2xl font-semibold font-serif text-foreground">The Challenge</h3>
           <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl">
             {overview.problemSpace.context}
           </p>

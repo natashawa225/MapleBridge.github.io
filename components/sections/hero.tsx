@@ -19,7 +19,7 @@ export function HeroSection() {
         />
         <div className="absolute bottom-0 right-0 w-full h-1/2 bg-gradient-to-t from-[#EAE7DE] to-transparent opacity-40" />
         <div className="absolute top-1/4 right-[10%] opacity-10 select-none">
-          <span className="text-[20rem] font-serif leading-none">墨</span>
+          <span className="text-[20rem] font-serif leading-none">景</span>
         </div>
       </div>
 
