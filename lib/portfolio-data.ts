@@ -113,7 +113,7 @@ export const portfolioData = {
       artifacts: [
         {
           id: 'maple-bridge-context',
-          src: '/placeholder.jpg',
+          src: '/bridgePic.jpg',
           alt: 'Maple Bridge cultural site',
           caption: 'Maple Bridge as a cultural and historical landmark',
           type: 'image',

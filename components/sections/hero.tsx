@@ -96,7 +96,7 @@ export function HeroSection() {
               </div>
            </div>
 
-           <div className="space-y-1">
+           {/* <div className="space-y-1">
               <p className="text-[10px] text-stone-400 uppercase tracking-widest">Timeline</p>
               <p className="text-sm font-serif italic text-stone-600">Spring 2026</p>
            </div>
@@ -104,7 +104,7 @@ export function HeroSection() {
            <div className="space-y-1">
               <p className="text-[10px] text-stone-400 uppercase tracking-widest">Role</p>
               <p className="text-sm font-serif italic text-stone-600">Experience Design</p>
-           </div>
+           </div> */}
         </div>
       </div>
 
