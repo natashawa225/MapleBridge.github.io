@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "export": "next build && cp .nojekyll out/ || true"
+    "export": "next build --webpack && cp .nojekyll out/ || true"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
