@@ -41,7 +41,7 @@ export function ResearchSection() {
       </PhaseSection>
 
       {/* Scenario and Goals */}
-      <PhaseSection
+      {/* <PhaseSection
         id="scenario-section"
         phase="Phase 2"
         title="Scenario & Goal"
@@ -88,7 +88,6 @@ export function ResearchSection() {
         </div>
       </PhaseSection>
 
-      {/* User Journey Map */}
       <PhaseSection
         id="journey-section"
         phase="Phase 2"
@@ -96,7 +95,6 @@ export function ResearchSection() {
         description="Mapping the user's emotional and functional journey through the experience"
       >
         <div id="journey-map" className="space-y-8">
-          {/* Journey Phases */}
           <div className="grid sm:grid-cols-2 gap-4">
             {research.journeyMap.phases.map((phase, idx) => (
               <Card key={idx} className="p-4 space-y-3 border-l-4 border-primary animate-fade-in-up">
@@ -133,13 +131,12 @@ export function ResearchSection() {
             ))}
           </div>
 
-          {/* Emotional Curve Chart */}
           <div className="mt-8">
             <h3 className="text-xl font-semibold text-foreground mb-4">Emotional Curve</h3>
             <EmotionalCurveChart data={research.journeyMap.emotionalCurve} />
           </div>
         </div>
-      </PhaseSection>
+      </PhaseSection> */}
     </>
   );
 }

@@ -79,21 +79,26 @@ export const portfolioData = {
   // ===== PHASE 1: OVERVIEW =====
   overview: {
     problemSpace: {
-      context: 'Cultural institutions face challenges in creating engaging experiences that balance deep education with accessibility for diverse audiences.',
+      context:
+        'Maple Bridge (Fengqiao) in Suzhou is a culturally significant site associated with classical poetry and historical narratives. However, many visitors struggle to understand its meaning due to limited, static, and language-restricted information.',
+      
       painPoints: [
-        'Long waiting times to engage with cultural artifacts',
-        'Limited personalization in group tours',
-        'Difficulty finding contextual information on-demand',
-        'Low engagement for younger audiences',
-        'Barriers for visitors with different accessibility needs',
+        'Lack of accessible cultural context for first-time visitors',
+        'Chinese-only signage creates barriers for international tourists',
+        'Understanding requires reading, which disrupts immersion in the environment',
+        'Visitors rely on multiple apps (maps, translation, search), increasing cognitive load',
+        'Crowd conditions and unclear navigation reduce comfort and experience quality',
       ],
-      opportunity: 'Design an experience that uses AI to personalize cultural learning, reduce friction in information discovery, and enhance emotional connection to heritage.',
+  
+      opportunity:
+        'Design a context-aware, audio-first cultural companion that delivers meaningful storytelling at the right time, without interrupting the visitor’s immersive experience.',
+  
       artifacts: [
         {
-          id: 'brainstorm-1',
-          src: '/artifacts/brainstorm-1.jpg',
-          alt: 'Initial brainstorm session on pain points',
-          caption: 'Brainstorm session exploring cultural experience challenges',
+          id: 'maple-bridge-context',
+          src: '/artifacts/maple-bridge.jpg',
+          alt: 'Maple Bridge cultural site',
+          caption: 'Maple Bridge as a cultural and historical landmark',
           type: 'image',
         },
       ] as Artifact[],
@@ -105,89 +110,120 @@ export const portfolioData = {
     findings: [
       {
         id: 'finding-1',
-        title: 'Visitors crave personal context',
-        description: 'Interview participants consistently expressed desire for information tailored to their interests and background knowledge level.',
-        evidence: '8 out of 10 interviewees mentioned wanting customized content',
+        title: 'Lack of Prior Knowledge',
+        description:
+          'Most visitors have little to no prior knowledge of Maple Bridge before visiting.',
+        evidence:
+          'Consistently reported across both international and domestic participants',
         icon: 'Lightbulb',
       },
       {
         id: 'finding-2',
-        title: 'Group dynamics create friction',
-        description: 'Groups with mixed interests struggle to follow a single tour narrative.',
-        evidence: 'Observed in 6 of 8 observed tours',
-        icon: 'Users',
+        title: 'Language Barriers Limit Understanding',
+        description:
+          'Chinese-only signage prevents international visitors from accessing cultural meaning.',
+        evidence:
+          'Observed across multiple interview participants',
+        icon: 'Globe',
       },
       {
         id: 'finding-3',
-        title: 'Emotional connection drives retention',
-        description: 'Visitors remember stories and personal narratives more than facts.',
-        evidence: 'Post-visit recall tests showed 40% higher retention for narrative-based content',
-        icon: 'Heart',
+        title: 'Users Prefer Audio Over Reading',
+        description:
+          'Visitors prefer listening to information rather than reading while walking.',
+        evidence:
+          'Participants expressed preference for audio-based guidance',
+        icon: 'Volume2',
       },
       {
         id: 'finding-4',
-        title: 'Time is the critical constraint',
-        description: 'Average visit duration is 45 minutes; visitors want maximum value in minimal time.',
-        evidence: 'Observed average visit length: 38-52 minutes',
-        icon: 'Clock',
+        title: 'Phone Use Disrupts Immersion',
+        description:
+          'Switching between apps increases cognitive load and reduces engagement with the environment.',
+        evidence:
+          'Observed behavior during visits and reported in interviews',
+        icon: 'AlertCircle',
       },
-    ] as ResearchFinding[],
+    ],
 
     personas: [
       {
         id: 'persona-1',
-        name: 'Sarah Chen',
-        role: 'Curious Learner',
-        demographics: '32, university educator, first-time visitor',
+        name: 'Karen',
+        role: 'Curious Cultural Explorer',
+        demographics:
+          '23, international student, first-time visitor, moderate tech user',
+    
         goals: [
-          'Gain deep contextual knowledge about the collection',
-          'Discover unexpected connections between artifacts',
-          'Share meaningful learning moments with visiting family',
+          'Understand the cultural and historical meaning of Maple Bridge',
+          'Navigate the site easily without confusion',
+          'Enjoy the environment without constantly checking her phone',
+          'Have a meaningful and memorable cultural experience',
         ],
+    
         motivations: [
-          'Professional interest in cultural history',
-          'Love of storytelling',
-          'Desire to model curiosity for family members',
+          'Wants travel to feel meaningful rather than superficial',
+          'Interested in stories behind places, not just visuals',
+          'Wants to capture photos with cultural significance',
+          'Open to technology only if it is non-intrusive',
         ],
+    
         painPoints: [
-          'Standard tours move too quickly through areas of interest',
-          'Difficult to find additional context on specific artifacts',
-          'Feels rushed with a large group',
+          'Has little to no prior knowledge before visiting',
+          'Cannot understand Chinese signage',
+          'Feels she may miss important cultural meaning',
+          'Needs to switch between apps (maps, translation, search)',
+          'Phone usage interrupts immersion in the environment',
         ],
-        quote: 'I want to go deep into the stories behind these objects, not just check boxes off a list.',
-        image: '/artifacts/persona-1.jpg',
+    
+        quote:
+          'I want to understand the cultural meaning of the place—but I don’t want to keep looking at my phone.',
+    
+        image: '/artifacts/persona-karen.jpg',
       },
+    
       {
         id: 'persona-2',
-        name: 'Marcus Thompson',
-        role: 'Time-Constrained Explorer',
-        demographics: '45, business professional, visiting with family',
+        name: 'Chen Wei',
+        role: 'Atmosphere-First Visitor',
+        demographics:
+          '25, local visitor, casual traveler, experience-focused',
+    
         goals: [
-          'Experience the highlights of the collection efficiently',
-          'Find engaging content that interests his teenage children',
-          'Create memorable moments with family',
+          'Enjoy the scenery in a calm and uninterrupted way',
+          'Avoid crowded or stressful areas',
+          'Engage with cultural information only when desired',
         ],
+    
         motivations: [
-          'Limited time but high value placed on family experiences',
-          'Interest in history, but needs engagement to hold attention',
-          'Wants to feel "cultured" and educated',
+          'Values atmosphere and emotional experience over detailed learning',
+          'Prefers minimal interaction with technology during visits',
+          'Wants flexibility and personal pace',
         ],
+    
         painPoints: [
-          'Struggles to manage different interests within family group',
-          'Long descriptions feel overwhelming',
-          'Teenage children lose interest quickly',
+          'Crowded environments reduce immersion',
+          'Too much interaction disrupts the experience',
+          'Digital features often feel intrusive or unnecessary',
+          'Gamified features feel out of place in cultural settings',
         ],
-        quote: 'I want to hit the highlights, spend time on what matters to my family, and not waste time on things we don\'t care about.',
+    
+        quote:
+          'I prefer to just enjoy the atmosphere without being interrupted.',
       },
     ] as PersonaData[],
 
     scenarioAndGoal: {
-      scenario: 'Sarah is visiting the museum for research on textile production techniques. She has 90 minutes and wants to learn deeply about the textile collection while taking notes and photos.',
-      goal: 'Enable Sarah to efficiently find textile artifacts, understand their historical context, and discover lesser-known pieces that align with her research interests.',
+      scenario:
+        'Karen visits Maple Bridge in the afternoon. She sees the bridge and surrounding landmarks but does not understand their cultural significance. The available signage is in Chinese, and she struggles to interpret it. She briefly searches online but becomes distracted and stops engaging with the environment. She leaves feeling that she has seen the place, but not truly understood it.',
+    
+      goal:
+        'Enable visitors to understand the cultural meaning of Maple Bridge through accessible, well-timed, and non-intrusive guidance that preserves immersion.',
+    
       successMetrics: [
-        'Sarah spends at least 60 minutes in textile area',
-        'She discovers at least 3 artifacts not on the standard tour',
-        'She rates the experience 4+ on engagement and informativeness',
+        'Users report improved understanding of cultural significance',
+        'Reduced need to switch between external apps',
+        'Users spend more time engaging with the physical environment rather than screens',
       ],
     },
 
