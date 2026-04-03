@@ -1,6 +1,13 @@
 import { Card } from '@/components/ui/card';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { ArrowRight } from 'lucide-react';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
 
 interface MappingEntry {
   id: string;
@@ -21,9 +28,11 @@ export function DesignDecisionMap({ mappings }: DesignDecisionMapProps) {
       <div className="hidden md:block overflow-x-auto">
         <Card className="p-6">
           <Table>
-            <TableHead>
+            <TableHeader>
               <TableRow>
-                <TableHead className="font-semibold text-foreground w-1/4">Research Insight</TableHead>
+                <TableHead className="font-semibold text-foreground w-1/4">
+                  Research Insight
+                </TableHead>
                 <TableHead className="text-center w-12">
                   <ArrowRight className="h-4 w-4 mx-auto" />
                 </TableHead>
@@ -31,7 +40,7 @@ export function DesignDecisionMap({ mappings }: DesignDecisionMapProps) {
                 <TableHead className="font-semibold text-foreground w-1/3">Rationale</TableHead>
                 <TableHead className="font-semibold text-foreground text-sm">Trade-offs</TableHead>
               </TableRow>
-            </TableHead>
+            </TableHeader>
             <TableBody>
               {mappings.map((mapping, idx) => (
                 <TableRow key={mapping.id} className={idx % 2 === 0 ? 'bg-muted/30' : ''}>

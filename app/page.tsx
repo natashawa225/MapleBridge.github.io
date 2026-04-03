@@ -17,13 +17,13 @@ export default function Home() {
         {/* Phase 1: Overview */}
         <ProblemSpaceSection />
 
-        {/* <ResearchSection />
+        <ResearchSection />
 
         <SynthesisSection />
 
         <DesignDevelopmentSection />
 
-        <ReflectionSection /> */}
+        <ReflectionSection />
 
         {/* Footer */}
         <footer className="border-t border-border py-12 px-4 sm:px-6 lg:px-8 bg-muted/30">

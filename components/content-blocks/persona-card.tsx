@@ -1,6 +1,6 @@
 import { Card } from '@/components/ui/card';
 import { PersonaData } from '@/lib/portfolio-data';
-import { Target, Lightbulb, AlertCircle } from 'lucide-react';
+import { Target, Lightbulb, AlertCircle, Sparkles } from 'lucide-react';
 import Image from 'next/image';
 
 interface PersonaCardProps {
@@ -24,10 +24,17 @@ export function PersonaCard({ persona }: PersonaCardProps) {
               />
             </div>
           )}
-          <div className="flex-1">
-            <h3 className="text-2xl font-bold text-foreground">{persona.name}</h3>
-            <p className="text-sm font-medium text-muted-foreground mt-1">{persona.role}</p>
-            <p className="text-sm text-muted-foreground mt-2">{persona.demographics}</p>
+            <div className="flex-1">
+              <h3 className="text-2xl font-bold text-foreground">{persona.name}</h3>
+              <p className="text-sm font-medium text-muted-foreground mt-1">{persona.role}</p>
+              {persona.tagline && (
+                <p className="text-sm italic text-muted-foreground mt-1">{persona.tagline}</p>
+              )}
+              {persona.background && (
+                <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mt-2">
+                  {persona.background}
+                </p>
+              )}
           </div>
         </div>
 
@@ -67,6 +74,24 @@ export function PersonaCard({ persona }: PersonaCardProps) {
             ))}
           </ul>
         </div>
+
+        {/* Attitudes */}
+        {persona.attitudes?.length ? (
+          <div>
+            <div className="flex items-center gap-2 mb-3">
+              <Sparkles className="h-5 w-5 text-primary" />
+              <h4 className="font-semibold text-foreground">Attitudes</h4>
+            </div>
+            <ul className="space-y-2 ml-7">
+              {persona.attitudes.map((attitude, idx) => (
+                <li key={idx} className="text-sm text-muted-foreground flex items-start gap-2">
+                  <span className="text-primary mt-1 flex-shrink-0">•</span>
+                  <span>{attitude}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
 
         {/* Pain Points */}
         <div>
