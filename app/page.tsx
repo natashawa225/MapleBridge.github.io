@@ -29,7 +29,7 @@ export default function Home() {
         <footer className="border-t border-border py-12 px-4 sm:px-6 lg:px-8 bg-muted/30">
           <div className="max-w-6xl mx-auto text-center text-muted-foreground">
             <p className="text-sm">
-              Design Process Portfolio • Built with intentionality and care
+              Group A2-4 • Design Process Portfolio • Built with intentionality and care
             </p>
           </div>
         </footer>
