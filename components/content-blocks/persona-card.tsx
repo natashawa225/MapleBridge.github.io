@@ -1,20 +1,102 @@
 import { Card } from '@/components/ui/card';
 import { PersonaData } from '@/lib/portfolio-data';
-import { Target, Lightbulb, AlertCircle, Sparkles } from 'lucide-react';
+import {
+  Target,
+  Lightbulb,
+  AlertCircle,
+  Sparkles,
+} from 'lucide-react';
 import Image from 'next/image';
 
 interface PersonaCardProps {
   persona: PersonaData;
 }
+function PersonaPriorities({
+  priorities,
+}: {
+  priorities: { label: string; value: number }[];
+}) {
+  return (
+    <div className="space-y-4 rounded-2xl border border-border/70 bg-muted/40 p-4">
+      <h4 className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+        Priorities
+      </h4>
+
+      <div className="space-y-4">
+        {priorities.map((item) => (
+          <div key={item.label} className="space-y-2">
+            <div className="flex items-center justify-between gap-3">
+              <span className="text-sm font-medium text-foreground">
+                {item.label}
+              </span>
+              <span className="text-xs text-muted-foreground">
+                {item.value}%
+              </span>
+            </div>
+
+            <div className="h-3 overflow-hidden rounded-full bg-primary/15">
+              <div
+                className="h-full rounded-full bg-primary transition-all duration-500"
+                style={{ width: `${item.value}%` }}
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function PersonaSection({
+  icon,
+  title,
+  items,
+  bulletColor = 'text-primary',
+}: {
+  icon: React.ReactNode;
+  title: string;
+  items: string[];
+  bulletColor?: string;
+}) {
+  return (
+    <div className="space-y-3">
+      <div className="flex items-center gap-2">
+        {icon}
+        <h4 className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+          {title}
+        </h4>
+      </div>
+
+      <ul className="space-y-2">
+        {items.map((item, idx) => (
+          <li key={idx} className="flex items-start gap-2 text-sm leading-6 text-muted-foreground">
+            <span className={`${bulletColor} mt-[0.45rem] text-[0.65rem] leading-none`}>
+              •
+            </span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
 export function PersonaCard({ persona }: PersonaCardProps) {
+  const demographics = [
+    persona.demographics?.age ? `${persona.demographics.age} years old` : null,
+    persona.demographics?.gender ?? null,
+    persona.demographics?.nationality ?? null,
+    persona.demographics?.education ?? null,
+    persona.demographics?.occupation ?? null,
+  ].filter(Boolean);
+
   return (
-    <Card className="p-6 hover:shadow-md transition-shadow animate-fade-in-up overflow-hidden">
+    <Card className="overflow-hidden border-border/70 bg-card/95 p-7 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
       <div className="space-y-6">
-        {/* Header with image and basic info */}
-        <div className="flex gap-4 flex-col sm:flex-row sm:items-start">
+        {/* Header */}
+        <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
           {persona.image && (
-            <div className="flex-shrink-0 relative w-24 h-24 rounded-full overflow-hidden bg-muted">
+            <div className="relative h-24 w-24 flex-shrink-0 overflow-hidden rounded-full ring-1 ring-border/60">
               <Image
                 src={persona.image}
                 alt={persona.name}
@@ -24,89 +106,79 @@ export function PersonaCard({ persona }: PersonaCardProps) {
               />
             </div>
           )}
-            <div className="flex-1">
-              <h3 className="text-2xl font-bold text-foreground">{persona.name}</h3>
-              <p className="text-sm font-medium text-muted-foreground mt-1">{persona.role}</p>
+
+          <div className="min-w-0 flex-1">
+            <div className="space-y-1.5">
+              <h3 className="text-2xl font-bold tracking-tight text-foreground">
+                {persona.name}
+              </h3>
+              <p className="text-base text-muted-foreground">{persona.role}</p>
+
               {persona.tagline && (
-                <p className="text-sm italic text-muted-foreground mt-1">{persona.tagline}</p>
-              )}
-              {persona.background && (
-                <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mt-2">
-                  {persona.background}
+                <p className="text-sm italic leading-relaxed text-muted-foreground">
+                  {persona.tagline}
                 </p>
               )}
+            </div>
+
+            {persona.background && (
+              <p className="mt-3 max-w-[65ch] text-sm leading-6 text-muted-foreground">
+                {persona.background}
+              </p>
+            )}
+
+            {demographics.length > 0 && (
+              <div className="mt-4 flex flex-wrap gap-2">
+                {demographics.map((item, idx) => (
+                  <span
+                    key={idx}
+                    className="rounded-full border border-border/70 bg-muted/60 px-3 py-1 text-xs text-muted-foreground"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            )}
           </div>
         </div>
 
         {/* Quote */}
-        <div className="border-l-4 border-primary pl-4 py-2 bg-muted/50 rounded-r">
-          <p className="text-sm italic text-foreground">&quot;{persona.quote}&quot;</p>
+        <div className="rounded-xl border-l-4 border-primary bg-primary/5 px-4 py-4">
+          <p className="text-[15px] italic leading-7 text-foreground">
+            “{persona.quote}”
+          </p>
         </div>
 
-        {/* Goals */}
-        <div>
-          <div className="flex items-center gap-2 mb-3">
-            <Target className="h-5 w-5 text-primary" />
-            <h4 className="font-semibold text-foreground">Goals</h4>
-          </div>
-          <ul className="space-y-2 ml-7">
-            {persona.goals.map((goal, idx) => (
-              <li key={idx} className="text-sm text-muted-foreground flex items-start gap-2">
-                <span className="text-primary mt-1 flex-shrink-0">•</span>
-                <span>{goal}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+        {/* Content */}
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+          <PersonaSection
+            icon={<Target className="h-4 w-4 text-primary" />}
+            title="Goals"
+            items={persona.goals}
+          />
 
-        {/* Motivations */}
-        <div>
-          <div className="flex items-center gap-2 mb-3">
-            <Lightbulb className="h-5 w-5 text-primary" />
-            <h4 className="font-semibold text-foreground">Motivations</h4>
-          </div>
-          <ul className="space-y-2 ml-7">
-            {persona.motivations.map((motivation, idx) => (
-              <li key={idx} className="text-sm text-muted-foreground flex items-start gap-2">
-                <span className="text-primary mt-1 flex-shrink-0">•</span>
-                <span>{motivation}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+          <PersonaSection
+            icon={<Lightbulb className="h-4 w-4 text-primary" />}
+            title="Motivations"
+            items={persona.motivations}
+          />
 
-        {/* Attitudes */}
-        {persona.attitudes?.length ? (
-          <div>
-            <div className="flex items-center gap-2 mb-3">
-              <Sparkles className="h-5 w-5 text-primary" />
-              <h4 className="font-semibold text-foreground">Attitudes</h4>
-            </div>
-            <ul className="space-y-2 ml-7">
-              {persona.attitudes.map((attitude, idx) => (
-                <li key={idx} className="text-sm text-muted-foreground flex items-start gap-2">
-                  <span className="text-primary mt-1 flex-shrink-0">•</span>
-                  <span>{attitude}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ) : null}
+          {persona.attitudes?.length ? (
+            <PersonaSection
+              icon={<Sparkles className="h-4 w-4 text-primary" />}
+              title="Attitudes"
+              items={persona.attitudes}
+            />
+          ) : (
+            <div />
+          )}
 
-        {/* Pain Points */}
-        <div>
-          <div className="flex items-center gap-2 mb-3">
-            <AlertCircle className="h-5 w-5 text-destructive" />
-            <h4 className="font-semibold text-foreground">Pain Points</h4>
-          </div>
-          <ul className="space-y-2 ml-7">
-            {persona.painPoints.map((painPoint, idx) => (
-              <li key={idx} className="text-sm text-muted-foreground flex items-start gap-2">
-                <span className="text-destructive mt-1 flex-shrink-0">•</span>
-                <span>{painPoint}</span>
-              </li>
-            ))}
-          </ul>
+          <PersonaSection
+            icon={<AlertCircle className="h-4 w-4 text-destructive" />}
+            title="Pain Points"
+            items={persona.painPoints}
+            bulletColor="text-destructive"
+          />
         </div>
       </div>
     </Card>

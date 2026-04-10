@@ -14,14 +14,26 @@ export interface PersonaData {
   id: string;
   name: string;
   role: string;
-  background: string;
-  tagline: string;
-  attitudes: string[];
-  goals: string[];
-  motivations: string[];
-  painPoints: string[];
+  background?: string;
+  tagline?: string;
   quote: string;
   image?: string;
+  goals: string[];
+  motivations: string[];
+  attitudes?: string[];
+  painPoints: string[];
+  demographics?: {
+    age?: number;
+    gender?: string;
+    nationality?: string;
+    education?: string;
+    occupation?: string;
+    civilStatus?: string;
+  };
+  priorities?: {
+    label: string;
+    value: number; // 0-100
+  }[];
 }
 
 export interface ResearchFinding {
@@ -80,6 +92,7 @@ export interface JourneyPhase {
   activities: string[];
   thoughts: string[];
   emotions: number[];
+  touchPoints: number[];
   painPoints: string[];
   opportunities: string[];
 }
@@ -99,16 +112,17 @@ export const portfolioData = {
   overview: {
     problemSpace: {
       context:
-        'Maple Bridge (Fengqiao) in Suzhou is steeped in Jiangnan stories, but many visitors leave without understanding why the bridges, canals, and gardens feel so meaningful.',
+        'Maple Bridge (Fengqiao) in Suzhou is a culturally rich landmark shaped by classical poetry, historical narratives, and Jiangnan aesthetics. However, the current visitor experience is largely visual and surface-level. Most visitors come for sightseeing and photography, yet leave without understanding the deeper cultural meaning behind the space. This reflects a mismatch between the richness of the environment and the accessibility of its interpretation—an issue highlighted in requirement discovery, where user context, prior knowledge, and situational constraints must be considered in design.',
       
       painPoints: [
-        'Language barriers leave visitors unsure of the Maple Bridge story',
-        'Cultural context is missing from the signage, so the architecture feels abstract',
-        'Visitors feel tethered to their phones instead of the water-town atmosphere',
+          'Language and accessibility barriers prevent international visitors from understanding cultural and historical context',
+          'Information is fragmented, static, or insufficient, forcing users to rely on external tools mid-visit',
+          'Frequent phone interaction disrupts immersion and increases cognitive load during what should be a relaxing experience',
+          'Visitors lack pre-visit awareness (e.g., crowd levels, routes), leading to uncertainty and reduced enjoyment',
+          'Engagement needs vary—some users seek deeper interaction, while others prefer a passive, uninterrupted experience',
       ],
-
       opportunity:
-        'Design a context-aware, audio-first cultural companion that weaves Suzhou stories into each step, letting visitors stay present while still understanding the heritage.',
+      'This project identifies an opportunity to rethink how cultural information is delivered in situ. Instead of adding more on-screen features, the goal is to design a context-aware, audio-first cultural companion that integrates seamlessly into the visitor journey. By providing adaptive, location-triggered storytelling and pre-visit insights, the system supports understanding without disrupting presence. This approach aligns with human-centered design principles by reducing cognitive load, supporting user control, and accommodating diverse preferences through flexible, non-intrusive interaction.',
   
       artifacts: [
         {
@@ -127,115 +141,146 @@ export const portfolioData = {
     findings: [
       {
         id: 'finding-lang',
-        title: 'Language Friction Colors the Visit',
+        title: 'Understanding is Blocked by Language and Context',
         description:
-          'Most international guests cannot read the Maple Bridge signage, so the poetic qualities of the site feel hollow.',
+          'Visitors often engage visually with Maple Bridge but fail to understand its cultural meaning due to inaccessible or insufficient explanations. This creates a gap between experiencing the place and actually understanding it.',
         evidence:
-          '12 of 15 research participants asked for translation support or audio narration',
+          'Several participants said they “knew nothing” about the site beforehand and struggled to access information because most signage was only in Chinese.',
         icon: 'Globe',
       },
       {
         id: 'finding-audio',
-        title: 'Audio Feels Calmer Than Reading',
+        title: 'Hands-Free, Audio-Based Interaction Supports Immersion',
         description:
-          'Visitors want to keep their eyes on the water-town scene and receive storytelling through sound.',
+          'Users consistently prefer listening over reading during the visit. Looking at screens interrupts the atmosphere, while audio allows them to stay present and engaged with the environment.',
         evidence:
-          'Interviews noted a clear preference for hands-free narration over scrolling through text',
+          'Participants repeatedly mentioned preferring audio or voiceover so they could “just enjoy the scenery” without constantly looking at their phones.',
         icon: 'Headphones',
       },
       {
         id: 'finding-planning',
-        title: 'Pre-Visit Planning Builds Confidence',
+        title: 'Pre-Visit Awareness Reduces Uncertainty and Stress',
         description:
-          'Guests prefer to preview key bridges, gardens, and rest stops before arriving so they can relax in the moment.',
+          'Visitors want to make decisions before arriving—such as when to go, where to walk, and how crowded it will be. Planning ahead helps them feel more in control and supports a more relaxed on-site experience.',
         evidence:
-          '7 of 10 participants created mental routes before the visit and wished for curated checklists',
+          'Users described checking crowd levels and wanting previews of routes and landmarks before visiting.',
         icon: 'Calendar',
       },
       {
         id: 'finding-screen',
-        title: 'Screen Fatigue Interrupts Presence',
+        title: 'Excessive Interaction Creates Cognitive and Experiential Friction',
         description:
-          'Excessive phone switching pulls attention away from the architecture and feels like work.',
+          'Frequent phone interaction interrupts the flow of the visit and increases cognitive load. Instead of feeling like leisure, the experience starts to feel task-heavy and fragmented.',
         evidence:
-          'Visitors tapped their phones 18 times per 30-minute interval, often to translate static text',
+          'Interview responses highlighted frustration with having to “constantly look down at the phone” to piece together information.',
         icon: 'Smartphone',
       },
+      {
+        id: 'finding-balance',
+        title: 'Engagement Should Be Optional, Not Forced',
+        description:
+          'While some users enjoy interactive storytelling and gamified elements, others reject them entirely. This reveals the need for flexible, opt-in engagement rather than a single fixed experience.',
+        evidence:
+          'Reactions were mixed: some found interactive features engaging, while others felt they were unnecessary or out of place.',
+        icon: 'Sparkles',
+      },
     ],
-
     personas: [
       {
         id: 'persona-1',
-        name: 'Sophie Ren',
+        name: 'Glinda cottrill',
         role: 'Curious Cultural Explorer',
-        background: 'International visitor who speaks limited Mandarin, visiting Maple Bridge for the first time.',
-        tagline: 'I want to feel the story without losing the calm.',
+        background:'Studying abroad in Suzhou, she often visits cultural sites but struggles to access their deeper meaning.',
+        tagline: 'I want to understand the story behind what I see.',
         attitudes: [
-          'Believes narrative depth should come before pure facts',
-          'Trusts guided audio more than dense text',
-          'Sees technology as a quiet companion',
-        ],
+          'Believes cultural experiences should be meaningful, not just visual',
+          'Prefers immersive learning over reading dense text',
+          'Uses technology as a helpful guide, not the main focus of the experience',
+        ],      
 
         goals: [
-          'Understand the cultural and poetic meaning of Maple Bridge slowly',
-          'Stay present in the garden-like atmosphere without fussing with translators',
-          'Capture memorable vignettes to share with friends later',
+          'Understand the historical and cultural significance of places she visits',
+          'Learn about landmarks in an engaging and accessible way',
+          'Enjoy travel experiences beyond just sightseeing',
         ],
-
+        
+      
         motivations: [
-          'Values calm, sensory-rich experiences over checklists',
-          'Wants depth in stories rather than data-dumps',
-          'Open to technology if it feels respectful and quiet',
+          'Passionate about history, culture, and storytelling',
+          'Wants to make travel experiences more meaningful and memorable',
+          'Enjoys capturing and sharing moments through photography',
         ],
-
+      
         painPoints: [
-          'Unable to read Mandarin signage or poetry inscriptions',
-          'Overwhelmed by switching between apps for translation and navigation',
-          'Feels uncertain about where to focus attention',
+          'Struggles to understand Chinese-only signage → needs multilingual support',
+          'Lacks cultural and historical context at landmarks',
+          'Switching between translation, maps, and guides is overwhelming',
+          'Constant screen use disrupts the experience',
+          'Crowded environments reduce immersion',
         ],
-
+      
         quote:
-          'Being in such a poetic place, I want to breathe in the story without jumping between screens.',
+        'I want to understand the history and meaning behind what I’m seeing, not just take photos and move on.',
 
-        image: '/artifacts/persona-1.jpg',
+        demographics: {
+          age: 22,
+          gender: 'Female',
+          nationality: 'South African',
+          education: 'Bachelor’s in Ecology',
+          occupation: 'University Student',
+        },
+
+        image: '/artifacts/glinda.png',
       },
 
       {
         id: 'persona-2',
-        name: 'Chen Wei',
+        name: 'Li Mei',
         role: 'Atmosphere-First Visitor',
-        background: 'Local guest who frequents Jiangnan water towns and seeks calm, mindful experiences.',
+        background:
+          'A Suzhou-based working professional who enjoys visiting local cultural sites for relaxation, photography, and quiet appreciation of place.',
         tagline: 'I want a gentle nudge toward meaning, not a pushy tour.',
+      
         attitudes: [
           'Prefers minimal interaction so the environment can breathe',
           'Avoids flashy gamification or noisy badges',
           'Responds to subtle cues that respect heritage',
         ],
-
+      
         goals: [
-          'Enjoy the scenery in a calm, uninterrupted way',
-          'Receive context only when it feels aligned with the moment',
-          'Keep a relaxed pace while still gaining insight about the culture',
+          'Enjoy beautiful and peaceful places through photography',
+          'Explore cultural sites without feeling rushed or overwhelmed',
+          'Gain light cultural context while staying immersed in the atmosphere',
         ],
-
+      
         motivations: [
-          'Appreciates craftsmanship and quiet rituals',
-          'Wants to feel culturally grounded without kitschy theatrics',
-          'Prefers optional, not mandatory, digital moments',
+          'Enjoys nature, scenery, and culturally rich environments',
+          'Values calm experiences over commercial or overly touristy ones',
+          'Appreciates simple tools that make exploration smoother',
         ],
-
+      
         painPoints: [
-          'Crowds break the stillness he seeks',
-          'Overly playful or gamified features feel out of place',
-          'Push notifications pull him back to the phone',
-          'Digital overlays that contradict the garden calm',
+          'Crowded places disrupt the atmosphere',
+          'Unclear navigation makes exploring harder',
+          'Too much information feels overwhelming',
+          'Overly playful features feel out of place',
+          'Phone distractions break immersion',
         ],
-
+      
         quote:
-          'A whispering story that respects the silence is more compelling than a flashy tour notification.',
-
-        image: '/placeholder-user.jpg',
-      },
+          'I want to enjoy the atmosphere first, and let the cultural meaning unfold naturally.',
+      
+        demographics: {
+          age: 26,
+          gender: 'Female',
+          nationality: 'Chinese',
+          education: 'Bachelor’s in Psychology',
+          occupation: 'Psychologist',
+          civilStatus: 'Married',
+        },
+      
+        image: '/artifacts/liwei.png',
+      }
     ] as PersonaData[],
 
     scenarioAndGoals: [
@@ -243,7 +288,7 @@ export const portfolioData = {
         personaId: 'persona-1',
         label: 'Primary Persona Scenario',
         scenario:
-          'Sophie arrives at Maple Bridge and feels the poetry of the canals, but the Chinese signage makes the stories feel locked behind a wall. She toggles between translation apps, which pulls her focus away from the architecture.',
+          'Glinda arrives at Maple Bridge and feels the poetry of the canals, but the Chinese signage makes the stories feel locked behind a wall. She toggles between translation apps, which pulls her focus away from the architecture.',
         goal:
           'Enable her to understand the cultural meaning through calm, multilingual narration that keeps her eyes on the water-town scene.',
       },
@@ -251,83 +296,146 @@ export const portfolioData = {
         personaId: 'persona-2',
         label: 'Secondary Persona Scenario',
         scenario:
-          'Chen Wei returns for a quiet afternoon walk and wants to linger in the garden without gimmicky badges. He hopes for contextual cues that respect the atmosphere and offer optional depth if he changes his mind.',
+          'Li Mei returns for a quiet afternoon visit and wants to enjoy the atmosphere without gimmicky features or intrusive prompts. She hopes for gentle contextual cues that deepen the experience without breaking the calm.',
         goal:
-          'Provide soft guidance that honors the calm, with optional engagement cues that feel like seal-stamp notes rather than pushy prompts.',
+          'Provide soft guidance that respects the atmosphere, with optional cultural context and light-touch engagement that never feels pushy.',
       },
     ],
-
+    
     journeyMap: {
       phases: [
         {
-          phase: 'Before Visit',
+          phase: 'Planning',
           activities: [
-            'Browse Maple Bridge stories and poems',
-            'Pin bridges, alleys, and rest spots to visit',
-            'Plan timing to avoid crowds',
+            'Research the destination',
+            'Ask friends and colleagues for advice',
+            'Check the best time to visit',
           ],
           thoughts: [
-            'Which parts of Maple Bridge are most essential?',
-            'I wish I could preview the pacing without juggling apps.',
+            'Is this place worth visiting?',
+            'When would be the best time to go?',
           ],
-          emotions: [7, 6],
-          painPoints: ['Language-limited online resources', 'Unclear pacing for the experience'],
+          touchPoints: [
+            'Mobile phone',
+            'Desktop research',
+          ],
+          painPoints: [
+            'Websites sometimes take too long to load',
+            'No crowd information is available',
+            'Few useful reviews about the destination',
+            'Online information feels cluttered and confusing',
+          ],
           opportunities: [
-            'Curated pre-visit planner with story highlights',
-            'Downloadable audio queue referencing Jiangnan garden motifs',
+            'Provide crowd forecasts',
+            'Recommend the best visiting times',
+            'Show landmark previews before arrival',
           ],
         },
         {
-          phase: 'During Visit',
+          phase: 'Arrival',
           activities: [
-            'Arrive and orient at the canal edges',
-            'Listen to audio cues triggered by bridges',
-            'Stroll between pavilions while soaking in the atmosphere',
+            'Observe the crowd',
+            'Decide which landmark to visit first',
           ],
           thoughts: [
-            'I need calm guidance that blends with the hush',
-            'How can I stay present while still understanding the context?',
+            'Where should I begin?',
+            'I hope I do not waste time in crowded spots.',
           ],
-          emotions: [6, 7, 7],
+          touchPoints: [
+            'Signboard',
+            'Physical environment',
+            'Entrance area',
+          ],
           painPoints: [
-            'Crowded entrance areas',
-            'Signage remains Mandarin-first',
-            'Phone ringtones pull focus away from the water town',
+            'Overcrowded areas',
+            'Confusing layout',
+            'No clear directions',
+            'Long wait times',
           ],
           opportunities: [
-            'Audio-first interactions with optional captions',
-            'Beacon-triggered cultural cues echoing ink wash textures',
-            'Minimal UI overlays that fade into jade and seal-red tones',
+            'Show live crowd levels',
+            'Suggest less crowded landmarks to visit first',
           ],
         },
         {
-          phase: 'After Visit',
+          phase: 'Exploring',
           activities: [
-            'Reflect on impressions while sipping tea',
-            'Share photos and stories with friends',
-            'Look for ways to revisit meaningful details',
+            'Walk around and visit landmarks',
+            'Take photos',
+            'Look at the surroundings',
           ],
           thoughts: [
-            'I want to keep these stories alive',
-            'A little cultural keepsake would help me remember the journey',
+            'What is the story behind these places?',
+            'I do not want to miss the important landmarks.',
           ],
-          emotions: [8, 7],
+          touchPoints: [
+            'Landmarks such as the bridge and temple',
+            'Scenery',
+            'Phone',
+          ],
           painPoints: [
-            'Meaningful narratives fade without anchors',
-            'No easy way to revisit layered stories',
+            'Lack of historical and cultural understanding',
+            'Important landmarks may be missed unknowingly',
           ],
           opportunities: [
-            'Optional engagement layer for narrative rewards and cultural collectibles',
-            'Post-visit keepsake referencing seal-stamp accents',
+            'Offer location-based audio storytelling',
+          ],
+        },
+        {
+          phase: 'Engaging',
+          activities: [
+            'Look for activities',
+            'Interact with the environment',
+          ],
+          thoughts: [
+            'What else can I do here?',
+            'I want something that makes the visit feel more interactive.',
+          ],
+          touchPoints: [
+            'Phone camera',
+            'Mobile app',
+          ],
+          painPoints: [
+            'Limited interactivity',
+            'Requires constant phone checking',
+            'Limited motivation to explore more deeply',
+          ],
+          opportunities: [
+            'Introduce quests and interactive tasks',
+            'Offer digital collectibles',
+          ],
+        },
+        {
+          phase: 'Leaving',
+          activities: [
+            'Write reviews',
+            'Post photos on social media',
+          ],
+          thoughts: [
+            'How will I remember this experience later?',
+            'What part of the visit was actually meaningful?',
+          ],
+          touchPoints: [
+            'Review platform',
+            'Social media',
+          ],
+          painPoints: [
+            'The experience feels generic rather than memorable',
+            'It is hard to recall the historical significance afterward',
+          ],
+          opportunities: [
+            'Let visitors leave feedback',
+            'Provide post-visit summaries or keepsakes',
           ],
         },
       ],
+    
       emotionalCurve: [
-        { phase: 'Before Visit', emotion: 7.2 },
-        { phase: 'Arrival', emotion: 6.3 },
-        { phase: 'Exploration', emotion: 6.8 },
-        { phase: 'Deep Engagement', emotion: 8.4 },
-        { phase: 'Reflection', emotion: 7.5 },
+        { phase: 'Planning', emotion: 6.8, label: 'Searching' },
+        { phase: 'Arrival', emotion: 5.0, label: 'Frustrated' },
+        { phase: 'Exploring', emotion: 6.8, label: 'Curious' },
+        { phase: 'Engaging', emotion: 7.6, label: 'Interested' },
+        { phase: 'Leaving', emotion: 8.6, label: 'Satisfied' },
       ],
     },
   },
@@ -337,115 +445,117 @@ export const portfolioData = {
     keyInsights: [
       {
         id: 'insight-1',
-        insight: 'Language friction dims cultural resonance',
+        insight: 'Visitors want cultural meaning without losing immersion',
         explanation:
-          'Mandarin-first signage and static text leave international visitors unsure about the meaning of Maple Bridge, so the architecture loses its emotional depth.',
+          'Many participants felt Maple Bridge was visually beautiful but difficult to fully understand, especially when historical context was sparse, fragmented, or only available in Chinese. The core need was not just more information, but access to meaning without interrupting the experience.',
         artifact: {
           id: 'insight-visual-1',
           src: '/artifacts/insight-1.jpg',
-          alt: 'Insight diagram showing audience diversity',
+          alt: 'Insight diagram showing the gap between scenery and understanding',
           type: 'diagram',
         },
       },
       {
         id: 'insight-2',
-        insight: 'Audio-first guidance feels more respectful than dense text',
+        insight: 'Audio is preferred on-site because it keeps attention on the place',
         explanation:
-          'Research participants preferred listening to curated narratives over reading while wandering, keeping their focus on water-town vistas.',
+          'Participants consistently preferred audio or heads-up guidance while walking, since reading from the phone pulled them away from the bridge, temple, and surrounding atmosphere. Audio was seen as more natural for on-site cultural explanation.',
       },
       {
         id: 'insight-3',
-        insight: 'Pre-visit planning builds calm confidence',
+        insight: 'Planning support matters before the visit begins',
         explanation:
-          'Visitors want to preview bridges, gardens, and pacing before arriving so they can soak in the atmosphere without scrambling for logistics.',
+          'Crowd awareness, landmark previews, and timing information were especially valuable before arrival. Visitors wanted to make decisions in advance so they could avoid uncertainty, choose calmer times, and enter the site with a better sense of direction.',
         artifact: {
           id: 'insight-visual-3',
           src: '/artifacts/brainstorm-1.jpg',
-          alt: 'Journey planning storyboard',
+          alt: 'Storyboard of pre-visit planning and crowd awareness',
           type: 'diagram',
         },
       },
       {
         id: 'insight-4',
-        insight: 'Optional engagement must feel like a cultural keepsake',
+        insight: 'Deeper interaction should be optional, not the default',
         explanation:
-          'People welcome light engagement (collectibles, stories) if it respects the calm tone; heavy gamification feels disrespectful to the heritage setting.',
+          'Interactive stories, collectibles, and AI-based features appealed to some visitors, but others found them distracting, childish, or unnecessary. This suggested that engagement features should deepen the experience only when invited, rather than define the core system.',
       },
     ] as InsightData[],
-
+  
     insightToDesignMapping: [
       {
         id: 'map-1',
-        insight: 'Language friction dims cultural resonance',
-        decision: 'Multi-language narration with jade / seal cues',
+        insight: 'Visitors want cultural meaning without losing immersion',
+        decision: 'Context-aware cultural interpretation layer',
         rationale:
-          'Offer guided narration in Mandarin, English, and Japanese with visual cues referencing Suzhou gardens so visitors instantly connect words with place.',
-        tradeoff: 'Greater translation effort and approvals vs. inclusive cultural resonance',
+          'The system should reveal the meaning of landmarks through lightweight, location-aware storytelling that supports appreciation of the site rather than competing with it.',
+        tradeoff:
+          'Richer interpretation improves cultural understanding, but it requires careful curation so the experience remains calm and not overloaded.',
       },
       {
         id: 'map-2',
-        insight: 'Audio-first guidance feels more respectful than dense text',
-        decision: 'Audio-first interaction layer',
+        insight: 'Audio is preferred on-site because it keeps attention on the place',
+        decision: 'Audio-first situated experience',
         rationale:
-          'Deliver beacon-triggered audio storytelling with minimal text, keeping visitors’ eyes on the garden while still providing context.',
+          'On-site guidance should prioritize spoken narration and subtle cues, allowing users to keep their eyes on the scenery while still receiving historical and cultural context.',
         tradeoff:
-          'Audio risks competing with ambient sound if not balanced carefully vs. reducing screen time and cognitive load.',
+          'Audio supports immersion better than text, but it must be paced carefully so it does not compete with ambient sound or feel intrusive.',
       },
       {
         id: 'map-3',
-        insight: 'Pre-visit planning builds calm confidence',
-        decision: 'Pre-visit insight layer + optional AI cues',
+        insight: 'Planning support matters before the visit begins',
+        decision: 'Pre-visit insight and crowd awareness layer',
         rationale:
-          'Allow visitors to preview bridges, rest stops, and stories through a curated planner; AI softly recommends pacing without forcing automation.',
-        tradeoff: 'Content logistics for planning vs. calmer, prepared visits aligned with guest intent.',
+          'Before arrival, the system should help visitors anticipate the experience through crowd forecasts, landmark previews, and best visiting windows, reducing uncertainty and supporting smoother decisions.',
+        tradeoff:
+          'Pre-visit tools improve confidence and comfort, but require more up-front content and reliable crowd information.',
       },
       {
         id: 'map-4',
-        insight: 'Optional engagement must feel like a cultural keepsake',
-        decision: 'Soft engagement layer with cultural collectibles',
+        insight: 'Deeper interaction should be optional, not the default',
+        decision: 'Optional narrative paths and cultural collectibles',
         rationale:
-          'Introduce optional seal-stamp rewards, narrative transcripts, and community annotations so curiosity is honored without gamified noise.',
+          'Interactive story threads, collectible keepsakes, and AI-enhanced exploration should be available as opt-in layers for visitors who want extra depth, without disrupting those who prefer a quieter experience.',
         tradeoff:
-          'Less adrenaline-inducing than gamification vs. maintaining a respectful, contemporary heritage tone.',
+          'Optional depth broadens appeal, but these features must be framed carefully so they feel culturally meaningful rather than overly gamified.',
       },
     ],
-
+  
     designDecisions: [
       {
         id: 'decision-1',
-        decision: 'Audio-first narration with calm visual cues',
-        insight: 'insight-2',
+        decision: 'Pre-visit insight layer for planning and anticipation',
+        insight: 'insight-3',
         rationale:
-          'Audio stories triggered by beacons keep visitors looking at the Suzhou scenery while contextual captions remain optional.',
+          'The experience begins before arrival. Visitors can check crowd conditions, preview scenic spots, and understand the best time to visit so they feel more prepared and less rushed once on-site.',
         tradeoff:
-          'Audio requires careful pacing so it does not compete with ambient sound vs. reducing screen dependence.',
+          'This adds planning value and reduces uncertainty, but depends on maintaining useful and up-to-date pre-visit information.',
       },
       {
         id: 'decision-2',
-        decision: 'Multi-language storytelling with jade/seal visual hints',
-        insight: 'insight-1',
+        decision: 'Audio-first on-site storytelling as the core experience',
+        insight: 'insight-2',
         rationale:
-          'Narration in multiple languages paired with jade-colored overlays and seal-inspired markers ensures international visitors grasp the stories.',
+          'Location-triggered narration becomes the primary mode of cultural explanation, helping visitors understand Maple Bridge while staying visually engaged with the place itself.',
         tradeoff:
-          'Translation and curation overhead vs. inclusive cultural resonance.',
+          'Audio keeps visitors present, but the system must avoid excessive prompts or long explanations that interrupt the atmosphere.',
       },
       {
         id: 'decision-3',
-        decision: 'Pre-visit planner with optional AI nudges',
-        insight: 'insight-3',
+        decision: 'Minimal visual interface with subtle navigation support',
+        insight: 'insight-1',
         rationale:
-          'A structured pre-visit layer lets guests set intent and see recommended sequences; optional AI suggestions nudge pacing without overriding control.',
+          'Visual elements should remain lightweight and secondary, offering just enough structure for orientation, landmark recognition, and reassurance without making the phone the center of attention.',
         tradeoff:
-          'Managing user preferences and data vs. delivering a calm, prepared visit.',
+          'A minimal interface preserves immersion, but can only succeed if navigation cues are clear and well-timed.',
       },
       {
         id: 'decision-4',
-        decision: 'Optional engagement through cultural collectibles',
+        decision: 'Optional engagement through narrative paths, collectibles, and AI features',
         insight: 'insight-4',
         rationale:
-          'Post-visit layer offers cultural keepsakes, seal-stamp stories, and narrative rewards that guests can explore by choice.',
+          'Interactive story paths, collectible memories, and AI-based historical dialogue are treated as optional extensions rather than core requirements, respecting different comfort levels and motivations.',
         tradeoff:
-          'Less adrenaline than gamification vs. preserving a respectful, subdued tone.',
+          'Optional features make the system more flexible, but they must remain clearly secondary so the main experience does not feel fragmented.',
       },
     ],
   },

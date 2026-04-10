@@ -13,7 +13,7 @@ export function ProblemSpaceSection() {
       title="Overview: Problem Space"
       description="Understanding the challenge and the opportunity"
     >
-      <div className="space-y-12">
+      <div className="space-y-8">
         {/* Problem Statement */}
         <div className="space-y-6">
           <h3 className="text-2xl font-semibold font-serif text-foreground">The Challenge</h3>
@@ -26,9 +26,9 @@ export function ProblemSpaceSection() {
         </div>
 
         {/* Pain Points */}
-        <div className="space-y-4">
+        <div className="space-y-6">
           <h3 className="text-xl font-semibold text-foreground">Pain Points Identified</h3>
-          <div className="grid sm:grid-cols-2 gap-4 animate-stagger">
+          <div className="grid sm:grid-cols-2 gap-6 animate-stagger">
             {overview.problemSpace.painPoints.map((painPoint, idx) => (
               <div
                 key={idx}
@@ -44,7 +44,6 @@ export function ProblemSpaceSection() {
         {/* Artifacts */}
         {overview.problemSpace.artifacts.length > 0 && (
           <div className="space-y-4">
-            <h3 className="text-xl font-semibold text-foreground">Visual Artifacts</h3>
             <ArtifactGallery artifacts={overview.problemSpace.artifacts} layout="grid" columns={1} />
           </div>
         )}
