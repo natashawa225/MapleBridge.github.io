@@ -142,7 +142,7 @@ export function SynthesisSection() {
   id="design-principles-section"
   phase="Phase 3"
   title="Design Principles"
-  description="Principles derived from user insights and human-centered design"
+  description="Principles grounded in human-centered design and applied to the Maple Bridge experience"
 >
   <div className="grid gap-6 md:grid-cols-3">
 
@@ -154,14 +154,13 @@ export function SynthesisSection() {
         </div>
         <div>
           <h3 className="text-xl font-semibold text-foreground">
-            Design for immersion through audio-first interaction
+            Reduce cognitive load through audio-first interaction
           </h3>
           <p className="mt-2 text-sm leading-7 text-muted-foreground">
-            Interview findings showed that visitors prefer “heads-up” experiences where they can
-            focus on the scenery rather than their phones. Audio-based storytelling allows cultural
-            meaning to be delivered without interrupting visual attention. This reduces cognitive
-            load and aligns with human-centered design principles that emphasize minimizing effort
-            and supporting natural interaction.
+            In a dynamic environment like a cultural site, constantly reading and switching
+            between apps increases mental effort. Delivering information through lightweight,
+            location-based audio allows visitors to understand the site while staying immersed
+            in the environment.
           </p>
         </div>
       </div>
@@ -175,14 +174,12 @@ export function SynthesisSection() {
         </div>
         <div>
           <h3 className="text-xl font-semibold text-foreground">
-            Shift key decisions to the pre-visit phase
+            Support user control through when interaction happens
           </h3>
           <p className="mt-2 text-sm leading-7 text-muted-foreground">
-            Users expressed a clear need for crowd awareness, route planning, and timing before
-            arriving at the site. By moving these decisions earlier in the journey, the design
-            reduces uncertainty and allows visitors to experience the location more calmly.
-            This supports the principle of user control and distributes interaction across time
-            instead of overloading the on-site experience.
+            Visitors should feel in control of their experience. By shifting planning decisions
+            such as crowd awareness and route selection to the pre-visit phase, the system reduces
+            pressure during the visit and allows for a calmer, more flexible experience.
           </p>
         </div>
       </div>
@@ -196,14 +193,12 @@ export function SynthesisSection() {
         </div>
         <div>
           <h3 className="text-xl font-semibold text-foreground">
-            Support diverse engagement through optional depth
+            Design for different preferences through optional interaction
           </h3>
           <p className="mt-2 text-sm leading-7 text-muted-foreground">
-            Interviews revealed mixed attitudes toward interactive and AI-driven features. While
-            some users enjoyed deeper engagement, others preferred a minimal, distraction-free
-            experience. To accommodate this diversity, the system provides layered, opt-in
-            interaction. This reflects inclusive design principles, ensuring the experience remains
-            accessible, flexible, and respectful of different user preferences.
+            Not all visitors want the same level of interaction. Some prefer deeper exploration,
+            while others want a simple and peaceful experience. Providing optional layers of
+            engagement ensures the system remains flexible and suitable for a wider range of users.
           </p>
         </div>
       </div>
@@ -220,10 +215,19 @@ export function SynthesisSection() {
       >
         <div className="space-y-8">
         <p className="max-w-3xl text-base leading-7 text-muted-foreground">
-            The final synthesis outcome was not a single feature, but a three-part experience
-            structure: a pre-visit layer for planning, a situated on-site layer for audio-first
-            understanding, and an optional engagement layer for deeper exploration.
-          </p>
+  Instead of focusing on a single feature, the final concept is structured
+  around three moments in the visitor journey. This came directly from the
+  interviews, where participants talked about planning beforehand, feeling
+  lost or distracted during the visit, and wanting something more meaningful
+  to take away afterward.
+</p>
+
+<p className="max-w-3xl text-base leading-7 text-muted-foreground">
+  Based on this, the design is split into a pre-visit layer for planning,
+  an on-site layer for lightweight, audio-based understanding, and an optional
+  engagement layer for visitors who want to explore more deeply without forcing
+  interaction on everyone.
+</p>
 
           <div className="grid gap-6 md:grid-cols-3">
             {synthesis.designDecisions.map((decision, idx) => (

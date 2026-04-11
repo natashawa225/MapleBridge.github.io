@@ -525,8 +525,7 @@ export const portfolioData = {
         id: 'decision-1',
         decision: 'Pre-visit insight layer for planning and anticipation',
         insight: 'insight-3',
-        rationale:
-          'The experience begins before arrival. Visitors can check crowd conditions, preview scenic spots, and understand the best time to visit so they feel more prepared and less rushed once on-site.',
+        rationale: 'Many participants said they check things like crowd levels or routes before visiting, but struggled to find reliable information. This layer supports those early decisions so visitors arrive feeling prepared instead of uncertain or rushed.',
         tradeoff:
           'This adds planning value and reduces uncertainty, but depends on maintaining useful and up-to-date pre-visit information.',
       },
@@ -534,8 +533,7 @@ export const portfolioData = {
         id: 'decision-2',
         decision: 'Audio-first on-site storytelling as the core experience',
         insight: 'insight-2',
-        rationale:
-          'Location-triggered narration becomes the primary mode of cultural explanation, helping visitors understand Maple Bridge while staying visually engaged with the place itself.',
+        rationale: 'Participants often mentioned that reading from their phone pulled them away from the scenery. Using location-triggered audio allows them to understand the site while still staying visually engaged with the environment.',
         tradeoff:
           'Audio keeps visitors present, but the system must avoid excessive prompts or long explanations that interrupt the atmosphere.',
       },
@@ -543,8 +541,7 @@ export const portfolioData = {
         id: 'decision-3',
         decision: 'Minimal visual interface with subtle navigation support',
         insight: 'insight-1',
-        rationale:
-          'Visual elements should remain lightweight and secondary, offering just enough structure for orientation, landmark recognition, and reassurance without making the phone the center of attention.',
+        rationale:'Since users didn’t want to constantly look at their phones, visual elements are kept minimal. The interface focuses on simple cues for orientation and reassurance, rather than detailed maps or dense information.',
         tradeoff:
           'A minimal interface preserves immersion, but can only succeed if navigation cues are clear and well-timed.',
       },
@@ -552,8 +549,7 @@ export const portfolioData = {
         id: 'decision-4',
         decision: 'Optional engagement through narrative paths, collectibles, and AI features',
         insight: 'insight-4',
-        rationale:
-          'Interactive story paths, collectible memories, and AI-based historical dialogue are treated as optional extensions rather than core requirements, respecting different comfort levels and motivations.',
+        rationale: 'Reactions to interactive features were mixed—some users found them engaging, while others felt they were unnecessary. Making these features optional allows the system to support different preferences without disrupting the core experience.',
         tradeoff:
           'Optional features make the system more flexible, but they must remain clearly secondary so the main experience does not feel fragmented.',
       },
