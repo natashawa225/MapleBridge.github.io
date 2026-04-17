@@ -57,7 +57,15 @@ export function ReflectionSection() {
         title="Technical Reflection"
         description="Detailed documentation of methodology, verification, and ethical considerations"
       >
-        <div id="technical-reflection">
+        <div id="technical-reflection" className="space-y-4">
+          <p className="text-sm text-muted-foreground max-w-3xl">
+            In addition to content-generation prompts, I used v0 to rapidly prototype the front-end interface.
+            The prompt defined the interaction structure of the cultural map, including landmark discovery,
+            movement, and audio playback. The generated code was used as an initial scaffold and then refined
+            to align with the project’s user research, ensuring the final prototype remained simple,
+            mobile-friendly, and focused on immersion rather than excessive interaction.
+          </p>
+
           <TechnicalReflection data={reflection.technicalReflection} />
         </div>
       </PhaseSection>

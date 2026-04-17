@@ -1,4 +1,5 @@
 // Portfolio Data Structure - Organized by HCI Design Phases
+import { withBasePath } from '@/lib/basePath';
 
 // ===== TYPE DEFINITIONS =====
 
@@ -127,7 +128,7 @@ export const portfolioData = {
       artifacts: [
         {
           id: 'maple-bridge-context',
-          src: '/bridgePic.jpg',
+          src: withBasePath('/bridgePic.jpg'),
           alt: 'Maple Bridge cultural site',
           caption: 'Maple Bridge as a cultural and historical landmark',
           type: 'image',
@@ -230,7 +231,7 @@ export const portfolioData = {
           occupation: 'University Student',
         },
 
-        image: '/artifacts/glinda.png',
+        image: withBasePath('/artifacts/glinda.png'),
       },
 
       {
@@ -278,8 +279,8 @@ export const portfolioData = {
           occupation: 'Psychologist',
           civilStatus: 'Married',
         },
-      
-        image: '/artifacts/liwei.png',
+    
+        image: withBasePath('/artifacts/liwei.png'),
       }
     ] as PersonaData[],
 
@@ -450,7 +451,7 @@ export const portfolioData = {
           'Many participants felt Maple Bridge was visually beautiful but difficult to fully understand, especially when historical context was sparse, fragmented, or only available in Chinese. The core need was not just more information, but access to meaning without interrupting the experience.',
         artifact: {
           id: 'insight-visual-1',
-          src: '/artifacts/insight-1.jpg',
+          src: withBasePath('/artifacts/insight-1.jpg'),
           alt: 'Insight diagram showing the gap between scenery and understanding',
           type: 'diagram',
         },
@@ -468,7 +469,7 @@ export const portfolioData = {
           'Crowd awareness, landmark previews, and timing information were especially valuable before arrival. Visitors wanted to make decisions in advance so they could avoid uncertainty, choose calmer times, and enter the site with a better sense of direction.',
         artifact: {
           id: 'insight-visual-3',
-          src: '/artifacts/brainstorm-1.jpg',
+          src: withBasePath('/artifacts/brainstorm-1.jpg'),
           alt: 'Storyboard of pre-visit planning and crowd awareness',
           type: 'diagram',
         },
@@ -567,7 +568,7 @@ export const portfolioData = {
         artifacts: [
           {
             id: 'sketch-1',
-            src: '/artifacts/concept-1-sketch.jpg',
+            src: withBasePath('/artifacts/concept-1-sketch.jpg'),
             alt: 'Initial sketch of guided tour interface',
             caption: 'Early wireframe of linear tour guide concept',
             type: 'sketch',
@@ -582,14 +583,14 @@ export const portfolioData = {
         artifacts: [
           {
             id: 'wireframe-2',
-            src: '/artifacts/concept-2-wireframe.jpg',
+            src: withBasePath('/artifacts/concept-2-wireframe.jpg'),
             alt: 'Refined wireframe with personalization features',
             caption: 'Refined design incorporating user preferences and recommendations',
             type: 'sketch',
           },
           {
             id: 'wireframe-2b',
-            src: '/artifacts/concept-2b-wireframe.jpg',
+            src: withBasePath('/artifacts/concept-2b-wireframe.jpg'),
             alt: 'Detailed user flow for personalization',
             caption: 'User flow for setting preferences',
             type: 'diagram',
@@ -604,21 +605,21 @@ export const portfolioData = {
         artifacts: [
           {
             id: 'mockup-1',
-            src: '/artifacts/concept-3-mockup-home.jpg',
+            src: withBasePath('/artifacts/concept-3-mockup-home.jpg'),
             alt: 'Final mockup of home screen',
             caption: 'Final high-fidelity mockup: Home screen with personalized recommendations',
             type: 'mockup',
           },
           {
             id: 'mockup-2',
-            src: '/artifacts/concept-3-mockup-detail.jpg',
+            src: withBasePath('/artifacts/concept-3-mockup-detail.jpg'),
             alt: 'Final mockup of artifact detail',
             caption: 'Final design: Multi-depth content for artifacts',
             type: 'mockup',
           },
           {
             id: 'prototype-1',
-            src: '/artifacts/concept-3-prototype.jpg',
+            src: withBasePath('/artifacts/concept-3-prototype.jpg'),
             alt: 'Interactive prototype demonstration',
             caption: 'Interactive prototype showing AI recommendation flow',
             type: 'prototype',
@@ -693,10 +694,13 @@ export const portfolioData = {
 
     technicalReflection: {
       promptsUsed: [
-        'Generate a compelling 30-second narrative for [artifact] that appeals to [audience type]',
-        'What historical context would a [persona] find most interesting about [artifact]?',
-        'Create accessibility-friendly alternatives to [visual description]',
-        'Draft 3 content depth levels (Quick, Medium, Deep) for [artifact]',
+        'Create a modern, clean, and well-structured process portfolio website using Next.js and Tailwind CSS, following a UX case study style with sections for problem space, research, personas, journey map, insights, concept evolution, final design, and reflection',
+      
+        'Build a mobile-first React component/page for a Vite app that implements an interactive cultural map prototype for Suzhou Maple Bridge, including a map with 3 landmarks, a movable visitor icon, proximity-based interaction, and a modal with image, short history text, and audio playback using mock data',
+      
+        'Design a simple and elegant mobile UI for a cultural tourism app that feels calm, heritage-focused, and not overly gamified, with rounded cards, minimal interaction, and clear navigation',
+      
+        'Refine the UI structure and interaction flow to better support audio-first exploration, minimal screen dependency, and optional engagement based on user research findings',
       ],
       verificationMethods: [
         'Persona-based cognitive walkthrough: Did each persona accomplish their goals?',
