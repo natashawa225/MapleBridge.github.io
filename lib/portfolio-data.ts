@@ -703,53 +703,65 @@ export const portfolioData = {
         'Refine the UI structure and interaction flow to better support audio-first exploration, minimal screen dependency, and optional engagement based on user research findings',
       ],
       verificationMethods: [
-        'Persona-based cognitive walkthrough: Did each persona accomplish their goals?',
-        'Usability testing with 10 participants representing target audience diversity',
-        'Accessibility audit: WCAG 2.1 AA compliance check',
-        'Comparative analysis: Traditional tour experience vs. AI-personalized experience',
-        'Emotional response measurement: Post-interaction sentiment surveys',
+        'Persona-based walkthrough: Evaluated whether the design supports the goals and behaviors of the defined personas (e.g. understanding cultural context without disrupting immersion)',
+      
+        'Design consistency check: Compared final features against key insights (e.g. audio-first interaction, minimal screen use, optional engagement) to ensure alignment with research findings',
+      
+        'Prototype interaction testing (informal): Reviewed interaction flow by simulating user movement through the map prototype to identify friction points in navigation and landmark discovery',
+      
+        'Heuristic evaluation: Assessed the interface against basic usability principles such as clarity, minimal cognitive load, and user control',
+      
+        'Iterative refinement: Adjusted layout, interaction flow, and feature emphasis based on reflection and alignment with project goals rather than formal user testing',
       ],
       ethicalConsiderations: [
         {
           id: 'ethical-1',
           category: 'Data Privacy',
-          consideration: 'AI recommendation engine collects user preferences and behavior data.',
-          approach: 'Implement on-device learning where possible; anonymize and encrypt collected data; transparent privacy policies; opt-out options for personalization.',
+          consideration:
+            'If the system were extended beyond a prototype, collecting user preferences or behavior data could raise privacy concerns.',
+          approach:
+            'The current prototype avoids storing any user data. Future versions should clearly communicate what is collected and allow users to opt out of personalization features.',
         },
         {
           id: 'ethical-2',
-          category: 'Bias & Representation',
-          consideration: 'AI-generated narratives could perpetuate historical biases or unequal representation of cultural narratives.',
-          approach: 'Diverse curatorial team reviews all AI-generated content; include multiple perspectives on each artifact; highlight contested histories; regular bias audits.',
+          category: 'Cultural Representation',
+          consideration:
+            'Simplifying cultural stories into short audio snippets risks oversimplifying or misrepresenting historical context.',
+          approach:
+            'Content should be carefully curated and reviewed to ensure accuracy, and where possible, include multiple perspectives rather than a single narrative.',
         },
         {
           id: 'ethical-3',
           category: 'Accessibility',
-          consideration: 'Digital experience may exclude visitors with limited digital literacy or access.',
-          approach: 'Provide alternative analog experience (printed guides); free WiFi in museum; staff training to assist with app usage; multi-language support.',
+          consideration:
+            'Audio-based interaction may not work for all users, such as those with hearing impairments or different language needs.',
+          approach:
+            'Provide alternative formats such as text captions, multiple languages, and simple interface options to support a wider range of users.',
         },
         {
           id: 'ethical-4',
-          category: 'Cultural Sensitivity',
-          consideration: 'Some artifacts may be sacred or sensitive to descendant communities; AI storytelling must respect these considerations.',
-          approach: 'Consult with descendant communities in narrative development; implement content warnings; respect requests for restricted access to certain artifacts.',
+          category: 'Technology Dependence',
+          consideration:
+            'Introducing a digital layer into a cultural site may risk distracting from the physical environment.',
+          approach:
+            'The system is intentionally designed to be minimal and non-intrusive, with audio-first interaction and optional features to reduce over-reliance on the device.',
         },
       ] as EthicalConsideration[],
     } as TechnicalReflectionData,
 
     finalReflection: {
       learning: [
-        'Personalization is only valuable when informed by deep user research; assumptions about what visitors want often miss the mark.',
-        'Balancing automation (AI) with human curation is critical; pure algorithmic recommendations felt cold and corporate.',
-        'Accessibility cannot be bolted on at the end; it must be a core design principle from the start.',
-        'Ethical considerations around cultural representation and data privacy are not afterthoughts—they shape product direction.',
+        'User research is essential—initial assumptions about what would make the experience engaging (e.g. gamification) did not match what visitors actually wanted.',
+        'Reducing features can improve the experience; focusing on simplicity and immersion was more effective than adding more interaction.',
+        'Designing for real-world contexts requires thinking beyond the interface, including when and where interaction happens.',
+        'AI tools are most useful for rapid prototyping, but design decisions still need to be guided by user needs and critical evaluation.',
       ],
-      evolution: 'This project shifted my design thinking from "How can we automate the tour experience?" to "How can we empower visitors to create their own meaningful learning journeys?" The human needs came first, and AI was a tool to serve those needs, not a feature to showcase.',
+      evolution: 'This project shifted my approach from trying to design an engaging feature-rich app to focusing on how to support the visitor experience with minimal disruption. Instead of asking how technology could add more interaction, I focused on how it could stay in the background and support understanding in a more natural way.',      
       futureDirections: [
-        'Expand community contributions: Allow researchers and cultural experts to add their own narratives and perspectives.',
-        'Enhanced accessibility: Develop partnerships with accessibility consultants for real-world testing with disabled visitors.',
-        'Intergenerational learning paths: Design experiences that work for families with mixed ages and knowledge levels.',
-        'Global cultural exchange: Adapt the model for museums in other countries to preserve and share diverse cultural narratives.',
+        'Test the prototype with real users to better understand how the audio experience fits into an actual site visit',
+        'Refine the balance between audio and visual cues, especially for different user preferences and environments',
+        'Explore more accurate location-awareness (e.g. GPS or beacon-based triggers) to improve contextual interaction',
+        'Expand cultural content depth while maintaining a simple and non-intrusive user experience',
       ],
     },
 
