@@ -60,18 +60,6 @@ export function HeroSection() {
           </div>
 
           <div className="flex items-center gap-8 pt-4">
-            <div className="flex items-center gap-3">
-              <div className="relative flex items-center justify-center w-12 h-12">
-                <div 
-                  className="absolute inset-0 rotate-3 rounded-sm opacity-90 shadow-sm"
-                  style={{ backgroundColor: 'var(--seal)' }} 
-                />
-                <span className="relative text-white text-xl font-serif pt-0.5">印</span>
-              </div>
-              <div className="text-[10px] uppercase tracking-[0.2em] text-stone-400 leading-tight">
-                Design <br /> Philosophy
-              </div>
-            </div>
 
             <button className="group flex items-center gap-3 text-sm font-medium text-stone-800">
               <span className="border-b border-stone-800 pb-1 group-hover:pr-4 transition-all">Explore Process</span>

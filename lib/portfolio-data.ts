@@ -104,7 +104,7 @@ export const portfolioData = {
   // Project Overview
   project: {
     title: 'Suzhou Maple Bridge',
-    subtitle: 'A cultural tourism experience designed around how people actually explore',
+    subtitle: 'A cultural tourism experience designed around how people actually explore.',
     description:
       'Visitors come to Maple Bridge to see its beauty — but often leave without understanding its meaning. This project explores how interaction design can support a more immersive and culturally grounded experience, without pulling attention away from the place itself.',
   },
@@ -600,8 +600,8 @@ export const portfolioData = {
       {
         id: 'stage-3',
         stage: 'final',
-        title: 'Final Concept: AI-Guided Narrative Experience',
-        description: 'Final design combines spatial navigation, personalized storytelling, and multi-sensory content. AI learns user preferences to improve recommendations over time.',
+        title: 'Final Concept: Context-Aware Cultural Companion',
+        description: 'The final design focuses on reducing screen dependency while supporting cultural understanding through audio storytelling and lightweight interaction. Instead of building a feature-heavy system, the design prioritizes clarity, immersion, and optional engagement.',
         artifacts: [
           {
             id: 'mockup-1',
@@ -629,39 +629,36 @@ export const portfolioData = {
     ] as IterationStage[],
 
     finalConcept: {
-      overview: 'An AI-enhanced mobile experience that personalizes cultural learning through narrative storytelling, adaptive content depth, and intelligent recommendations.',
+      overview: 'A prototype of a context-aware cultural companion that supports visitors before, during, and after their visit through lightweight interaction and audio storytelling. The system focuses on helping visitors understand the cultural meaning of Maple Bridge without requiring constant screen interaction. Rather than relying on complex personalization, the design emphasizes simple exploration, optional depth, and minimal disruption to the on-site experience.',
       modules: [
         {
           title: 'Pre-Visit Preparation',
           description:
-            'Visitors set their interests, ambient preferences, and schedule. AI surfaces poetic previews so they arrive calm and prepared with audio teasers.',
+            'Supports basic decision-making before arrival through a conceptual crowd preview and landmark awareness. This feature is implemented as a prototype demonstration using simulated data to illustrate how pre-visit planning could be supported.',
           keyFeatures: [
-            'Interest & intention selector',
-            'Knowledge level assessment',
-            'Audio preview sequences',
-            'Accessibility preferences',
+            'Conceptual crowd preview (prototype demonstration)',
+            'Basic landmark awareness before visiting',
+            'Simple visual overview of site conditions',
           ],
         },
         {
           title: 'Situated Experience',
           description:
-            'Beacon-triggered audio storytelling, context-aware navigation, and crowd intelligence keep visitors connected to the water-town rhythms.',
+            'The core experience allows users to explore key landmarks and access short audio-based cultural explanations. Interaction is kept lightweight, combining simple map-based navigation with optional visual details, allowing users to remain focused on the physical environment rather than the screen.',
           keyFeatures: [
-            'Audio storytelling with optional captions',
-            'Context-aware navigation cues',
-            'Crowd intelligence heatmap',
-            'Note-taking & bookmarking',
+            'Interactive map with tappable landmarks',
+            'Audio storytelling for cultural context',
+            'Clickable visual exploration of landmark details',
           ],
         },
         {
           title: 'Optional Engagement',
           description:
-            'Post-visit layer offers seal-stamp collectibles, narrative rewards, and community annotations for those who wish to dive deeper.',
+            'Additional features provide optional depth for users who want to explore further. This includes photo spot guidance and a lightweight question-and-answer interface for additional cultural context. These features are intentionally non-intrusive and user-controlled.',
           keyFeatures: [
-            'Cultural collectible seals',
-            'Narrative rewards & reflections',
-            'Community contributions',
-            'Visit history & learning path',
+            'Photo spot guidance for culturally meaningful viewpoints',
+            'Optional question-and-answer interface (chatbot)',
+            'Lightweight exploration beyond core experience',
           ],
         },
       ],
@@ -752,7 +749,7 @@ export const portfolioData = {
     finalReflection: {
       learning: [
         'User research is essential—initial assumptions about what would make the experience engaging (e.g. gamification) did not match what visitors actually wanted.',
-        'Reducing features can improve the experience; focusing on simplicity and immersion was more effective than adding more interaction.',
+        'Reducing features can improve the experience; focusing on simplicity and immersion was more effective than adding more interaction. This project highlighted that adding more features does not necessarily improve user experience. Instead, focusing on fewer, well-aligned interactions (such as audio storytelling and simple navigation) created a more coherent and immersive design.',
         'Designing for real-world contexts requires thinking beyond the interface, including when and where interaction happens.',
         'AI tools are most useful for rapid prototyping, but design decisions still need to be guided by user needs and critical evaluation.',
       ],

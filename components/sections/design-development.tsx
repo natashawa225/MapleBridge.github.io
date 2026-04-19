@@ -36,6 +36,19 @@ export function DesignDevelopmentSection() {
           <Card className="p-8 bg-muted/30 border-l-4 border-primary animate-fade-in-up">
             <p className="text-lg text-foreground leading-relaxed">{design.finalConcept.overview}</p>
           </Card>
+          <Card className="p-6 bg-muted/20 border border-border animate-fade-in-up">
+            <h4 className="text-sm font-semibold text-primary uppercase tracking-wider mb-2">
+              Prototype Scope
+            </h4>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              This prototype focuses on demonstrating interaction concepts rather than full system functionality. 
+              Certain features (such as crowd visualization) are implemented using simulated data to communicate 
+              design intent rather than real-time capability. 
+
+              The goal of the prototype is to explore how audio-first and low-interaction design can support 
+              cultural understanding in a real-world setting.
+            </p>
+          </Card>
 
           {/* Modules */}
           <div>
