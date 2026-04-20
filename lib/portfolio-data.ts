@@ -449,12 +449,12 @@ export const portfolioData = {
         insight: 'Visitors want cultural meaning without losing immersion',
         explanation:
           'Many participants felt Maple Bridge was visually beautiful but difficult to fully understand, especially when historical context was sparse, fragmented, or only available in Chinese. The core need was not just more information, but access to meaning without interrupting the experience.',
-        artifact: {
-          id: 'insight-visual-1',
-          src: withBasePath('/artifacts/insight-1.jpg'),
-          alt: 'Insight diagram showing the gap between scenery and understanding',
-          type: 'diagram',
-        },
+        // artifact: {
+        //   id: 'insight-visual-1',
+        //   // src: withBasePath('/artifacts/insight-1.jpg'),
+        //   alt: 'Insight diagram showing the gap between scenery and understanding',
+        //   type: 'diagram',
+        // },
       },
       {
         id: 'insight-2',
@@ -467,12 +467,12 @@ export const portfolioData = {
         insight: 'Planning support matters before the visit begins',
         explanation:
           'Crowd awareness, landmark previews, and timing information were especially valuable before arrival. Visitors wanted to make decisions in advance so they could avoid uncertainty, choose calmer times, and enter the site with a better sense of direction.',
-        artifact: {
-          id: 'insight-visual-3',
-          src: withBasePath('/artifacts/brainstorm-1.jpg'),
-          alt: 'Storyboard of pre-visit planning and crowd awareness',
-          type: 'diagram',
-        },
+        // artifact: {
+        //   id: 'insight-visual-3',
+        //   // src: withBasePath('/artifacts/brainstorm-1.jpg'),
+        //   alt: 'Storyboard of pre-visit planning and crowd awareness',
+        //   type: 'diagram',
+        // },
       },
       {
         id: 'insight-4',
@@ -568,7 +568,7 @@ export const portfolioData = {
         artifacts: [
           {
             id: 'sketch-1',
-            src: withBasePath('/artifacts/concept-1-sketch.jpg'),
+            src: withBasePath('/artifacts/firstDesign.png'),
             alt: 'Initial sketch of guided tour interface',
             caption: 'Early wireframe of linear tour guide concept',
             type: 'sketch',
@@ -583,18 +583,12 @@ export const portfolioData = {
         artifacts: [
           {
             id: 'wireframe-2',
-            src: withBasePath('/artifacts/concept-2-wireframe.jpg'),
+            src: withBasePath('/artifacts/secondDesign.png'),
             alt: 'Refined wireframe with personalization features',
             caption: 'Refined design incorporating user preferences and recommendations',
             type: 'sketch',
           },
-          {
-            id: 'wireframe-2b',
-            src: withBasePath('/artifacts/concept-2b-wireframe.jpg'),
-            alt: 'Detailed user flow for personalization',
-            caption: 'User flow for setting preferences',
-            type: 'diagram',
-          },
+          
         ],
       },
       {
@@ -605,25 +599,12 @@ export const portfolioData = {
         artifacts: [
           {
             id: 'mockup-1',
-            src: withBasePath('/artifacts/concept-3-mockup-home.jpg'),
+            src: withBasePath('/artifacts/finalConcept.png'),
             alt: 'Final mockup of home screen',
             caption: 'Final high-fidelity mockup: Home screen with personalized recommendations',
             type: 'mockup',
           },
-          {
-            id: 'mockup-2',
-            src: withBasePath('/artifacts/concept-3-mockup-detail.jpg'),
-            alt: 'Final mockup of artifact detail',
-            caption: 'Final design: Multi-depth content for artifacts',
-            type: 'mockup',
-          },
-          {
-            id: 'prototype-1',
-            src: withBasePath('/artifacts/concept-3-prototype.jpg'),
-            alt: 'Interactive prototype demonstration',
-            caption: 'Interactive prototype showing AI recommendation flow',
-            type: 'prototype',
-          },
+          
         ],
       },
     ] as IterationStage[],
