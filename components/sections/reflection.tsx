@@ -120,7 +120,7 @@ export function ReflectionSection() {
         id="references-section"
         phase="Phase 5"
         title="References"
-        description="Sources, tools, and resources that informed this work"
+        description="Academic sources and tools referenced throughout the project"
       >
         <div id="references" className="space-y-8">
           {Object.entries(reflection.references).map(([category, items]) => (
@@ -128,15 +128,18 @@ export function ReflectionSection() {
               <h3 className="text-lg font-semibold text-foreground mb-3 capitalize">
                 {category.replace(/([A-Z])/g, ' $1').trim()}
               </h3>
-              <ul className="space-y-2">
+              <ol className="space-y-3">
                 {Array.isArray(items) &&
                   items.map((item, idx) => (
-                    <li key={idx} className="flex gap-3 items-start text-muted-foreground">
-                      <span className="text-primary flex-shrink-0 mt-1">•</span>
-                      <span className="text-sm">{item}</span>
+                    <li
+                      key={idx}
+                      className="grid grid-cols-[2rem_1fr] items-start text-sm text-muted-foreground"
+                    >
+                      <span className="text-primary font-medium">{idx + 1}.</span>
+                      <span className="leading-6">{item}</span>
                     </li>
                   ))}
-              </ul>
+              </ol>
             </div>
           ))}
         </div>

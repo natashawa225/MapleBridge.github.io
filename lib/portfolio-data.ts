@@ -113,7 +113,7 @@ export const portfolioData = {
   overview: {
     problemSpace: {
       context:
-        'Maple Bridge (Fengqiao) in Suzhou is a culturally rich landmark shaped by classical poetry, historical narratives, and Jiangnan aesthetics. However, the current visitor experience is largely visual and surface-level. Most visitors come for sightseeing and photography, yet leave without understanding the deeper cultural meaning behind the space. This reflects a mismatch between the richness of the environment and the accessibility of its interpretation—an issue highlighted in requirement discovery, where user context, prior knowledge, and situational constraints must be considered in design.',
+        'Maple Bridge (Fengqiao) in Suzhou is a culturally rich landmark shaped by classical poetry, historical narratives, and Jiangnan aesthetics (Suzhou Municipal People’s Government, 2021). However, the current visitor experience is largely visual and surface-level. Most visitors come for sightseeing and photography, yet leave without understanding the deeper cultural meaning behind the space. This reflects a mismatch between the richness of the environment and the accessibility of its interpretation—an issue highlighted in requirement discovery, where user context, prior knowledge, and situational constraints must be considered in design.',
       
       painPoints: [
           'Language and accessibility barriers prevent international visitors from understanding cultural and historical context',
@@ -144,7 +144,7 @@ export const portfolioData = {
         id: 'finding-lang',
         title: 'Understanding is Blocked by Language and Context',
         description:
-          'Visitors often engage visually with Maple Bridge but fail to understand its cultural meaning due to inaccessible or insufficient explanations. This creates a gap between experiencing the place and actually understanding it.',
+          'Visitors often engage visually with Maple Bridge but fail to understand its cultural meaning due to inaccessible or insufficient explanations. This creates a gap between experiencing the place and actually understanding it. This reflects a broader challenge in cultural heritage systems, where delivering contextual knowledge in an accessible and engaging way remains a key design problem (Casillo et al., 2020).',
         evidence:
           'Several participants said they “knew nothing” about the site beforehand and struggled to access information because most signage was only in Chinese.',
         icon: 'Globe',
@@ -153,7 +153,7 @@ export const portfolioData = {
         id: 'finding-audio',
         title: 'Hands-Free, Audio-Based Interaction Supports Immersion',
         description:
-          'Users consistently prefer listening over reading during the visit. Looking at screens interrupts the atmosphere, while audio allows them to stay present and engaged with the environment.',
+          'Users consistently prefer listening over reading during the visit. Looking at screens interrupts the atmosphere, while audio allows them to stay present and engaged with the environment. This aligns with prior HCI research showing that immersive, low-friction interaction improves user experience and engagement in cultural environments (Xue et al., 2025).',
         evidence:
           'Participants repeatedly mentioned preferring audio or voiceover so they could “just enjoy the scenery” without constantly looking at their phones.',
         icon: 'Headphones',
@@ -162,7 +162,7 @@ export const portfolioData = {
         id: 'finding-planning',
         title: 'Pre-Visit Awareness Reduces Uncertainty and Stress',
         description:
-          'Visitors want to make decisions before arriving—such as when to go, where to walk, and how crowded it will be. Planning ahead helps them feel more in control and supports a more relaxed on-site experience.',
+          'Visitors want to make decisions before arriving—such as when to go, where to walk, and how crowded it will be. Planning ahead helps them feel more in control and supports a more relaxed on-site experience. Providing this kind of foresight aligns with research on crowd monitoring and spatial awareness systems, which support better decision-making and reduce uncertainty in public environments (Zhang et al., 2025).',
         evidence:
           'Users described checking crowd levels and wanting previews of routes and landmarks before visiting.',
         icon: 'Calendar',
@@ -180,7 +180,7 @@ export const portfolioData = {
         id: 'finding-balance',
         title: 'Engagement Should Be Optional, Not Forced',
         description:
-          'While some users enjoy interactive storytelling and gamified elements, others reject them entirely. This reveals the need for flexible, opt-in engagement rather than a single fixed experience.',
+          'While some users enjoy interactive storytelling and gamified elements, others reject them entirely. This supports existing research suggesting that gamification in cultural heritage must balance engagement with meaningful learning, rather than prioritizing game mechanics alone (Peng et al., 2023; Pasca et al., 2021).',
         evidence:
           'Reactions were mixed: some found interactive features engaging, while others felt they were unnecessary or out of place.',
         icon: 'Sparkles',
@@ -448,19 +448,13 @@ export const portfolioData = {
         id: 'insight-1',
         insight: 'Visitors want cultural meaning without losing immersion',
         explanation:
-          'Many participants felt Maple Bridge was visually beautiful but difficult to fully understand, especially when historical context was sparse, fragmented, or only available in Chinese. The core need was not just more information, but access to meaning without interrupting the experience.',
-        // artifact: {
-        //   id: 'insight-visual-1',
-        //   // src: withBasePath('/artifacts/insight-1.jpg'),
-        //   alt: 'Insight diagram showing the gap between scenery and understanding',
-        //   type: 'diagram',
-        // },
+          'Many participants felt Maple Bridge was visually beautiful but difficult to fully understand, especially when historical context was sparse, fragmented, or only available in Chinese. The core need was not just more information, but access to meaning without interrupting the experience. This aligns with research on cultural heritage chatbots, where context-aware systems deliver information dynamically without requiring explicit user effort (Casillo et al., 2020; Sperlì, 2021).',
       },
       {
         id: 'insight-2',
         insight: 'Audio is preferred on-site because it keeps attention on the place',
         explanation:
-          'Participants consistently preferred audio or heads-up guidance while walking, since reading from the phone pulled them away from the bridge, temple, and surrounding atmosphere. Audio was seen as more natural for on-site cultural explanation.',
+          'Participants consistently preferred audio or heads-up guidance while walking, since reading from the phone pulled them away from the environment. This supports prior findings that immersive and responsive interaction modalities improve user engagement in cultural tourism contexts (Xue et al., 2025).',
       },
       {
         id: 'insight-3',
@@ -563,48 +557,54 @@ export const portfolioData = {
       {
         id: 'stage-1',
         stage: 'initial',
-        title: 'Initial Concept: Guided Tour App',
-        description: 'First iteration was a traditional guided tour app with turn-by-turn navigation and static content for each artifact.',
+        title: 'Initial Concept: Feature-Heavy Tourist App',
+        description:
+          'The first iteration explored a wide range of features through divergent thinking, including AI tour guides, interactive story quests, real-time crowd tracking, and reward-based systems. The design aimed to combine learning, navigation, and engagement into a single app experience, but quickly became overloaded and screen-dependent. :contentReference[oaicite:0]{index=0}',
         artifacts: [
           {
             id: 'sketch-1',
             src: withBasePath('/artifacts/firstDesign.png'),
-            alt: 'Initial sketch of guided tour interface',
-            caption: 'Early wireframe of linear tour guide concept',
+            alt: 'Initial concept sketch with multiple features',
+            caption:
+              'Week 1 concept board showing AI tour guide, story quests, crowd tracking, and gamified rewards explored simultaneously',
             type: 'sketch',
           },
         ],
       },
+    
       {
         id: 'stage-2',
         stage: 'refined',
-        title: 'Post-Interview Refinement: Personalized Discovery',
-        description: 'After persona interviews, concept evolved to prioritize visitor choice and personalization. Added recommendation engine and multiple content depth levels.',
+        title: 'Post-Interview Shift: Reducing Complexity',
+        description:
+          'Interviews revealed that most visitors did not want a highly interactive or game-like experience. Instead, they valued cultural understanding, minimal phone use, and a more relaxed visit. Many preferred audio explanations over reading and expressed frustration with missing context due to language barriers. :contentReference[oaicite:1]{index=1} This led to a convergent design shift: removing heavy gamification, simplifying interaction, and focusing on when and how interaction should happen rather than adding more features.',
         artifacts: [
           {
             id: 'wireframe-2',
             src: withBasePath('/artifacts/secondDesign.png'),
-            alt: 'Refined wireframe with personalization features',
-            caption: 'Refined design incorporating user preferences and recommendations',
+            alt: 'Refined concept focusing on structure and flow',
+            caption:
+              'Refinement stage showing transition from feature-heavy system to structured experience flow (pre-visit, on-site, post-visit)',
             type: 'sketch',
           },
-          
         ],
       },
+    
       {
         id: 'stage-3',
         stage: 'final',
         title: 'Final Concept: Context-Aware Cultural Companion',
-        description: 'The final design focuses on reducing screen dependency while supporting cultural understanding through audio storytelling and lightweight interaction. Instead of building a feature-heavy system, the design prioritizes clarity, immersion, and optional engagement.',
+        description:
+          'The final design converges into a structured, three-phase experience: pre-visit planning, a lightweight on-site experience, and optional post-visit engagement. Instead of maximizing features, the system prioritizes reducing cognitive load, supporting user control, and enabling a more immersive experience through audio-first interaction. This reflects established HCI design principles, including reducing short-term memory load, maintaining visibility of system behaviour, and supporting user control through simplified interaction design.',
         artifacts: [
           {
             id: 'mockup-1',
             src: withBasePath('/artifacts/finalConcept.png'),
-            alt: 'Final mockup of home screen',
-            caption: 'Final high-fidelity mockup: Home screen with personalized recommendations',
+            alt: 'Final system concept showing layered experience',
+            caption:
+              'The system functions as a context-aware cultural companion, similar to prior work where AI-based systems provide adaptive, location-sensitive guidance in cultural heritage environments (Casillo et al., 2020).',
             type: 'mockup',
           },
-          
         ],
       },
     ] as IterationStage[],
@@ -745,23 +745,29 @@ export const portfolioData = {
 
     references: {
       hciAndDesign: [
-        'Norman, D. A. (2013). The Design of Everyday Things (Revised Edition)',
-        'Brown, B. (2018). Dare to Lead: Brave Work',
-        'Interaction Design Foundation. (2022). Human-Centered Design',
+        'Casillo, M., Clarizia, F., D\'Aniello, G., De Santo, M., Lombardi, M. and Santaniello, D. (2020) \'CHAT-Bot: A Cultural Heritage Aware Teller-Bot for Supporting Touristic Experiences\', Pattern Recognition Letters, 131, pp. 234–243. doi:10.1016/j.patrec.2020.01.003. Available at: https://www.sciencedirect.com/science/article/abs/pii/S0167865520300052 (Accessed: 10 April 2026).',
+        'Pasca, M.G., Renzi, M.F., Di Pietro, L. and Guglielmetti Mugion, R. (2021) Gamification in Tourism and Hospitality Research in the Era of Digital Platforms: A Systematic Literature Review. Journal of Service Theory and Practice, 31(5), pp. 691–737. Emerald. DOI: 10.1108/JSTP-05-2020-0094. [online] Available at: https://www.emerald.com/insight/content/doi/10.1108/JSTP-05-2020-0094/full/html [Accessed 10 April 2026].',
+        'Peng, K., Tao, X., Jiang, J. and Zhai, J. (2023) The Experience Design of Cultural Heritage Tourism in the Perspective of Gamification. In: Marcus, A., Rosenzweig, E. and Soares, M.M. (eds.) Design, User Experience, and Usability. HCII 2023. Lecture Notes in Computer Science, vol. 14034, pp. 131–143. Springer, Cham. DOI: 10.1007/978-3-031-35705-3_10. [online] Available at: https://link.springer.com/chapter/10.1007/978-3-031-35705-3_10 [Accessed 10 April 2026].',
+        'Sperlì, G. (2021) A Cultural Heritage Framework Using a Deep Learning Based Chatbot for Supporting Tourist Journey. Expert Systems with Applications, 183. Elsevier. DOI: 10.1016/j.eswa.2021.115389. [online] Available at: https://www.sciencedirect.com/science/article/abs/pii/S0957417421007089 [Accessed 10 April 2026].',
+        'Xue, K., Jin, X. and Li, Y. (2025) Exploring the Influence of Human-Computer Interaction Experience on Tourist Loyalty in the Context of Smart Tourism: A Case Study of Suzhou Museum. Behavioural Sciences, 15(7), art. 949. MDPI. DOI: 10.3390/bs15070949. [online] Available at: https://www.mdpi.com/2076-328X/15/7/949 [Accessed 10 April 2026].',
+        'Zhang, Y. et al. (2025) Framework for Timely Perception of Spatiotemporal Crowd Congestion Risk in Public Spaces Based on Video Pedestrian Tracking and Geographic Mapping. GIScience and Remote Sensing. Taylor & Francis. DOI: 10.1080/15481603.2025.2480416. [online] Available at: https://www.tandfonline.com/doi/full/10.1080/15481603.2025.2480416 [Accessed 10 April 2026].',
       ],
       culturalHeritage: [
-        'ICOM Code of Ethics for Museums',
-        'UNESCO Guidelines on Digital Preservation of Cultural Heritage',
+        'Suzhou Municipal People\'s Government (2021) Night Mooring at Maple Bridge: The Sound of Bells Travels Beyond Time. suzhou.gov.cn (Official Suzhou Government English Portal). [online] Available at: https://www.suzhou.gov.cn/szsenglish/News/202102/3da2c5021c524117b66b4dd54162a52a.shtml [Accessed 10 April 2026].',
       ],
-      aiAndEthics: [
-        'IEEE Ethically Aligned Design Initiative',
-        'Buolamwini, J. (2020). Coded Gaze: Unmasking AI Bias in Facial Recognition',
-      ],
+      // aiAndEthics: [
+      //   'IEEE Ethically Aligned Design Initiative',
+      // ],
       tools: [
-        'Figma for design and prototyping',
-        'Miro for collaborative synthesis',
-        'Optimal Workshop for card sorting research',
-        'UserTesting.com for usability testing',
+        'ChatGPT, GPT-5.3, accessed 2026-04-15, available at https://chat.openai.com/. Used for structuring interaction flows, refining implementation logic, and supporting prompt engineering for React-based components. Outputs were critically evaluated and adapted to meet system requirements.',
+        
+        'Claude 3.5 Sonnet, v1.0, accessed 2026-04-10, available at https://claude.ai/. Used for analysing interview data, refining personas, and translating qualitative insights into design requirements, with outputs cross-checked against original research findings.',
+        
+        'v0.dev, accessed 2026-04-12, available at https://v0.dev/. Used for rapid prototyping of UI components and generating React-based layouts, which were extended and modified to fit the final system design.',
+        
+        'Cursor, v0.40, accessed 2026-04-12, available at https://cursor.sh/. Used as the primary development environment for implementing and debugging the prototype, with AI-assisted suggestions reviewed and manually refined for correctness.',
+        
+        'Gemini, v1.5, accessed 2026-04-18, available at https://gemini.google.com/. Used for early-stage visual exploration and generating initial poster layout concepts to support design iteration.',
       ],
     },
   },
