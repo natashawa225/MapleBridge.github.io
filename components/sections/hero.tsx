@@ -1,4 +1,5 @@
 import { portfolioData } from '@/lib/portfolio-data';
+import Link from 'next/link';
 
 export function HeroSection() {
   const { project } = portfolioData;
@@ -60,14 +61,16 @@ export function HeroSection() {
           </div>
 
           <div className="flex items-center gap-8 pt-4">
-
-            <button className="group flex items-center gap-3 text-sm font-medium text-stone-800">
-              <span className="border-b border-stone-800 pb-1 group-hover:pr-4 transition-all">Explore Process</span>
+          <Link 
+            href="https://maple-bridge-prototype.vercel.app"
+            className="group flex items-center gap-3 text-xl font-medium text-stone-800"
+          >
+            <span className="border-b border-stone-800 pb-1 group-hover:pr-4 transition-all">Explore Prototype</span>
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none" className="transition-transform group-hover:translate-x-1">
                 <path d="M3.75 9H14.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                 <path d="M9.75 4.5L14.25 9L9.75 13.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-            </button>
+          </Link>
           </div>
         </div>
 
@@ -83,16 +86,6 @@ export function HeroSection() {
                 ))}
               </div>
            </div>
-
-           {/* <div className="space-y-1">
-              <p className="text-[10px] text-stone-400 uppercase tracking-widest">Timeline</p>
-              <p className="text-sm font-serif italic text-stone-600">Spring 2026</p>
-           </div>
-           
-           <div className="space-y-1">
-              <p className="text-[10px] text-stone-400 uppercase tracking-widest">Role</p>
-              <p className="text-sm font-serif italic text-stone-600">Experience Design</p>
-           </div> */}
         </div>
       </div>
 
