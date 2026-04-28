@@ -19,6 +19,7 @@ export function TechnicalReflection({ data }: TechnicalReflectionProps) {
     prompts: true,
     methods: false,
     ethics: false,
+    ai: true,
   });
 
   const toggleItem = (key: string) => {
@@ -121,6 +122,78 @@ export function TechnicalReflection({ data }: TechnicalReflectionProps) {
           </CollapsibleContent>
         </Collapsible>
       </Card>
+
+      {data.aiReflection && (
+        <Card className="overflow-hidden animate-fade-in-up">
+          <Collapsible open={openItems.ai} onOpenChange={() => toggleItem('ai')}>
+            <CollapsibleTrigger className="w-full">
+              <div className="flex items-center justify-between p-6 hover:bg-muted/50 transition-colors cursor-pointer">
+                <h3 className="text-lg font-semibold text-foreground text-left">
+                  AI Usage Reflection
+                </h3>
+                <ChevronDown
+                  className={`h-5 w-5 text-muted-foreground transition-transform ${
+                    openItems.ai ? 'rotate-180' : ''
+                  }`}
+                />
+              </div>
+            </CollapsibleTrigger>
+            <CollapsibleContent className="border-t border-border">
+              <div className="p-6 space-y-6">
+                <div className="grid gap-4 md:grid-cols-2">
+                  <ReflectionPanel
+                    title="Prompt Engineering"
+                    items={data.aiReflection.prompts}
+                  />
+                  <ReflectionPanel
+                    title="Tool Usage"
+                    items={data.aiReflection.toolsUsed}
+                  />
+                  <ReflectionPanel
+                    title="Failures"
+                    items={data.aiReflection.whatFailed}
+                  />
+                  <ReflectionPanel
+                    title="Design Influence"
+                    items={data.aiReflection.impactOnDesign}
+                  />
+                </div>
+
+                <div className="grid gap-4 md:grid-cols-[1.1fr_0.9fr]">
+                  <ReflectionPanel
+                    title="What Worked"
+                    items={data.aiReflection.whatWorked}
+                  />
+                  <div className="rounded-xl border border-border bg-muted/30 p-4">
+                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-primary">
+                      Limitations Observed
+                    </p>
+                    <p className="mt-3 text-sm leading-6 text-muted-foreground">
+                      {data.aiReflection.limitationsObserved}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </CollapsibleContent>
+          </Collapsible>
+        </Card>
+      )}
+    </div>
+  );
+}
+
+function ReflectionPanel({ title, items }: { title: string; items: string[] }) {
+  return (
+    <div className="rounded-xl border border-border bg-muted/30 p-4">
+      <p className="text-xs font-semibold uppercase tracking-[0.22em] text-primary">{title}</p>
+      <div className="mt-3 space-y-3">
+        {items.map((item, idx) => (
+          <div key={`${title}-${idx}`} className="flex gap-3 items-start">
+            <div className="mt-2 h-1.5 w-1.5 rounded-full bg-primary" />
+            <p className="text-sm leading-6 text-muted-foreground">{item}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

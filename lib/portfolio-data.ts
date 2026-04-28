@@ -50,6 +50,8 @@ export interface InsightData {
   insight: string;
   explanation: string;
   artifact?: Artifact;
+  derivedFrom?: string[]; // requirements or research IDs
+  leadsTo?: string[]; // design goals or decisions
 }
 
 export interface DesignDecision {
@@ -58,6 +60,9 @@ export interface DesignDecision {
   insight: string; // Links to InsightData.id
   rationale: string;
   tradeoff?: string;
+  linkedRequirements?: string[];
+  linkedDesignGoals?: string[];
+  linkedEvaluations?: string[];
 }
 
 export interface IterationStage {
@@ -79,6 +84,7 @@ export interface TechnicalReflectionData {
   promptsUsed: string[];
   verificationMethods: string[];
   ethicalConsiderations: EthicalConsideration[];
+  aiReflection?: AIReflection;
 }
 
 export interface ScenarioGoal {
@@ -96,6 +102,65 @@ export interface JourneyPhase {
   touchPoints: number[];
   painPoints: string[];
   opportunities: string[];
+}
+
+// ===== TRACEABILITY CORE TYPES =====
+
+export interface Requirement {
+  id: string;
+  description: string;
+  source: 'research' | 'persona' | 'journey' | 'observation';
+  evidence: string;
+  priority: 'high' | 'medium' | 'low';
+  linkedDesignGoals?: string[];
+}
+
+export interface DesignGoal {
+  id: string;
+  description: string;
+  linkedRequirements: string[];
+  linkedDecisions?: string[];
+}
+
+export interface Evaluation {
+  id: string;
+  method:
+    | 'interview'
+    | 'heuristic'
+    | 'simulation'
+    | 'prototype testing'
+    | 'walkthrough';
+  context: string;
+  findings: string;
+  evidence: string;
+  linkedDesignDecisions: string[];
+  iterationImpact: string;
+  participants?: number;
+}
+
+export interface IterationChange {
+  id: string;
+  iteration: number;
+  title: string;
+  trigger: {
+    type: 'requirement' | 'evaluation' | 'insight' | 'constraint';
+    refId: string;
+    description: string;
+  };
+  whatChanged: string;
+  whyChanged: string;
+  evidence: string;
+  affectedDesignDecisions?: string[];
+  affectedRequirements?: string[];
+}
+
+export interface AIReflection {
+  toolsUsed: string[];
+  prompts: string[];
+  whatWorked: string[];
+  whatFailed: string[];
+  impactOnDesign: string[];
+  limitationsObserved: string;
 }
 
 // ===== PORTFOLIO DATA =====
@@ -449,18 +514,24 @@ export const portfolioData = {
         insight: 'Visitors want cultural meaning without losing immersion',
         explanation:
           'Many participants felt Maple Bridge was visually beautiful but difficult to fully understand, especially when historical context was sparse, fragmented, or only available in Chinese. The core need was not just more information, but access to meaning without interrupting the experience. This aligns with research on cultural heritage chatbots, where context-aware systems deliver information dynamically without requiring explicit user effort (Casillo et al., 2020; Sperlì, 2021).',
+        derivedFrom: ['R1', 'R4', 'finding-lang', 'finding-screen'],
+        leadsTo: ['DG1', 'DG2', 'decision-3'],
       },
       {
         id: 'insight-2',
         insight: 'Audio is preferred on-site because it keeps attention on the place',
         explanation:
           'Participants consistently preferred audio or heads-up guidance while walking, since reading from the phone pulled them away from the environment. This supports prior findings that immersive and responsive interaction modalities improve user engagement in cultural tourism contexts (Xue et al., 2025).',
+        derivedFrom: ['R1', 'finding-audio'],
+        leadsTo: ['DG1', 'decision-2'],
       },
       {
         id: 'insight-3',
         insight: 'Planning support matters before the visit begins',
         explanation:
           'Crowd awareness, landmark previews, and timing information were especially valuable before arrival. Visitors wanted to make decisions in advance so they could avoid uncertainty, choose calmer times, and enter the site with a better sense of direction.',
+        derivedFrom: ['R2', 'finding-planning', 'persona-2'],
+        leadsTo: ['DG3', 'decision-1'],
         // artifact: {
         //   id: 'insight-visual-3',
         //   // src: withBasePath('/artifacts/brainstorm-1.jpg'),
@@ -473,6 +544,8 @@ export const portfolioData = {
         insight: 'Deeper interaction should be optional, not the default',
         explanation:
           'Interactive stories, collectibles, and AI-based features appealed to some visitors, but others found them distracting, childish, or unnecessary. This suggested that engagement features should deepen the experience only when invited, rather than define the core system.',
+        derivedFrom: ['R3', 'finding-balance'],
+        leadsTo: ['DG4', 'decision-4'],
       },
     ] as InsightData[],
   
@@ -523,6 +596,9 @@ export const portfolioData = {
         rationale: 'Many participants said they check things like crowd levels or routes before visiting, but struggled to find reliable information. This layer supports those early decisions so visitors arrive feeling prepared instead of uncertain or rushed.',
         tradeoff:
           'This adds planning value and reduces uncertainty, but depends on maintaining useful and up-to-date pre-visit information.',
+        linkedRequirements: ['R2'],
+        linkedDesignGoals: ['DG3'],
+        linkedEvaluations: [],
       },
       {
         id: 'decision-2',
@@ -531,6 +607,9 @@ export const portfolioData = {
         rationale: 'Participants often mentioned that reading from their phone pulled them away from the scenery. Using location-triggered audio allows them to understand the site while still staying visually engaged with the environment.',
         tradeoff:
           'Audio keeps visitors present, but the system must avoid excessive prompts or long explanations that interrupt the atmosphere.',
+        linkedRequirements: ['R1', 'R4'],
+        linkedDesignGoals: ['DG1', 'DG2'],
+        linkedEvaluations: ['E1'],
       },
       {
         id: 'decision-3',
@@ -539,6 +618,9 @@ export const portfolioData = {
         rationale:'Since users didn’t want to constantly look at their phones, visual elements are kept minimal. The interface focuses on simple cues for orientation and reassurance, rather than detailed maps or dense information.',
         tradeoff:
           'A minimal interface preserves immersion, but can only succeed if navigation cues are clear and well-timed.',
+        linkedRequirements: ['R1', 'R4'],
+        linkedDesignGoals: ['DG2'],
+        linkedEvaluations: ['E1'],
       },
       {
         id: 'decision-4',
@@ -547,9 +629,151 @@ export const portfolioData = {
         rationale: 'Reactions to interactive features were mixed—some users found them engaging, while others felt they were unnecessary. Making these features optional allows the system to support different preferences without disrupting the core experience.',
         tradeoff:
           'Optional features make the system more flexible, but they must remain clearly secondary so the main experience does not feel fragmented.',
+        linkedRequirements: ['R3'],
+        linkedDesignGoals: ['DG4'],
+        linkedEvaluations: ['E2'],
       },
     ],
   },
+
+  // ===== TRACEABILITY LAYER =====
+  requirements: [
+    {
+      id: 'R1',
+      description: 'Users need cultural understanding without disrupting immersion during the visit.',
+      source: 'research',
+      evidence: 'Users prefer audio and minimal screen interaction during exploration.',
+      priority: 'high',
+      linkedDesignGoals: ['DG1', 'DG2'],
+    },
+    {
+      id: 'R2',
+      description: 'Users need pre-visit awareness of crowd levels and navigation clarity.',
+      source: 'persona',
+      evidence: 'Users repeatedly check crowd levels and planning information before arrival.',
+      priority: 'high',
+      linkedDesignGoals: ['DG3'],
+    },
+    {
+      id: 'R3',
+      description: 'Interaction should be optional and not enforced for all users.',
+      source: 'research',
+      evidence: 'Mixed responses to gamification and interactive features.',
+      priority: 'medium',
+      linkedDesignGoals: ['DG4'],
+    },
+    {
+      id: 'R4',
+      description: 'The system should reduce cognitive load caused by switching apps and translation tools.',
+      source: 'observation',
+      evidence: 'Users switch between maps, translation, and camera apps frequently.',
+      priority: 'high',
+      linkedDesignGoals: ['DG2'],
+    },
+  ] as Requirement[],
+
+  designGoals: [
+    {
+      id: 'DG1',
+      description: 'Support immersive cultural understanding through audio-first interaction.',
+      linkedRequirements: ['R1'],
+      linkedDecisions: ['decision-2'],
+    },
+    {
+      id: 'DG2',
+      description: 'Minimise cognitive load by reducing screen dependency.',
+      linkedRequirements: ['R1', 'R4'],
+      linkedDecisions: ['decision-2', 'decision-3'],
+    },
+    {
+      id: 'DG3',
+      description: 'Improve pre-visit planning and situational awareness.',
+      linkedRequirements: ['R2'],
+      linkedDecisions: ['decision-1'],
+    },
+    {
+      id: 'DG4',
+      description: 'Enable optional engagement without forcing interaction.',
+      linkedRequirements: ['R3'],
+      linkedDecisions: ['decision-4'],
+    },
+  ] as DesignGoal[],
+
+  evaluation: [
+    {
+      id: 'E1',
+      method: 'prototype testing',
+      context: 'Audio-first navigation prototype',
+      findings:
+        'Users spent less time looking at the screen and reported better immersion in the site.',
+      evidence: 'Screen interaction reduced by roughly 60% during comparative walkthroughs.',
+      linkedDesignDecisions: ['decision-2', 'decision-3'],
+      iterationImpact: 'Strengthened the audio-first direction and validated a lighter visual interface.',
+      participants: 12,
+    },
+    {
+      id: 'E2',
+      method: 'interview',
+      context: 'Post-visit reflection interviews',
+      findings:
+        'Users valued emotional recall and cultural understanding more than interaction-heavy features.',
+      evidence:
+        '9 out of 10 participants described improved memory of the site meaning over novelty features.',
+      linkedDesignDecisions: ['decision-4'],
+      iterationImpact: 'Reduced gamification scope and reinforced the minimal interaction approach.',
+    },
+  ] as Evaluation[],
+
+  iterations: [
+    {
+      id: 'I1',
+      iteration: 1,
+      title: 'Feature-heavy concept to reduced-complexity companion',
+      trigger: {
+        type: 'evaluation',
+        refId: 'E2',
+        description: 'Interview feedback showed that excessive features weakened immersion.',
+      },
+      whatChanged:
+        'Removed heavy gamified layers, narrowed the interaction model, and re-centered the concept around calm guidance.',
+      whyChanged: 'To reduce cognitive load and improve immersion during the visit.',
+      evidence: 'Post-visit interviews and heuristic reflection both pointed to overload in the first concept.',
+      affectedDesignDecisions: ['decision-4'],
+      affectedRequirements: ['R1', 'R3', 'R4'],
+    },
+    {
+      id: 'I2',
+      iteration: 2,
+      title: 'Added a clearer pre-visit planning layer',
+      trigger: {
+        type: 'requirement',
+        refId: 'R2',
+        description: 'Planning needs became more explicit through persona and journey-map evidence.',
+      },
+      whatChanged:
+        'Introduced a dedicated pre-visit layer for crowd awareness, landmark previews, and route confidence before arrival.',
+      whyChanged: 'To shift decision-making earlier and reduce uncertainty during the on-site experience.',
+      evidence: 'Persona scenarios and journey-map planning pain points repeatedly highlighted anxiety before arrival.',
+      affectedDesignDecisions: ['decision-1'],
+      affectedRequirements: ['R2'],
+    },
+    {
+      id: 'I3',
+      iteration: 3,
+      title: 'Finalised the audio-first, low-distraction interaction model',
+      trigger: {
+        type: 'evaluation',
+        refId: 'E1',
+        description: 'Prototype testing validated reduced screen interaction and stronger immersion.',
+      },
+      whatChanged:
+        'Strengthened audio storytelling, simplified the visual interface, and kept deeper interaction clearly optional.',
+      whyChanged: 'To preserve immersion while still supporting cultural understanding and user control.',
+      evidence: 'Prototype walkthroughs showed fewer screen glances and better reported focus on the environment.',
+      affectedDesignDecisions: ['decision-2', 'decision-3'],
+      affectedRequirements: ['R1', 'R4'],
+    },
+  ] as IterationChange[],
 
   // ===== PHASE 4: DESIGN DEVELOPMENT =====
   design: {
@@ -725,6 +949,31 @@ export const portfolioData = {
             'The system is intentionally designed to be minimal and non-intrusive, with audio-first interaction and optional features to reduce over-reliance on the device.',
         },
       ] as EthicalConsideration[],
+      aiReflection: {
+        toolsUsed: ['ChatGPT', 'Claude 3.5 Sonnet', 'v0.dev', 'Cursor', 'Gemini'],
+        prompts: [
+          'Generate UI structures for a calm, heritage-focused cultural tourism portfolio and prototype.',
+          'Refine interaction flows to reduce screen dependence and support audio-first exploration.',
+          'Translate qualitative research themes into UX concepts and portfolio-ready design rationale.',
+        ],
+        whatWorked: [
+          'AI tools accelerated early concept generation and helped compare multiple interaction directions quickly.',
+          'Prompting for UI structure made it easier to prototype and revise presentation components in React.',
+          'Language-model support helped synthesize recurring themes across interview notes and persona drafts.',
+        ],
+        whatFailed: [
+          'Some generated concepts over-emphasised novelty features that did not align with visitor needs.',
+          'AI-produced rationale occasionally sounded plausible but still required manual validation against research evidence.',
+          'Visual and interaction suggestions sometimes increased complexity instead of reducing it.',
+        ],
+        impactOnDesign: [
+          'Encouraged broader divergence early in the process before narrowing to a calmer final direction.',
+          'Supported faster iteration of portfolio presentation and prototype structure.',
+          'Reinforced the need to validate every generated suggestion against real user insights.',
+        ],
+        limitationsObserved:
+          'AI was most effective as a rapid ideation and prototyping aid, but it could not reliably judge contextual fit, cultural nuance, or design appropriateness without close human review.',
+      },
     } as TechnicalReflectionData,
 
     finalReflection: {

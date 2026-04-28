@@ -3,11 +3,12 @@
 import { portfolioData } from '@/lib/portfolio-data';
 import { PhaseSection } from '@/components/phase-section';
 import { TechnicalReflection } from '@/components/content-blocks/technical-reflection';
+import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
 import { CheckCircle2 } from 'lucide-react';
 
 export function ReflectionSection() {
-  const { reflection } = portfolioData;
+  const { reflection, evaluation, iterations } = portfolioData;
 
   return (
     <>
@@ -50,6 +51,46 @@ export function ReflectionSection() {
         </div>
       </PhaseSection>
 
+      <PhaseSection
+        id="evaluation-section"
+        phase="Phase 5"
+        title="Evaluation Evidence"
+        description="How testing and reflection informed concrete changes to the concept"
+      >
+        <div className="grid gap-6 lg:grid-cols-2">
+          {evaluation.map((item) => (
+            <Card key={item.id} className="rounded-2xl border border-border bg-card p-6">
+              <div className="space-y-4">
+                <div className="flex items-center justify-between gap-3">
+                  <div className="space-y-2">
+                    <Badge variant="secondary" className="capitalize">
+                      {item.method}
+                    </Badge>
+                    <h3 className="text-xl font-semibold text-foreground">{item.context}</h3>
+                  </div>
+                  <Badge variant="outline">{item.id}</Badge>
+                </div>
+
+                <div className="space-y-3">
+                  <DetailPanel
+                    label="Findings"
+                    value={item.findings}
+                  />
+                  <DetailPanel
+                    label="Evidence"
+                    value={item.evidence}
+                  />
+                  <DetailPanel
+                    label="What changed because of this"
+                    value={item.iterationImpact}
+                  />
+                </div>
+              </div>
+            </Card>
+          ))}
+        </div>
+      </PhaseSection>
+
       {/* Technical Reflection */}
       <PhaseSection
         id="technical-section"
@@ -67,6 +108,55 @@ export function ReflectionSection() {
           </p>
 
           <TechnicalReflection data={reflection.technicalReflection} />
+        </div>
+      </PhaseSection>
+
+      <PhaseSection
+        id="iteration-timeline-section"
+        phase="Phase 5"
+        title="Iteration Timeline"
+        description="A vertical view of how trigger, change, evidence, and impact evolved over time"
+      >
+        <div className="relative space-y-8 pl-6 md:pl-10">
+          <div className="absolute left-[0.7rem] top-2 bottom-2 w-px bg-border md:left-5" />
+
+          {iterations.map((item) => (
+            <div key={item.id} className="relative">
+              <div className="absolute left-[-0.05rem] top-2 h-4 w-4 rounded-full border-4 border-background bg-primary md:left-[0.6rem]" />
+
+              <Card className="rounded-2xl border border-border bg-card p-6">
+                <div className="space-y-5">
+                  <div className="flex flex-wrap items-center gap-3">
+                    <Badge>{item.id}</Badge>
+                    <Badge variant="outline">Iteration {item.iteration}</Badge>
+                  </div>
+
+                  <div>
+                    <h3 className="text-xl font-semibold text-foreground">{item.title}</h3>
+                  </div>
+
+                  <div className="grid gap-4 md:grid-cols-2">
+                    <DetailPanel
+                      label="Trigger"
+                      value={`${item.trigger.type}: ${item.trigger.description}`}
+                    />
+                    <DetailPanel
+                      label="Change"
+                      value={item.whatChanged}
+                    />
+                    <DetailPanel
+                      label="Evidence"
+                      value={item.evidence}
+                    />
+                    <DetailPanel
+                      label="Impact"
+                      value={item.whyChanged}
+                    />
+                  </div>
+                </div>
+              </Card>
+            </div>
+          ))}
         </div>
       </PhaseSection>
 
@@ -145,6 +235,15 @@ export function ReflectionSection() {
         </div>
       </PhaseSection>
     </>
+  );
+}
+
+function DetailPanel({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-xl border border-border/70 bg-muted/30 p-4">
+      <p className="text-xs font-semibold uppercase tracking-[0.22em] text-primary">{label}</p>
+      <p className="mt-2 text-sm leading-6 text-muted-foreground">{value}</p>
+    </div>
   );
 }
 

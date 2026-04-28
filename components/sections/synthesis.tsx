@@ -1,11 +1,12 @@
 import { portfolioData } from '@/lib/portfolio-data';
 import { PhaseSection } from '@/components/phase-section';
 import { InsightCard } from '@/components/content-blocks/insight-card';
+import { TraceabilityWorkbench } from '@/components/content-blocks/traceability-workbench';
 import { Card } from '@/components/ui/card';
 import { ArrowRight, Headphones, Map, Sparkles } from 'lucide-react';
 
 export function SynthesisSection() {
-  const { synthesis } = portfolioData;
+  const { synthesis, requirements, designGoals, evaluation } = portfolioData;
 
   return (
     <>
@@ -42,6 +43,27 @@ export function SynthesisSection() {
               ))}
             </div>
           </div>
+        </div>
+      </PhaseSection>
+
+      <PhaseSection
+        id="traceability-section"
+        phase="Phase 3"
+        title="Traceability & Design Logic"
+        description="A marking-focused view showing how requirements connect to goals, decisions, and validation"
+      >
+        <div className="space-y-6">
+          <p className="max-w-3xl text-base leading-7 text-muted-foreground">
+            This layer makes the reasoning chain explicit: what was required, how that became a design
+            goal, which design move answered it, and what evidence later supported the direction.
+          </p>
+
+          <TraceabilityWorkbench
+            requirements={requirements}
+            designGoals={designGoals}
+            decisions={synthesis.designDecisions}
+            evaluations={evaluation}
+          />
         </div>
       </PhaseSection>
 
