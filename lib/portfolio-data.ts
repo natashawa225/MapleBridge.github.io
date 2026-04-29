@@ -786,7 +786,7 @@ export const portfolioData = {
         stage: 'initial',
         title: 'Initial Concept: Feature-Heavy Tourist App',
         description:
-          'The first iteration explored a wide range of features through divergent thinking, including AI tour guides, interactive story quests, real-time crowd tracking, and reward-based systems. The design aimed to combine learning, navigation, and engagement into a single app experience, but quickly became overloaded and screen-dependent. :contentReference[oaicite:0]{index=0}',
+          'The first iteration explored a wide range of features through divergent thinking, including AI tour guides, interactive story quests, real-time crowd tracking, and reward-based systems. The design aimed to combine learning, navigation, and engagement into a single app experience, but quickly became overloaded and screen-dependent.',
         artifacts: [
           {
             id: 'sketch-1',
@@ -804,7 +804,7 @@ export const portfolioData = {
         stage: 'refined',
         title: 'Post-Interview Shift: Reducing Complexity',
         description:
-          'Interviews revealed that most visitors did not want a highly interactive or game-like experience. Instead, they valued cultural understanding, minimal phone use, and a more relaxed visit. Many preferred audio explanations over reading and expressed frustration with missing context due to language barriers. :contentReference[oaicite:1]{index=1} This led to a convergent design shift: removing heavy gamification, simplifying interaction, and focusing on when and how interaction should happen rather than adding more features.',
+          'Interviews revealed that most visitors did not want a highly interactive or game-like experience. Instead, they valued cultural understanding, minimal phone use, and a more relaxed visit. Many preferred audio explanations over reading and expressed frustration with missing context due to language barriers. This led to a convergent design shift: removing heavy gamification, simplifying interaction, and focusing on when and how interaction should happen rather than adding more features.',
         artifacts: [
           {
             id: 'wireframe-2',
@@ -971,7 +971,7 @@ export const portfolioData = {
           'AI tools were useful for generating alternative interaction ideas quickly, but many of the initial suggestions (e.g. gamified features, overly complex UI patterns) conflicted with user research. This required actively rejecting and filtering outputs rather than directly applying them.',
           'Prompting for UI structure made it easier to prototype and revise presentation components in React.',
           'Language-model support helped synthesize recurring themes across interview notes and persona drafts.',
-          'Image generation tools were used selectively to visualise early-stage ideas and rough concepts (e.g. initial app directions and interaction scenarios). This helped externalise abstract ideas quickly, but these visuals were based on pre-defined concepts rather than generated as final designs.'
+          'Image generation tools were used selectively to visualise early-stage ideas (e.g. rough app directions and interaction scenarios in Week 1). These were based on concepts we had already defined, and helped us externalise and compare directions quickly. They were not used to generate final designs, which were refined manually through iteration.'
         ],
         whatFailed: [
           'Some generated concepts over-emphasised novelty features that did not align with visitor needs.',
