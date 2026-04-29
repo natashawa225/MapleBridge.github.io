@@ -959,6 +959,14 @@ export const portfolioData = {
           approach:
             'This tension shaped a lot of the design decisions — keeping the interface minimal, leading with audio rather than screens, and making deeper features genuinely optional. The goal was always for the technology to stay in the background.',
         },
+        {
+          id: 'ethical-5',
+          category: 'AI-Generated Code',
+          consideration:
+            'Using AI tools to generate code raises questions about whether the output is correct, accessible, and free from embedded assumptions or bias — especially when the generated code is not fully understood by the person deploying it.',
+          approach:
+            'Every piece of AI-generated code was reviewed manually before being used. This included checking that interactive components were keyboard-navigable, that text contrast met basic readability standards, and that logic matched the actual user requirements rather than just functioning in isolation. Generated rationale and copy were cross-checked against interview findings rather than accepted at face value.',
+        },
       ] as EthicalConsideration[],
       aiReflection: {
         toolsUsed: ['ChatGPT', 'Claude 3.5 Sonnet', 'v0.dev', 'Cursor', 'Gemini'],
@@ -1020,15 +1028,15 @@ export const portfolioData = {
       //   'IEEE Ethically Aligned Design Initiative',
       // ],
       tools: [
-        'ChatGPT, GPT-5.3, accessed 2026-04-15, available at https://chat.openai.com/. Used for structuring interaction flows, refining implementation logic, and supporting prompt engineering for React-based components. Outputs were critically evaluated and adapted to meet system requirements.',
-        
-        'Claude 3.5 Sonnet, v1.0, accessed 2026-04-10, available at https://claude.ai/. Used for analysing interview data, refining personas, and translating qualitative insights into design requirements, with outputs cross-checked against original research findings.',
-        
-        'v0.dev, accessed 2026-04-12, available at https://v0.dev/. Used for rapid prototyping of UI components and generating React-based layouts, which were extended and modified to fit the final system design.',
-        
-        'Cursor, v0.40, accessed 2026-04-12, available at https://cursor.sh/. Used as the primary development environment for implementing and debugging the prototype, with AI-assisted suggestions reviewed and manually refined for correctness.',
-        
-        'Gemini, v1.5, accessed 2026-04-18, available at https://gemini.google.com/. Used for early-stage visual exploration and generating initial poster layout concepts to support design iteration.',
+        '[1] ChatGPT, GPT-4o, accessed on 2026-04-15, available at https://chat.openai.com/. Used for structuring interaction flows, refining implementation logic, and supporting prompt engineering for React-based components. Outputs were critically evaluated and adapted to meet system requirements.',
+      
+        '[2] Claude 3.5 Sonnet, v1.0, accessed on 2026-04-10, available at https://claude.ai/. Used for analysing interview data, refining personas, and translating qualitative insights into design requirements, with outputs cross-checked against original research findings.',
+      
+        '[3] v0.dev, accessed on 2026-04-12, available at https://v0.dev/. Used for rapid prototyping of UI components and generating React-based layouts, which were extended and modified to fit the final system design.',
+      
+        '[4] Cursor, v0.40, accessed on 2026-04-12, available at https://cursor.sh/. Used as the primary development environment for implementing and debugging the prototype, with AI-assisted suggestions reviewed and manually refined for correctness.',
+      
+        '[5] Gemini, v1.5, accessed on 2026-04-18, available at https://gemini.google.com/. Used for early-stage visual exploration and generating initial poster layout concepts to support design iteration.',
       ],
     },
   },
