@@ -178,7 +178,7 @@ export const portfolioData = {
   overview: {
     problemSpace: {
       context:
-        'Maple Bridge (Fengqiao) in Suzhou is a culturally rich landmark shaped by classical poetry, historical narratives, and Jiangnan aesthetics (Suzhou Municipal People’s Government, 2021). However, the current visitor experience is largely visual and surface-level. Most visitors come for sightseeing and photography, yet leave without understanding the deeper cultural meaning behind the space. This reflects a mismatch between the richness of the environment and the accessibility of its interpretation—an issue highlighted in requirement discovery, where user context, prior knowledge, and situational constraints must be considered in design.',
+        'Maple Bridge (Fengqiao) in Suzhou is a culturally rich landmark shaped by classical poetry, historical narratives, and Jiangnan aesthetics (Suzhou Municipal People’s Government, 2021). However, the current visitor experience is largely visual and surface-level. Most visitors come for sightseeing and photography, yet leave without understanding the deeper cultural meaning behind the space. This shows a mismatch between the richness of the environment and the accessibility of its interpretation—an issue highlighted in requirement discovery, where user context, prior knowledge, and situational constraints must be considered in design.',
       
       painPoints: [
           'Language and accessibility barriers prevent international visitors from understanding cultural and historical context',
@@ -209,7 +209,7 @@ export const portfolioData = {
         id: 'finding-lang',
         title: 'Understanding is Blocked by Language and Context',
         description:
-          'Visitors often engage visually with Maple Bridge but fail to understand its cultural meaning due to inaccessible or insufficient explanations. This creates a gap between experiencing the place and actually understanding it. This reflects a broader challenge in cultural heritage systems, where delivering contextual knowledge in an accessible and engaging way remains a key design problem (Casillo et al., 2020).',
+          'Visitors often engage visually with Maple Bridge but fail to understand its cultural meaning due to inaccessible or insufficient explanations. This creates a gap between experiencing the place and actually understanding it. This shows a challenge in cultural heritage systems, where delivering contextual knowledge in an accessible and engaging way remains a key design problem (Casillo et al., 2020).',
         evidence:
           'Several participants said they “knew nothing” about the site beforehand and struggled to access information because most signage was only in Chinese.',
         icon: 'Globe',
@@ -523,7 +523,7 @@ export const portfolioData = {
         explanation:
           'Participants consistently preferred audio or heads-up guidance while walking, since reading from the phone pulled them away from the environment. This supports prior findings that immersive and responsive interaction modalities improve user engagement in cultural tourism contexts (Xue et al., 2025).',
         derivedFrom: ['R1', 'finding-audio'],
-        leadsTo: ['DG1', 'decision-2'],
+        leadsTo: ['DG1', 'Decision-2'],
       },
       {
         id: 'insight-3',
@@ -601,7 +601,7 @@ export const portfolioData = {
         linkedEvaluations: [],
       },
       {
-        id: 'decision-2',
+        id: 'Decision-2',
         decision: 'Audio-first on-site storytelling as the core experience',
         insight: 'insight-2',
         rationale: 'Participants often mentioned that reading from their phone pulled them away from the scenery. Using location-triggered audio allows them to understand the site while still staying visually engaged with the environment.',
@@ -677,13 +677,13 @@ export const portfolioData = {
       id: 'DG1',
       description: 'Support immersive cultural understanding through audio-first interaction.',
       linkedRequirements: ['R1'],
-      linkedDecisions: ['decision-2'],
+      linkedDecisions: ['Decision-2'],
     },
     {
       id: 'DG2',
       description: 'Minimise cognitive load by reducing screen dependency.',
       linkedRequirements: ['R1', 'R4'],
-      linkedDecisions: ['decision-2', 'decision-3'],
+      linkedDecisions: ['Decision-2', 'decision-3'],
     },
     {
       id: 'DG3',
@@ -703,12 +703,14 @@ export const portfolioData = {
     {
       id: 'E1',
       method: 'prototype testing',
-      context: 'Audio-first navigation prototype',
+      context: 'Audio-first navigation prototype walkthrough',
       findings:
-        'Users spent less time looking at the screen and reported better immersion in the site.',
-      evidence: 'Screen interaction reduced by roughly 60% during comparative walkthroughs.',
-      linkedDesignDecisions: ['decision-2', 'decision-3'],
-      iterationImpact: 'Strengthened the audio-first direction and validated a lighter visual interface.',
+        'When audio narration was active, users spent noticeably less time looking at their phones and described feeling more absorbed in the environment. Several mentioned that they almost forgot they were using an app at all — which felt like the right kind of feedback.',
+      evidence:
+        'Across informal walkthroughs, participants generally reached for their phones less when audio was guiding them compared to the visual-only version. A few specifically said they felt like they could "actually look around" rather than manage the interface. These were small sessions and not formally measured, but the pattern was consistent enough to shape the final direction.',
+      linkedDesignDecisions: ['Decision-2', 'decision-3'],
+      iterationImpact:
+        'Confirmed that audio should be the primary channel and pushed the visual interface toward being a support layer rather than the main event.',
       participants: 12,
     },
     {
@@ -716,11 +718,12 @@ export const portfolioData = {
       method: 'interview',
       context: 'Post-visit reflection interviews',
       findings:
-        'Users valued emotional recall and cultural understanding more than interaction-heavy features.',
+        'Most participants cared far more about whether the visit felt meaningful than whether it was interactive. The features that stuck with people were the ones that helped them understand something — not the ones that gave them something to do.',
       evidence:
-        '9 out of 10 participants described improved memory of the site meaning over novelty features.',
+        'In post-visit conversations,  many participants mentioned being able to recall specific stories or facts from the site, which they contrasted with previous visits where they mostly just took photos. A few actively said they would have found badges or quest mechanics out of place. These interviews were informal rather than structured, but the direction of feedback was clear and consistent across most participants.',
       linkedDesignDecisions: ['decision-4'],
-      iterationImpact: 'Reduced gamification scope and reinforced the minimal interaction approach.',
+      iterationImpact:
+        'Led directly to scaling back the gamification layer, not because it was technically difficult, but because it didn’t seem to match what visitors actually wanted.',
     },
   ] as Evaluation[],
 
@@ -736,8 +739,8 @@ export const portfolioData = {
       },
       whatChanged:
         'Removed heavy gamified layers, narrowed the interaction model, and re-centered the concept around calm guidance.',
-      whyChanged: 'To reduce cognitive load and improve immersion during the visit.',
-      evidence: 'Post-visit interviews and heuristic reflection both pointed to overload in the first concept.',
+        whyChanged: 'The initial version tried to combine too many ideas (quests, rewards, AI guides), which looked promising but felt overwhelming in testing. The change was not about optimisation, but about removing features that were not actually helping the experience.',
+        evidence: 'Post-visit interviews and heuristic reflection both pointed to overload in the first concept.',
       affectedDesignDecisions: ['decision-4'],
       affectedRequirements: ['R1', 'R3', 'R4'],
     },
@@ -770,7 +773,7 @@ export const portfolioData = {
         'Strengthened audio storytelling, simplified the visual interface, and kept deeper interaction clearly optional.',
       whyChanged: 'To preserve immersion while still supporting cultural understanding and user control.',
       evidence: 'Prototype walkthroughs showed fewer screen glances and better reported focus on the environment.',
-      affectedDesignDecisions: ['decision-2', 'decision-3'],
+      affectedDesignDecisions: ['Decision-2', 'Decision-3'],
       affectedRequirements: ['R1', 'R4'],
     },
   ] as IterationChange[],
@@ -790,7 +793,7 @@ export const portfolioData = {
             src: withBasePath('/artifacts/firstDesign.png'),
             alt: 'Initial concept sketch with multiple features',
             caption:
-              'Week 1 concept board showing AI tour guide, story quests, crowd tracking, and gamified rewards explored simultaneously',
+              'Week 1 concept board showing AI tour guide, story quests, crowd tracking, and gamified rewards explored simultaneously. Some early concept sketches were visualised using image generation tools to quickly explore directions; however, these were used only to represent pre-existing ideas and were later refined through manual iteration.',
             type: 'sketch',
           },
         ],
@@ -877,19 +880,19 @@ export const portfolioData = {
         {
           painPoint: 'Language friction and inaccessible signage',
           addressed:
-            'Multi-language narration and jade/seal visual cues help guests connect directly with the heritage context.',
-          evidence: 'Prototype testing: 11/12 international participants reported clearer understanding.',
+            'One of the clearest gaps in the current visitor experience was that most signage was in Chinese only, leaving international visitors without a way to access the stories behind what they were seeing. The multilingual narration in the final design directly addresses this — instead of forcing visitors to switch between translation apps, the audio layer brings cultural context to them in their own language, at the right moment.',
+          evidence: 'In informal tests with a small number of participants, most reported feeling like they actually understood the site once narration was introduced. This was not formally measured, but the difference in engagement was noticeable.',
         },
         {
           painPoint: 'Excessive phone dependency',
-          addressed: 'Audio-first interactions plus minimal UI reduce screen glances while still delivering meaning.',
-          evidence: 'Testing: screen glances dropped 60% compared to the baseline experience.',
+          addressed: 'A recurring frustration in research was that accessing information meant looking away from the environment — constantly unlocking the phone, switching apps, and losing the atmosphere. The audio-first approach tries to flip that relationship: the phone stays in your pocket, and the experience comes to you.',
+          evidence: 'During walkthrough testing, users checked their phones noticeably less often once audio guidance was introduced. Several mentioned feeling more "present" compared to when they had to navigate a visual interface.',
         },
         {
           painPoint: 'Lack of calm, meaningful reflection',
           addressed:
-            'Pre-visit planning and optional cultural collectibles leave visitors with keepsake narratives to revisit later.',
-          evidence: 'Post-visit interviews: 9/10 users felt more emotionally connected and able to recall stories.',
+            'Many visitors left the site without a strong sense of what they had actually experienced — the visit felt visual but not particularly meaningful. The pre-visit layer helps frame expectations before arrival, while optional cultural keepsakes give visitors something to take away and revisit later, turning a single visit into something more lasting.',
+          evidence: 'Post-visit interviews suggested this direction was worth pursuing — 9 out of 10 participants said they felt more emotionally connected to the site and were able to recall specific stories afterward, compared to a more typical visit experience.',
         },
       ],
     },
@@ -917,36 +920,44 @@ export const portfolioData = {
       ],
       ethicalConsiderations: [
         {
+          id: 'ethical-0',
+          category: 'Informed Consent',
+          consideration:
+            'Any data collection from participants — whether through interviews, walkthroughs, or prototype testing — requires that people understand what they are agreeing to before they take part.',
+          approach:
+            'Before each session, participants were told what the research was about, how their feedback would be used, and that they could stop at any time. No data was collected without their agreement. This applied to both the initial interviews that shaped the personas and the informal walkthrough sessions used to evaluate the prototype.',
+        },
+        {
           id: 'ethical-1',
           category: 'Data Privacy',
           consideration:
-            'If the system were extended beyond a prototype, collecting user preferences or behavior data could raise privacy concerns.',
+            'If the system were ever developed beyond a prototype, it would likely need to collect some form of location or preference data — and that raises real questions about how that information is stored and used.',
           approach:
-            'The current prototype avoids storing any user data. Future versions should clearly communicate what is collected and allow users to opt out of personalization features.',
+            'The current prototype does not store any user data at all. If this were taken further, the approach would be to collect only what is genuinely needed, be transparent about it, and give users a clear way to opt out of anything optional.',
         },
         {
           id: 'ethical-2',
           category: 'Cultural Representation',
           consideration:
-            'Simplifying cultural stories into short audio snippets risks oversimplifying or misrepresenting historical context.',
+            'Turning centuries of history and poetry into short audio clips is a real risk. There is always a chance of flattening or misrepresenting stories that deserve more nuance than a 90-second narration can offer.',
           approach:
-            'Content should be carefully curated and reviewed to ensure accuracy, and where possible, include multiple perspectives rather than a single narrative.',
+            'Any content used in the system should be carefully checked for accuracy and sensitivity. Ideally, it would be reviewed by people with relevant cultural and historical knowledge, and where possible, it should present more than one perspective rather than a single authoritative voice.',
         },
         {
           id: 'ethical-3',
           category: 'Accessibility',
           consideration:
-            'Audio-based interaction may not work for all users, such as those with hearing impairments or different language needs.',
+            'Designing around audio as the primary channel assumes that all users can hear — which is not always the case. Language differences add another layer to this.',
           approach:
-            'Provide alternative formats such as text captions, multiple languages, and simple interface options to support a wider range of users.',
+            'Text captions should accompany all audio content, and the interface should work meaningfully without sound. Supporting multiple languages is also important, not just as a usability feature but as a matter of basic inclusion.',
         },
         {
           id: 'ethical-4',
           category: 'Technology Dependence',
           consideration:
-            'Introducing a digital layer into a cultural site may risk distracting from the physical environment.',
+            'There is something slightly ironic about building a digital tool to help people be more present at a physical place. If the app itself becomes the focus, it defeats the point.',
           approach:
-            'The system is intentionally designed to be minimal and non-intrusive, with audio-first interaction and optional features to reduce over-reliance on the device.',
+            'This tension shaped a lot of the design decisions — keeping the interface minimal, leading with audio rather than screens, and making deeper features genuinely optional. The goal was always for the technology to stay in the background.',
         },
       ] as EthicalConsideration[],
       aiReflection: {
@@ -957,9 +968,10 @@ export const portfolioData = {
           'Translate qualitative research themes into UX concepts and portfolio-ready design rationale.',
         ],
         whatWorked: [
-          'AI tools accelerated early concept generation and helped compare multiple interaction directions quickly.',
+          'AI tools were useful for generating alternative interaction ideas quickly, but many of the initial suggestions (e.g. gamified features, overly complex UI patterns) conflicted with user research. This required actively rejecting and filtering outputs rather than directly applying them.',
           'Prompting for UI structure made it easier to prototype and revise presentation components in React.',
           'Language-model support helped synthesize recurring themes across interview notes and persona drafts.',
+          'Image generation tools were used selectively to visualise early-stage ideas and rough concepts (e.g. initial app directions and interaction scenarios). This helped externalise abstract ideas quickly, but these visuals were based on pre-defined concepts rather than generated as final designs.'
         ],
         whatFailed: [
           'Some generated concepts over-emphasised novelty features that did not align with visitor needs.',
@@ -972,7 +984,7 @@ export const portfolioData = {
           'Reinforced the need to validate every generated suggestion against real user insights.',
         ],
         limitationsObserved:
-          'AI was most effective as a rapid ideation and prototyping aid, but it could not reliably judge contextual fit, cultural nuance, or design appropriateness without close human review.',
+        'AI outputs often appeared convincing even when they were poorly aligned with the project context. This made it necessary to treat generated content as suggestions rather than solutions, and to validate all decisions against user data and design goals.',
       },
     } as TechnicalReflectionData,
 

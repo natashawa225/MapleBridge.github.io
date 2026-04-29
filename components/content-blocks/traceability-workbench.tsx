@@ -39,7 +39,7 @@ export function TraceabilityWorkbench({
   const traceNodes = useMemo<TraceNode[]>(() => {
     const requirement = requirements.find((item) => item.id === 'R1');
     const goal = designGoals.find((item) => item.id === 'DG1');
-    const decision = decisions.find((item) => item.id === 'decision-2');
+    const decision = decisions.find((item) => item.id === 'Decision-2');
     const evaluation = evaluations.find((item) => item.id === 'E1');
 
     return [
@@ -204,7 +204,6 @@ function renderNodeFields(node: TraceNode) {
             label="Linked Decisions"
             value={node.item.linkedDecisions?.join(', ') ?? 'None'}
           />
-          <DetailBlock label="Role in Chain" value="Turns research needs into an actionable design target." />
         </>
       );
     case 'decision':
