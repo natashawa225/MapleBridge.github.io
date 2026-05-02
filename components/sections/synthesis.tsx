@@ -179,13 +179,6 @@ export function SynthesisSection() {
               </Card>
             ))}
           </div>
-
-          <div className="rounded-2xl bg-primary/5 p-6 border border-primary/10">
-            <h4 className="text-sm font-semibold text-primary uppercase tracking-wider mb-2">Key Outcome</h4>
-            <p className="text-sm text-muted-foreground italic">
-              "One sketch focused on 'proximity rings'—this eventually became the foundation for our context-aware audio triggers, ensuring users only see what is relevant to their current location."
-            </p>
-          </div>
         </div>
       </PhaseSection>
 

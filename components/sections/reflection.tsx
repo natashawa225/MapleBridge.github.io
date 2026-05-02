@@ -5,13 +5,107 @@ import { PhaseSection } from '@/components/phase-section';
 import { TechnicalReflection } from '@/components/content-blocks/technical-reflection';
 import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
-import { CheckCircle2 } from 'lucide-react';
+import { CheckCircle2, MessageSquare, Users, MousePointer2, TrendingUp } from 'lucide-react';
 
 export function ReflectionSection() {
   const { reflection, evaluation, iterations } = portfolioData;
 
   return (
     <>
+      {/* 5.1 Usability Testing (The "Cold" Data) */}
+      <PhaseSection
+        id="usability-testing"
+        title="Usability Testing: Validation with Real Users"
+        description="Summative evaluation of the Alpha prototype using a Think-Aloud protocol."
+      >
+        <div className="space-y-8">
+          {/* Methodology Summary */}
+          <div className="grid md:grid-cols-3 gap-4">
+            <Card className="p-4 border-l-4 border-primary bg-muted/30">
+              <div className="flex items-center gap-3 mb-2 text-primary">
+                <Users size={18} />
+                <span className="text-xs font-bold uppercase">Participants</span>
+              </div>
+              <p className="text-sm font-medium">3 Representative Users (Inc. "Glinda" types)</p>
+            </Card>
+            <Card className="p-4 border-l-4 border-primary bg-muted/30">
+              <div className="flex items-center gap-3 mb-2 text-primary">
+                <MessageSquare size={18} />
+                <span className="text-xs font-bold uppercase">Methodology</span>
+              </div>
+              <p className="text-sm font-medium">"Think-Aloud" Protocol & Semi-structured Interviews</p>
+            </Card>
+            <Card className="p-4 border-l-4 border-primary bg-muted/30">
+              <div className="flex items-center gap-3 mb-2 text-primary">
+                <MousePointer2 size={18} />
+                <span className="text-xs font-bold uppercase">Environment</span>
+              </div>
+              <p className="text-sm font-medium">Controlled Walkthrough (Vercel High-Fi Prototype)</p>
+            </Card>
+          </div>
+
+          {/* Quantitative Metrics Table/Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { label: "Task Success Rate", value: "100%", desc: "All users successfully triggered location-based audio." },
+              { label: "User Satisfaction", value: "4.6/5.0", desc: "High 'Immersion' scores with low cognitive load reported." },
+              { label: "Interaction Frequency", value: "~2/site", desc: "Significant drop in screen-checking vs. standard map apps." }
+            ].map((metric, i) => (
+              <div key={i} className="text-center p-6 rounded-2xl bg-stone-50 border border-stone-200 shadow-sm">
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-400 mb-2">{metric.label}</p>
+                <p className="text-4xl font-serif font-bold text-primary mb-2">{metric.value}</p>
+                <p className="text-xs text-muted-foreground">{metric.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Qualitative Insights */}
+          <div className="space-y-4">
+            <h4 className="text-sm font-bold uppercase tracking-widest text-primary flex items-center gap-2">
+               <TrendingUp size={14} /> Qualitative Feedback
+            </h4>
+            <div className="grid md:grid-cols-2 gap-4 italic text-sm text-muted-foreground">
+               <blockquote className="p-4 border-l-2 border-stone-200">
+                 "I didn't have to look at my phone to know I was at the Bell Tower... the chime felt like the bridge was talking to me."
+               </blockquote>
+               <blockquote className="p-4 border-l-2 border-stone-200">
+                 "It removes the 'Language Wall.' I actually understand why this bridge is famous now, not just that it's old."
+               </blockquote>
+            </div>
+          </div>
+        </div>
+      </PhaseSection>
+
+      {/* 5.2 Iterative Refinement (The "Action") */}
+      <PhaseSection
+        id="iteration-timeline-section"
+        title="Iterative Refinement: Before & After"
+        description="How user errors and feedback from 5.1 directly informed UI/UX improvements."
+      >
+        <div className="relative space-y-8 pl-6 md:pl-10">
+          <div className="absolute left-[0.7rem] top-2 bottom-2 w-px bg-border md:left-5" />
+          {iterations.map((item) => (
+            <div key={item.id} className="relative">
+              <div className="absolute left-[-0.05rem] top-2 h-4 w-4 rounded-full border-4 border-background bg-primary md:left-[0.6rem]" />
+              <Card className="rounded-2xl border border-border bg-card p-6">
+                <div className="space-y-5">
+                  <div className="flex flex-wrap items-center gap-3">
+                    <Badge>{item.id}</Badge>
+                    <Badge variant="outline">Iteration {item.iteration}</Badge>
+                  </div>
+                  <h3 className="text-xl font-semibold text-foreground">{item.title}</h3>
+                  <div className="grid gap-4 md:grid-cols-2">
+                    <DetailPanel label="Finding" value={item.trigger.description} />
+                    <DetailPanel label="Change Made" value={item.whatChanged} />
+                    <DetailPanel label="Evidence" value={item.evidence} />
+                    <DetailPanel label="Impact" value={item.whyChanged} />
+                  </div>
+                </div>
+              </Card>
+            </div>
+          ))}
+        </div>
+      </PhaseSection>
       {/* Validation & Impact */}
       <PhaseSection
         id="reflection"
@@ -107,7 +201,7 @@ export function ReflectionSection() {
           <TechnicalReflection data={reflection.technicalReflection} />
         </div>
       </PhaseSection>
-
+{/* 
       <PhaseSection
         id="iteration-timeline-section"
         title="Iteration Timeline"
@@ -154,7 +248,7 @@ export function ReflectionSection() {
             </div>
           ))}
         </div>
-      </PhaseSection>
+      </PhaseSection> */}
 
       {/* Final Reflection */}
       <PhaseSection

@@ -176,7 +176,7 @@ export function DesignDevelopmentSection() {
               </tr>
               <tr>
                 <td className="p-4 font-medium">Farrell Widjanarko</td>
-                <td className="p-4 text-sm text-muted-foreground"><b>User Research & Media:</b> Developed the User Journey Mapand documented site observations. Managed physicallogistics for the exhibition and acted as the lead for thevideo demonstration.</td>
+                <td className="p-4 text-sm text-muted-foreground"><b>User Research & Media:</b> Developed the User Journey Mapand documented site observations. Managed physical logistics for the exhibition and acted as the lead for th video demonstration.</td>
               </tr>
             </tbody>
           </table>
