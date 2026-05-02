@@ -69,7 +69,6 @@ export function ResearchSection() {
     <>
       <PhaseSection
         id="research"
-        phase="Phase 2"
         title="Research: Understanding Users"
         description="Key findings from user interviews and observations that shaped the design direction"
       >
@@ -84,7 +83,6 @@ export function ResearchSection() {
 
       <PhaseSection
         id="personas-section"
-        phase="Phase 2"
         title="Personas: Who We Design For"
         description="Composite profiles based on research representing key user segments"
       >
@@ -97,7 +95,6 @@ export function ResearchSection() {
 
       <PhaseSection
         id="scenario-section"
-        phase="Phase 2"
         title="Scenario & Goal"
         description="How each persona would enter the experience and what they hope to achieve"
       >
@@ -153,7 +150,6 @@ export function ResearchSection() {
 
       <PhaseSection
         id="journey-section"
-        phase="Phase 2"
         title="User Journey Map"
         description="Mapping the user's emotional and functional journey through the experience"
       >

@@ -11,7 +11,6 @@ export function DesignDevelopmentSection() {
       {/* Concept Evolution */}
       <PhaseSection
         id="design-development"
-        phase="Phase 4"
         title="Design Development: Concept Evolution"
         description="How the concept evolved from initial ideas through refinement to the final design"
       >
@@ -28,7 +27,6 @@ export function DesignDevelopmentSection() {
       {/* Final Concept */}
       <PhaseSection
         id="final-concept-section"
-        phase="Phase 4"
         title="Final Concept: AI-Guided Narrative Experience"
         description="The final design solution combining spatial navigation, personalization, and storytelling"
       >

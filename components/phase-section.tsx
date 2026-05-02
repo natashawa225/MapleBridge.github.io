@@ -3,7 +3,6 @@ import { Separator } from '@/components/ui/separator';
 
 interface PhaseSectionProps {
   id: string;
-  phase: string;
   title: string;
   description?: string;
   children: ReactNode;
@@ -11,7 +10,6 @@ interface PhaseSectionProps {
 
 export function PhaseSection({
   id,
-  phase,
   title,
   description,
   children,
@@ -25,9 +23,6 @@ export function PhaseSection({
             <div className="hidden sm:block">
               <Separator className="w-12 bg-primary h-1" />
             </div>
-            <p className="text-sm uppercase tracking-widest font-semibold text-primary">
-              {phase}
-            </p>
           </div>
 
           <h2 className="text-4xl sm:text-5xl font-bold text-foreground text-balance">{title}</h2>

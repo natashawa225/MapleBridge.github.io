@@ -9,7 +9,6 @@ export function ProblemSpaceSection() {
   return (
     <PhaseSection
       id="overview"
-      phase="Phase 1"
       title="Overview: Problem Space"
       description="Understanding the challenge and the opportunity"
     >
