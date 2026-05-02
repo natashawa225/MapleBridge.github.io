@@ -77,28 +77,60 @@ export function ReflectionSection() {
       </PhaseSection>
 
       {/* 5.2 Iterative Refinement (The "Action") */}
+      {/* 5.2 Iterative Refinement (The "Action") */}
       <PhaseSection
         id="iteration-timeline-section"
-        title="Iterative Refinement: Before & After"
-        description="How user errors and feedback from 5.1 directly informed UI/UX improvements."
+        title="5.2 Iterative Refinement: Before & After"
+        description="Visual evidence of UI/UX improvements driven by user feedback from the Alpha testing phase."
       >
-        <div className="relative space-y-8 pl-6 md:pl-10">
+        <div className="relative space-y-12 pl-6 md:pl-10">
           <div className="absolute left-[0.7rem] top-2 bottom-2 w-px bg-border md:left-5" />
+          
           {iterations.map((item) => (
             <div key={item.id} className="relative">
               <div className="absolute left-[-0.05rem] top-2 h-4 w-4 rounded-full border-4 border-background bg-primary md:left-[0.6rem]" />
-              <Card className="rounded-2xl border border-border bg-card p-6">
-                <div className="space-y-5">
-                  <div className="flex flex-wrap items-center gap-3">
-                    <Badge>{item.id}</Badge>
-                    <Badge variant="outline">Iteration {item.iteration}</Badge>
+              
+              <Card className="rounded-2xl border border-border bg-card overflow-hidden">
+                {/* Top Info Bar */}
+                <div className="p-6 border-b border-border bg-muted/20 flex flex-wrap items-center gap-3">
+                  <Badge>{item.id}</Badge>
+                  <Badge variant="outline">Iteration {item.iteration}</Badge>
+                  <h3 className="text-lg font-semibold text-foreground ml-auto">{item.title}</h3>
+                </div>
+
+                <div className="p-6 space-y-8">
+                  {/* SCREENSHOT PLACEHOLDERS */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground text-center">Alpha Version (Before)</p>
+                      <div className="aspect-[9/16] rounded-xl border-2 border-dashed border-muted bg-muted/10 flex items-center justify-center relative group overflow-hidden">
+                        <span className="text-xs text-muted-foreground">Screenshot: {item.id}_alpha.png</span>
+                        {/* When you have the image, use: <img src={item.beforeImg} className="object-cover" /> */}
+                      </div>
+                    </div>
+                    <div className="space-y-2">
+                      <p className="text-[10px] font-bold uppercase tracking-widest text-primary text-center">Refined Version (After)</p>
+                      <div className="aspect-[9/16] rounded-xl border-2 border-primary/20 bg-primary/5 flex items-center justify-center overflow-hidden">
+                        <span className="text-xs text-primary/60">Screenshot: {item.id}_refined.png</span>
+                        {/* When you have the image, use: <img src={item.afterImg} className="object-cover" /> */}
+                      </div>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-semibold text-foreground">{item.title}</h3>
+
+                  {/* Logical Context */}
                   <div className="grid gap-4 md:grid-cols-2">
-                    <DetailPanel label="Finding" value={item.trigger.description} />
-                    <DetailPanel label="Change Made" value={item.whatChanged} />
-                    <DetailPanel label="Evidence" value={item.evidence} />
-                    <DetailPanel label="Impact" value={item.whyChanged} />
+                    <DetailPanel 
+                      label="The Feedback" 
+                      value={item.trigger.description} 
+                    />
+                    <DetailPanel 
+                      label="Action Taken" 
+                      value={item.whatChanged} 
+                    />
+                    <div className="md:col-span-2 p-4 rounded-xl bg-primary/5 border border-primary/10">
+                      <p className="text-[10px] font-bold uppercase tracking-widest text-primary">Validation of Change</p>
+                      <p className="mt-2 text-sm text-muted-foreground italic">"{item.evidence}" — Resulted in {item.whyChanged}</p>
+                    </div>
                   </div>
                 </div>
               </Card>
