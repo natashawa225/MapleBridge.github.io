@@ -15,7 +15,6 @@ export function ReflectionSection() {
       {/* Validation & Impact */}
       <PhaseSection
         id="reflection"
-        phase="Phase 5"
         title="Reflection: Validation & Impact"
         description="How the final design addresses original research findings and user pain points"
       >
@@ -53,7 +52,6 @@ export function ReflectionSection() {
 
       <PhaseSection
         id="evaluation-section"
-        phase="Phase 5"
         title="Evaluation Evidence"
         description="How testing and reflection informed concrete changes to the concept"
       >
@@ -94,7 +92,6 @@ export function ReflectionSection() {
       {/* Technical Reflection */}
       <PhaseSection
         id="technical-section"
-        phase="Phase 5"
         title="Technical Reflection"
         description="Detailed documentation of methodology, verification, and ethical considerations"
       >
@@ -113,7 +110,6 @@ export function ReflectionSection() {
 
       <PhaseSection
         id="iteration-timeline-section"
-        phase="Phase 5"
         title="Iteration Timeline"
         description="A vertical view of how trigger, change, evidence, and impact evolved over time"
       >
@@ -163,7 +159,6 @@ export function ReflectionSection() {
       {/* Final Reflection */}
       <PhaseSection
         id="final-reflection-section"
-        phase="Phase 5"
         title="Learning & Future Directions"
         description="Key takeaways and opportunities for evolution"
       >
@@ -208,7 +203,6 @@ export function ReflectionSection() {
       {/* References */}
       <PhaseSection
         id="references-section"
-        phase="Phase 5"
         title="References"
         description="Academic sources and tools referenced throughout the project"
       >

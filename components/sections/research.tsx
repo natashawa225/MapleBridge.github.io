@@ -4,6 +4,9 @@ import { ResearchFindingCard } from '@/components/content-blocks/research-findin
 import { PersonaCard } from '@/components/content-blocks/persona-card';
 import { EmotionalCurveChart } from '@/components/content-blocks/emotional-curve-chart';
 import { Card } from '@/components/ui/card';
+import { AlertCircle, Camera, MapPin } from 'lucide-react';
+import { ArtifactGallery } from '../content-blocks/artifact-gallery';
+import { withBasePath } from '@/lib/basePath';
 
 export interface JourneyPhase {
   phase: string;
@@ -27,6 +30,7 @@ function JourneyRow({
   isDestructive?: boolean;
   isHighlight?: boolean;
 }) {
+
   return (
     <div className="grid grid-cols-6 border-b border-stone-200 min-h-[120px]">
       <div className="flex items-center justify-center border-r border-stone-200 bg-stone-100/50 p-4">
@@ -64,6 +68,16 @@ function JourneyRow({
 
 export function ResearchSection() {
   const { research } = portfolioData;
+  const { overview } = portfolioData;
+
+    // Define your 5 images here if they aren't in portfolioData yet
+    const evidencePhotos = [
+      { path: withBasePath('/artifacts/placeholder-user.png'), label: 'Site Observation' },
+      { path: withBasePath('/artifacts/placeholder-user.png'), label: 'User Interview' },
+      { path: withBasePath('/artifacts/placeholder-user.png'), label: 'Grand Canal Walkthrough' },
+      { path: withBasePath('/artifacts/placeholder-user.png'), label: 'Team Discussion' },
+      { path: withBasePath('/artifacts/placeholder-user.png'), label: 'Stakeholder Meeting' },
+    ];
 
   return (
     <>
@@ -150,10 +164,11 @@ export function ResearchSection() {
 
       <PhaseSection
         id="journey-section"
-        title="User Journey Map"
+        title="User Requirements"
         description="Mapping the user's emotional and functional journey through the experience"
       >
         <div className="space-y-8">
+          <h3 className="text-2xl font-semibold font-serif text-foreground">User Journey Map</h3>
           <div
             id="journey-map"
             className="w-full overflow-x-auto rounded-xl border border-stone-200 bg-stone-50/30"
@@ -206,6 +221,95 @@ export function ResearchSection() {
           <div className="mt-8">
           <h3 className="mb-4 text-xl font-semibold text-foreground">Emotional Journey</h3>
             <EmotionalCurveChart data={research.journeyMap.emotionalCurve} />
+          </div>
+          {/* Pain Points */}
+          <div className="space-y-6">
+            <h3 className="text-xl font-semibold text-foreground">Target User Pain Points</h3>
+            <div className="grid sm:grid-cols-2 gap-6 animate-stagger">
+              {overview.problemSpace.painPoints.map((painPoint, idx) => (
+                <div
+                  key={idx}
+                  className="flex gap-4 p-4 rounded-lg bg-muted/30 border border-border animate-fade-in-up"
+                >
+                  <AlertCircle className="h-5 w-5 text-destructive flex-shrink-0 mt-1" />
+                  <p className="text-sm text-muted-foreground">{painPoint}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="space-y-16">
+            <div className="space-y-6">
+              <h3 className="text-xl font-semibold text-foreground">
+                3 “Must-Haves” for a Playful System
+              </h3>
+
+              <div className="grid sm:grid-cols-2 gap-6 animate-stagger">
+                {[
+                  {
+                    title: "Serendipity",
+                    description:
+                      'Audio triggers automatically when users approach “hidden” landmarks, creating unexpected moments of discovery.',
+                  },
+                  {
+                    title: "Narrative Discovery",
+                    description:
+                      "Poetic story fragments are unlocked through physical movement, not just tapping or clicking.",
+                  },
+                  {
+                    title: "Low-Friction AI",
+                    description:
+                      'A voice-activated “Spirit of the Bridge” enables open-ended, non-linear exploration through natural conversation.',
+                  },
+                ].map((item, idx) => (
+                  <div
+                    key={idx}
+                    className="flex flex-col gap-2 p-4 rounded-lg bg-muted/30 border border-border animate-fade-in-up"
+                  >
+                    <h4 className="text-sm font-semibold text-foreground">
+                      {item.title}
+                    </h4>
+                    <p className="text-sm text-muted-foreground">
+                      {item.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+
+
+        </div>
+      </PhaseSection>
+
+      <PhaseSection
+        id="evidence-of-life"
+        title="Evidence of Life"
+        description="Field research: 5 photos of our group interviewing potential users and observing the Suzhou Grand Canal site."
+      >
+        <div className="space-y-8">
+
+          {/* Simple Grid using the manual evidencePhotos array */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            {evidencePhotos.map((photo, idx) => (
+              <div 
+                key={idx} 
+                className="group relative overflow-hidden rounded-xl border border-border bg-muted aspect-[3/4]"
+              >
+                <img 
+                  src={withBasePath(photo.path)} 
+                  alt={photo.label}
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                
+                <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/70 to-transparent">
+                  <p className="text-[10px] text-white font-medium">
+                    {photo.label}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </PhaseSection>

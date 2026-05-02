@@ -1,7 +1,4 @@
-// Portfolio Data Structure - Organized by HCI Design Phases
 import { withBasePath } from '@/lib/basePath';
-
-// ===== TYPE DEFINITIONS =====
 
 export interface Artifact {
   id: string;
