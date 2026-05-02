@@ -4,6 +4,12 @@ import { ArtifactGallery } from '@/components/content-blocks/artifact-gallery';
 import { Card } from '@/components/ui/card';
 import { CheckCircle2, XCircle } from 'lucide-react';
 
+type GapAnalysisItem = {
+  name: string;
+  well: string[];
+  missed: string[];
+};
+
 export function ProblemSpaceSection() {
   const { overview } = portfolioData;
 
@@ -119,7 +125,7 @@ export function ProblemSpaceSection() {
   );
 }
 
-function GapCard({ item }) {
+function GapCard({ item }: { item: GapAnalysisItem }) {
   return (
     <Card className="p-5 bg-card hover:shadow-md transition-shadow">
       <h5 className="font-bold text-foreground mb-3">{item.name}</h5>
