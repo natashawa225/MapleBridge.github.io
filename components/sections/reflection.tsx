@@ -85,13 +85,11 @@ export function ReflectionSection() {
         title="Iterative Refinement: Before & After"
         description="Visual evidence of UI/UX improvements. Note the evolution from single-screen Alpha concepts to integrated multi-frame user flows."
       >
-        <div className="relative space-y-16 pl-8 md:pl-12">
+        <div className="relative space-y-16">
           <div className="absolute left-[0.75rem] top-4 bottom-4 w-px bg-border md:left-6" />
           
           {iterations.map((item) => (
-            <div key={item.id} className="relative">
-              <div className="absolute left-[-1.55rem] top-6 h-5 w-5 rounded-full border-4 border-background bg-primary md:left-[-2.15rem] z-10" />
-              
+            <div key={item.id} className="relative">              
               <Card className="rounded-2xl border border-border bg-card overflow-hidden shadow-sm">
                 {/* Header */}
                 <div className="px-6 py-4 border-b border-border bg-muted/30 flex flex-wrap items-center justify-between gap-4">
@@ -104,61 +102,61 @@ export function ReflectionSection() {
 
                 <div className="p-6 md:p-10 space-y-12">
                   {/* COMPARISON STACK - Better for drastically different aspect ratios */}
-<div className="relative">
-  {/* Mobile scroll hint */}
-  <div className="absolute right-4 top-1/2 -translate-y-1/2 z-10 pointer-events-none lg:hidden">
-    <div className="bg-background/80 backdrop-blur rounded-full px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-muted-foreground border shadow-sm animate-pulse">
-      Swipe →
-    </div>
-  </div>
+                  <div className="relative">
+                    {/* Mobile scroll hint */}
+                    <div className="absolute right-4 top-1/2 -translate-y-1/2 z-10 pointer-events-none lg:hidden">
+                      <div className="bg-background/80 backdrop-blur rounded-full px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-muted-foreground border shadow-sm animate-pulse">
+                        Swipe →
+                      </div>
+                    </div>
 
-  <div className="flex gap-4 md:gap-6 overflow-x-auto snap-x snap-mandatory pb-4 -mx-2 px-2 scrollbar-thin scrollbar-thumb-muted-foreground/20 scrollbar-track-transparent">
-    
-        {/* BEFORE - Tall Portrait (WIDER) */}
-        <div className="flex-shrink-0 snap-start w-[320px] md:w-[380px] lg:w-[420px]">
-      <div className="mb-3 text-center md:text-left">
-        <p className="text-[11px] font-black uppercase tracking-[0.15em] text-muted-foreground">
-          Alpha Version
-        </p>
-        <p className="text-[10px] text-muted-foreground/70 lowercase font-medium">Initial Concept</p>
-      </div>
-      <div className="bg-muted/5 rounded-2xl border border-dashed border-muted p-4 md:p-6 h-[520px] md:h-[580px] flex items-center justify-center">
-        <img 
-          src={withBasePath('/artifacts/version1.png')} 
-          alt="Alpha prototype"
-          className="max-h-full w-auto object-contain drop-shadow-md" 
-        />
-      </div>
-    </div>
+                    <div className="flex gap-4 md:gap-6 overflow-x-auto snap-x snap-mandatory pb-4 -mx-2 px-2 scrollbar-thin scrollbar-thumb-muted-foreground/20 scrollbar-track-transparent">
+                      
+                          {/* BEFORE - Tall Portrait (WIDER) */}
+                          <div className="flex-shrink-0 snap-start w-[320px] md:w-[380px] lg:w-[420px]">
+                        <div className="mb-3 text-center md:text-left">
+                          <p className="text-[11px] font-black uppercase tracking-[0.15em] text-muted-foreground">
+                            Alpha Version
+                          </p>
+                          <p className="text-[10px] text-muted-foreground/70 lowercase font-medium">Initial Concept</p>
+                        </div>
+                        <div className="bg-muted/5 rounded-2xl border border-dashed border-muted p-4 md:p-6 h-[520px] md:h-[580px] flex items-center justify-center">
+                          <img 
+                            src={withBasePath('/artifacts/version1.png')} 
+                            alt="Alpha prototype"
+                            className="max-h-full w-auto object-contain drop-shadow-md" 
+                          />
+                        </div>
+                      </div>
 
-    {/* Arrow indicator */}
-    <div className="flex-shrink-0 flex items-center justify-center w-10 md:w-12 self-center pt-6">
-      <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center">
-        <svg className="w-4 h-4 md:w-5 md:h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-        </svg>
-      </div>
-    </div>
+                      {/* Arrow indicator */}
+                      <div className="flex-shrink-0 flex items-center justify-center w-10 md:w-12 self-center pt-6">
+                        <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center">
+                          <svg className="w-4 h-4 md:w-5 md:h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </div>
+                      </div>
 
-    {/* AFTER - Wide Landscape */}
-    <div className="flex-shrink-0 snap-start min-w-[85vw] md:min-w-[650px] lg:min-w-[750px]">
-      <div className="mb-3 text-center md:text-left">
-        <p className="text-[11px] font-black uppercase tracking-[0.15em] text-primary">
-          Refined Version
-        </p>
-        <p className="text-[10px] text-primary/70 lowercase font-medium">Comprehensive Flow</p>
-      </div>
-      <div className="bg-primary/5 rounded-2xl border border-primary/10 p-4 md:p-6 h-[520px] md:h-[580px] flex items-center justify-center overflow-hidden">
-        <img 
-          src={withBasePath('/artifacts/version2.png')} 
-          alt="Refined multi-frame design"
-          className="max-w-full max-h-full w-auto h-auto object-contain drop-shadow-xl" 
-        />
-      </div>
-    </div>
+                      {/* AFTER - Wide Landscape */}
+                      <div className="flex-shrink-0 snap-start min-w-[85vw] md:min-w-[650px] lg:min-w-[750px]">
+                        <div className="mb-3 text-center md:text-left">
+                          <p className="text-[11px] font-black uppercase tracking-[0.15em] text-primary">
+                            Refined Version
+                          </p>
+                          <p className="text-[10px] text-primary/70 lowercase font-medium">Comprehensive Flow</p>
+                        </div>
+                        <div className="bg-primary/5 rounded-2xl border border-primary/10 p-4 md:p-6 h-[520px] md:h-[580px] flex items-center justify-center overflow-hidden">
+                          <img 
+                            src={withBasePath('/artifacts/version2.png')} 
+                            alt="Refined multi-frame design"
+                            className="max-w-full max-h-full w-auto h-auto object-contain drop-shadow-xl" 
+                          />
+                        </div>
+                      </div>
 
-  </div>
-</div>
+                    </div>
+                  </div>
 
                   {/* Context Grid */}
                   <div className="grid gap-6 md:grid-cols-2 pt-8 border-t border-border">
