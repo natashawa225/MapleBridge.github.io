@@ -1,5 +1,8 @@
 'use client';
 
+import { withBasePath } from '@/lib/basePath';
+
+
 import { portfolioData } from '@/lib/portfolio-data';
 import { PhaseSection } from '@/components/phase-section';
 import { TechnicalReflection } from '@/components/content-blocks/technical-reflection';
@@ -77,59 +80,102 @@ export function ReflectionSection() {
       </PhaseSection>
 
       {/* 5.2 Iterative Refinement (The "Action") */}
-      {/* 5.2 Iterative Refinement (The "Action") */}
       <PhaseSection
         id="iteration-timeline-section"
-        title="5.2 Iterative Refinement: Before & After"
-        description="Visual evidence of UI/UX improvements driven by user feedback from the Alpha testing phase."
+        title="Iterative Refinement: Before & After"
+        description="Visual evidence of UI/UX improvements. Note the evolution from single-screen Alpha concepts to integrated multi-frame user flows."
       >
-        <div className="relative space-y-12 pl-6 md:pl-10">
-          <div className="absolute left-[0.7rem] top-2 bottom-2 w-px bg-border md:left-5" />
+        <div className="relative space-y-16 pl-8 md:pl-12">
+          <div className="absolute left-[0.75rem] top-4 bottom-4 w-px bg-border md:left-6" />
           
           {iterations.map((item) => (
             <div key={item.id} className="relative">
-              <div className="absolute left-[-0.05rem] top-2 h-4 w-4 rounded-full border-4 border-background bg-primary md:left-[0.6rem]" />
+              <div className="absolute left-[-1.55rem] top-6 h-5 w-5 rounded-full border-4 border-background bg-primary md:left-[-2.15rem] z-10" />
               
-              <Card className="rounded-2xl border border-border bg-card overflow-hidden">
-                {/* Top Info Bar */}
-                <div className="p-6 border-b border-border bg-muted/20 flex flex-wrap items-center gap-3">
-                  <Badge>{item.id}</Badge>
-                  <Badge variant="outline">Iteration {item.iteration}</Badge>
-                  <h3 className="text-lg font-semibold text-foreground ml-auto">{item.title}</h3>
+              <Card className="rounded-2xl border border-border bg-card overflow-hidden shadow-sm">
+                {/* Header */}
+                <div className="px-6 py-4 border-b border-border bg-muted/30 flex flex-wrap items-center justify-between gap-4">
+                  <div className="flex items-center gap-3">
+                    <Badge className="font-mono">{item.id}</Badge>
+                    <Badge variant="secondary">Iteration {item.iteration}</Badge>
+                  </div>
+                  <h3 className="text-sm md:text-base font-bold text-foreground italic">{item.title}</h3>
                 </div>
 
-                <div className="p-6 space-y-8">
-                  {/* SCREENSHOT PLACEHOLDERS */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground text-center">Alpha Version (Before)</p>
-                      <div className="aspect-[9/16] rounded-xl border-2 border-dashed border-muted bg-muted/10 flex items-center justify-center relative group overflow-hidden">
-                        <span className="text-xs text-muted-foreground">Screenshot: {item.id}_alpha.png</span>
-                        {/* When you have the image, use: <img src={item.beforeImg} className="object-cover" /> */}
-                      </div>
-                    </div>
-                    <div className="space-y-2">
-                      <p className="text-[10px] font-bold uppercase tracking-widest text-primary text-center">Refined Version (After)</p>
-                      <div className="aspect-[9/16] rounded-xl border-2 border-primary/20 bg-primary/5 flex items-center justify-center overflow-hidden">
-                        <span className="text-xs text-primary/60">Screenshot: {item.id}_refined.png</span>
-                        {/* When you have the image, use: <img src={item.afterImg} className="object-cover" /> */}
-                      </div>
-                    </div>
-                  </div>
+                <div className="p-6 md:p-10 space-y-12">
+                  {/* COMPARISON STACK - Better for drastically different aspect ratios */}
+<div className="relative">
+  {/* Mobile scroll hint */}
+  <div className="absolute right-4 top-1/2 -translate-y-1/2 z-10 pointer-events-none lg:hidden">
+    <div className="bg-background/80 backdrop-blur rounded-full px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-muted-foreground border shadow-sm animate-pulse">
+      Swipe →
+    </div>
+  </div>
 
-                  {/* Logical Context */}
-                  <div className="grid gap-4 md:grid-cols-2">
-                    <DetailPanel 
-                      label="The Feedback" 
-                      value={item.trigger.description} 
-                    />
-                    <DetailPanel 
-                      label="Action Taken" 
-                      value={item.whatChanged} 
-                    />
-                    <div className="md:col-span-2 p-4 rounded-xl bg-primary/5 border border-primary/10">
-                      <p className="text-[10px] font-bold uppercase tracking-widest text-primary">Validation of Change</p>
-                      <p className="mt-2 text-sm text-muted-foreground italic">"{item.evidence}" — Resulted in {item.whyChanged}</p>
+  <div className="flex gap-4 md:gap-6 overflow-x-auto snap-x snap-mandatory pb-4 -mx-2 px-2 scrollbar-thin scrollbar-thumb-muted-foreground/20 scrollbar-track-transparent">
+    
+        {/* BEFORE - Tall Portrait (WIDER) */}
+        <div className="flex-shrink-0 snap-start w-[320px] md:w-[380px] lg:w-[420px]">
+      <div className="mb-3 text-center md:text-left">
+        <p className="text-[11px] font-black uppercase tracking-[0.15em] text-muted-foreground">
+          Alpha Version
+        </p>
+        <p className="text-[10px] text-muted-foreground/70 lowercase font-medium">Initial Concept</p>
+      </div>
+      <div className="bg-muted/5 rounded-2xl border border-dashed border-muted p-4 md:p-6 h-[520px] md:h-[580px] flex items-center justify-center">
+        <img 
+          src={withBasePath('artifacts/version1.png')} 
+          alt="Alpha prototype"
+          className="max-h-full w-auto object-contain drop-shadow-md" 
+        />
+      </div>
+    </div>
+
+    {/* Arrow indicator */}
+    <div className="flex-shrink-0 flex items-center justify-center w-10 md:w-12 self-center pt-6">
+      <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center">
+        <svg className="w-4 h-4 md:w-5 md:h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+        </svg>
+      </div>
+    </div>
+
+    {/* AFTER - Wide Landscape */}
+    <div className="flex-shrink-0 snap-start min-w-[85vw] md:min-w-[650px] lg:min-w-[750px]">
+      <div className="mb-3 text-center md:text-left">
+        <p className="text-[11px] font-black uppercase tracking-[0.15em] text-primary">
+          Refined Version
+        </p>
+        <p className="text-[10px] text-primary/70 lowercase font-medium">Comprehensive Flow</p>
+      </div>
+      <div className="bg-primary/5 rounded-2xl border border-primary/10 p-4 md:p-6 h-[520px] md:h-[580px] flex items-center justify-center overflow-hidden">
+        <img 
+          src={withBasePath('artifacts/version2.png')} 
+          alt="Refined multi-frame design"
+          className="max-w-full max-h-full w-auto h-auto object-contain drop-shadow-xl" 
+        />
+      </div>
+    </div>
+
+  </div>
+</div>
+
+                  {/* Context Grid */}
+                  <div className="grid gap-6 md:grid-cols-2 pt-8 border-t border-border">
+                    <div className="p-5 rounded-xl border border-border bg-muted/10">
+                      <h4 className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground mb-2">The Feedback</h4>
+                      <p className="text-sm leading-relaxed">{item.trigger.description}</p>
+                    </div>
+                    <div className="p-5 rounded-xl border border-border bg-muted/10">
+                      <h4 className="text-[10px] font-bold uppercase tracking-wider text-primary mb-2">Action Taken</h4>
+                      <p className="text-sm leading-relaxed">{item.whatChanged}</p>
+                    </div>
+                    
+                    <div className="md:col-span-2 p-6 rounded-xl bg-primary/[0.03] border border-primary/10 border-l-4 border-l-primary">
+                      <p className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">Validation of Change</p>
+                      <p className="mt-3 text-sm md:text-base text-muted-foreground leading-relaxed italic">
+                        "{item.evidence}" — This shift resulted in <span className="text-foreground font-medium">{item.whyChanged}</span>
+                      </p>
                     </div>
                   </div>
                 </div>

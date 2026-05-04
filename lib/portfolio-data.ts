@@ -728,22 +728,6 @@ export const portfolioData = {
     {
       id: 'I1',
       iteration: 1,
-      title: 'Feature-heavy concept to reduced-complexity companion',
-      trigger: {
-        type: 'evaluation',
-        refId: 'E2',
-        description: 'Interview feedback showed that excessive features weakened immersion.',
-      },
-      whatChanged:
-        'Removed heavy gamified layers, narrowed the interaction model, and re-centered the concept around calm guidance.',
-        whyChanged: 'The initial version tried to combine too many ideas (quests, rewards, AI guides), which looked promising but felt overwhelming in testing. The change was not about optimisation, but about removing features that were not actually helping the experience.',
-        evidence: 'Post-visit interviews and heuristic reflection both pointed to overload in the first concept.',
-      affectedDesignDecisions: ['decision-4'],
-      affectedRequirements: ['R1', 'R3', 'R4'],
-    },
-    {
-      id: 'I2',
-      iteration: 2,
       title: 'Added a clearer pre-visit planning layer',
       trigger: {
         type: 'requirement',
@@ -757,22 +741,7 @@ export const portfolioData = {
       affectedDesignDecisions: ['decision-1'],
       affectedRequirements: ['R2'],
     },
-    {
-      id: 'I3',
-      iteration: 3,
-      title: 'Finalised the audio-first, low-distraction interaction model',
-      trigger: {
-        type: 'evaluation',
-        refId: 'E1',
-        description: 'Prototype testing validated reduced screen interaction and stronger immersion.',
-      },
-      whatChanged:
-        'Strengthened audio storytelling, simplified the visual interface, and kept deeper interaction clearly optional.',
-      whyChanged: 'To preserve immersion while still supporting cultural understanding and user control.',
-      evidence: 'Prototype walkthroughs showed fewer screen glances and better reported focus on the environment.',
-      affectedDesignDecisions: ['Decision-2', 'Decision-3'],
-      affectedRequirements: ['R1', 'R4'],
-    },
+  
   ] as IterationChange[],
 
   // ===== PHASE 4: DESIGN DEVELOPMENT =====
