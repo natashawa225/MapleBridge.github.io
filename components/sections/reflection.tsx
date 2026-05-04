@@ -124,7 +124,7 @@ export function ReflectionSection() {
       </div>
       <div className="bg-muted/5 rounded-2xl border border-dashed border-muted p-4 md:p-6 h-[520px] md:h-[580px] flex items-center justify-center">
         <img 
-          src={withBasePath('artifacts/version1.png')} 
+          src={withBasePath('/artifacts/version1.png')} 
           alt="Alpha prototype"
           className="max-h-full w-auto object-contain drop-shadow-md" 
         />
@@ -150,7 +150,7 @@ export function ReflectionSection() {
       </div>
       <div className="bg-primary/5 rounded-2xl border border-primary/10 p-4 md:p-6 h-[520px] md:h-[580px] flex items-center justify-center overflow-hidden">
         <img 
-          src={withBasePath('artifacts/version2.png')} 
+          src={withBasePath('/artifacts/version2.png')} 
           alt="Refined multi-frame design"
           className="max-w-full max-h-full w-auto h-auto object-contain drop-shadow-xl" 
         />
