@@ -93,15 +93,24 @@ export function DesignDevelopmentSection() {
           {/* System Architecture */}
           <div className="space-y-4">
             <h3 className="text-2xl font-semibold text-foreground">System Architecture</h3>
-            <p className="text-muted-foreground">
-              Our system utilizes a modern full-stack architecture designed for scalability and real-time content delivery.
+
+            <p className="text-muted-foreground leading-relaxed max-w-3xl">
+              The prototype uses a lightweight Vite + React single-page architecture. Most data is handled in the browser through local data modules, mock API wrappers, static assets, React state, and localStorage, rather than a production backend or database.
             </p>
-            <Card className="p-4 bg-white dark:bg-zinc-950 flex flex-col items-center justify-center border-dashed border-2">
-              {/* Replace the text below with your actual architecture diagram image */}
-              <div className="w-full aspect-video bg-muted/20 flex items-center justify-center rounded border">
-                 <p className="text-sm text-muted-foreground">[System Architecture Diagram: Java Spring Boot | MySQL | React | Next.js]</p>
-              </div>
+
+            <Card className="p-4 md:p-6 bg-white dark:bg-zinc-950 border border-border overflow-x-auto">
+              <img
+                src={withBasePath('/artifacts/SystemArchitecture.jpg')}
+                alt="System architecture and data flow of the Maple Bridge prototype"
+                className="w-full max-w-6xl h-auto rounded-lg border border-border"
+              />
             </Card>
+
+            <p className="text-sm text-muted-foreground leading-relaxed max-w-4xl">
+              The figure above shows the system architecture and data flow of the Maple Bridge prototype. Route-level pages render feature components, while user interaction is handled through React state. Local data modules, mock API wrappers, static assets, and localStorage support the prototype experience.
+              The current version does not include a backend server, database, live AI API, or real crowd
+              telemetry.
+            </p>
           </div>
 
           {/* High-Fi Prototype Link */}
