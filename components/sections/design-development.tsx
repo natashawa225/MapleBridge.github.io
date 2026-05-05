@@ -164,19 +164,19 @@ export function DesignDevelopmentSection() {
             <tbody className="divide-y divide-border">
               <tr>
                 <td className="p-4 font-medium">Natasha Wilfrid Atmadja</td>
-                <td className="p-4 text-sm text-muted-foreground"><b>Technical Implementation:</b> Developed the React/Next.js prototype and interactive map. Managed technical deployment and integrated all team assets into the final Process Portfolio.</td>
+                <td className="p-4 text-sm text-muted-foreground"><b>Technical Implementation:</b> Developed the React/Next.js prototype and interactive map. Co-designed the project poster and managed technical deployment, integrating all team assets into the final Process Portfolio.</td>
               </tr>
               <tr>
                 <td className="p-4 font-medium">Cherie Toh</td>
-                <td className="p-4 text-sm text-muted-foreground"><b>Research & Content Lead:</b> Conducted the academic literature review and user interviews. Produced the narrative scripts and curated the primary audio/visual library for thesite.</td>
+                <td className="p-4 text-sm text-muted-foreground"><b>Research & Content Lead:</b> Conducted the academic literature review and user interviews. Produced the narrative scripts and curated the primary audio/visual library for the site.</td>
               </tr>
               <tr>
                 <td className="p-4 font-medium">Darren Tjendera</td>
-                <td className="p-4 text-sm text-muted-foreground"><b>UI Design & Testing:</b> Created the high-fidelity UI mockupsand designed the project poster. Led the usability testing sessions and managed the final video production.</td>
+                <td className="p-4 text-sm text-muted-foreground"><b>UI Design & Production:</b> Created the high-fidelity UI mockups and designed the project poster. Managed the final video production.</td>
               </tr>
               <tr>
                 <td className="p-4 font-medium">Farrell Widjanarko</td>
-                <td className="p-4 text-sm text-muted-foreground"><b>User Research & Media:</b> Developed the User Journey Map and documented site observations. Managed physical logistics for the exhibition and acted as the lead for th video demonstration.</td>
+                <td className="p-4 text-sm text-muted-foreground"><b>User Research & Evaluation:</b> Led usability testing and evaluation methodology. Co-designed the project poster and User Journey Maps, and managed the video demonstration.</td>
               </tr>
             </tbody>
           </table>
