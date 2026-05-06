@@ -416,7 +416,7 @@ export const portfolioData = {
             'Long wait times',
           ],
           opportunities: [
-            'Show live crowd levels',
+            'Show estimated crowd levels by time and spot',
             'Suggest less crowded landmarks to visit first',
           ],
         },
@@ -849,19 +849,23 @@ export const portfolioData = {
         {
           painPoint: 'Language friction and inaccessible signage',
           addressed:
-            'One of the clearest gaps in the current visitor experience was that most signage was in Chinese only, leaving international visitors without a way to access the stories behind what they were seeing. The multilingual narration in the final design directly addresses this — instead of forcing visitors to switch between translation apps, the audio layer brings cultural context to them in their own language, at the right moment.',
-          evidence: 'In informal tests with a small number of participants, most reported feeling like they actually understood the site once narration was introduced. This was not formally measured, but the difference in engagement was noticeable.',
+            'One of the clearest gaps identified during research was that most on-site signage was only available in Chinese, making it difficult for international visitors to understand the stories connected to the site. The final prototype addresses this through English–Mandarin interface content and English audio narration, reducing the need to rely entirely on external translation tools during exploration.',
+          evidence:
+            'During walkthrough sessions and informal feedback discussions, several participants said the English narration and bilingual written content made the site easier to understand and helped them connect landmarks to the poem and surrounding history. While this was not formally measured, participants generally appeared more engaged once contextual explanations were introduced.',
         },
         {
           painPoint: 'Excessive phone dependency',
-          addressed: 'A recurring frustration in research was that accessing information meant looking away from the environment — constantly unlocking the phone, switching apps, and losing the atmosphere. The audio-first approach tries to flip that relationship: the phone stays in your pocket, and the experience comes to you.',
-          evidence: 'During walkthrough testing, users checked their phones noticeably less often once audio guidance was introduced. Several mentioned feeling more "present" compared to when they had to navigate a visual interface.',
+          addressed:
+            'Research participants frequently described frustration with constantly checking their phones while visiting cultural sites. In response, the final prototype shifted toward a more audio-first interaction style, where information could be accessed without requiring continuous visual attention.',
+          evidence:
+            'Feedback during prototype walkthroughs suggested that participants preferred the lighter interaction style over more screen-heavy concepts explored earlier in the project. Several participants commented that the experience felt calmer and less distracting once audio became the primary interaction method.',
         },
         {
           painPoint: 'Lack of calm, meaningful reflection',
           addressed:
-            'Many visitors left the site without a strong sense of what they had actually experienced — the visit felt visual but not particularly meaningful. The pre-visit layer helps frame expectations before arrival, while optional cultural keepsakes give visitors something to take away and revisit later, turning a single visit into something more lasting.',
-          evidence: 'Post-visit interviews suggested this direction was worth pursuing — 9 out of 10 participants said they felt more emotionally connected to the site and were able to recall specific stories afterward, compared to a more typical visit experience.',
+            'Earlier interviews suggested that many visits felt visually memorable but culturally shallow, with visitors leaving without a strong understanding of what they had experienced. The final concept therefore combined lightweight pre-visit context, audio storytelling, and optional post-visit elements to encourage a more reflective experience.',
+          evidence:
+            'Informal post-walkthrough discussions suggested that participants responded positively to the calmer storytelling direction, particularly when cultural explanations were tied directly to landmarks and atmosphere rather than presented as large blocks of information. Several participants were also able to recall specific stories or historical details afterward.',
         },
       ],
     },
@@ -879,11 +883,11 @@ export const portfolioData = {
       verificationMethods: [
         'Persona-based walkthrough: Evaluated whether the design supports the goals and behaviors of the defined personas (e.g. understanding cultural context without disrupting immersion)',
       
-        'Design consistency check: Compared final features against key insights (e.g. audio-first interaction, minimal screen use, optional engagement) to ensure alignment with research findings',
+        'Checked whether later design decisions still matched the main research findings',
       
         'Prototype interaction testing (informal): Reviewed interaction flow by simulating user movement through the map prototype to identify friction points in navigation and landmark discovery',
       
-        'Heuristic evaluation: Assessed the interface against basic usability principles such as clarity, minimal cognitive load, and user control',
+        'Heuristic evaluation: Assessed the interface against basic usability principles such as clarity, whether the interface felt easy to follow without overwhelming the user',
       
         'Iterative refinement: Adjusted layout, interaction flow, and feature emphasis based on reflection and alignment with project goals rather than formal user testing',
       ],
@@ -942,7 +946,7 @@ export const portfolioData = {
         prompts: [
           'Generate UI structures for a calm, heritage-focused cultural tourism portfolio and prototype.',
           'Refine interaction flows to reduce screen dependence and support audio-first exploration.',
-          'Translate qualitative research themes into UX concepts and portfolio-ready design rationale.',
+          'Turned recurring interview themes into interface and interaction ideas',
         ],
         whatWorked: [
           'AI tools were useful for generating alternative interaction ideas quickly, but many of the initial suggestions (e.g. gamified features, overly complex UI patterns) conflicted with user research. This required actively rejecting and filtering outputs rather than directly applying them.',
@@ -956,12 +960,12 @@ export const portfolioData = {
           'Visual and interaction suggestions sometimes increased complexity instead of reducing it.',
         ],
         impactOnDesign: [
-          'Encouraged broader divergence early in the process before narrowing to a calmer final direction.',
+          'AI tools made it easier to explore very different directions early on, even though many of those ideas were later reduced or removed.',
           'Supported faster iteration of portfolio presentation and prototype structure.',
           'Reinforced the need to validate every generated suggestion against real user insights.',
         ],
         limitationsObserved:
-        'AI outputs often appeared convincing even when they were poorly aligned with the project context. This made it necessary to treat generated content as suggestions rather than solutions, and to validate all decisions against user data and design goals.',
+        'One recurring issue was that AI-generated ideas often looked convincing before being checked properly against the research. Some suggestions sounded reasonable on the surface but introduced interactions that users had already pushed back against, such as overly gamified features or unnecessary complexity. Because of this, generated outputs were treated more like starting points for discussion than final answers.',
       },
     } as TechnicalReflectionData,
 
@@ -969,7 +973,7 @@ export const portfolioData = {
       learning: [
         'The Alpha test showed that users may like a feature in principle but still struggle with how the information is organised. The crowd feature was useful, but only became meaningful after it was broken down by time, location, and event context.',
         'The project reinforced the importance of connecting requirements, prototype decisions, and evaluation evidence. The strongest design changes came from feedback that was specific enough to act on, such as the request for clearer crowd information by spot.',
-        'The final prototype works best when technology stays in the background. Audio storytelling, light planning support, and optional engagement were more appropriate for a heritage setting than a feature-heavy tourist app.',
+        'The later versions worked better once the interface stopped competing with the physical environment.',
         'AI tools helped speed up prototyping and interface exploration, but the design direction still had to be judged against user feedback. Some AI-generated ideas looked polished but did not match the calm, low-distraction experience users wanted.',
       ],
       evolution:

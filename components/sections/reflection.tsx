@@ -311,64 +311,12 @@ export function ReflectionSection() {
       >
         <div id="technical-reflection" className="space-y-4">
           <p className="text-sm text-muted-foreground max-w-3xl">
-            In addition to content-generation prompts, I used v0 to rapidly prototype the front-end interface.
-            The prompt defined the interaction structure of the cultural map, including landmark discovery,
-            movement, and audio playback. The generated code was used as an initial scaffold and then refined
-            to align with the project’s user research, ensuring the final prototype remained simple,
-            mobile-friendly, and focused on immersion rather than excessive interaction.
+          In addition to content-generation prompts, I used v0 to prototype the front-end interface quickly. The initial prompt focused on the cultural map interaction, including landmark discovery, movement, and audio playback. The generated code worked as a starting point rather than a final solution, and many parts were simplified or reworked after interviews and prototype reviews. Over time, the design shifted away from feature-heavy interaction toward a more audio-first and low-distraction experience.
           </p>
 
           <TechnicalReflection data={reflection.technicalReflection} />
         </div>
       </PhaseSection>
-{/* 
-      <PhaseSection
-        id="iteration-timeline-section"
-        title="Iteration Timeline"
-        description="A vertical view of how trigger, change, evidence, and impact evolved over time"
-      >
-        <div className="relative space-y-8 pl-6 md:pl-10">
-          <div className="absolute left-[0.7rem] top-2 bottom-2 w-px bg-border md:left-5" />
-
-          {iterations.map((item) => (
-            <div key={item.id} className="relative">
-              <div className="absolute left-[-0.05rem] top-2 h-4 w-4 rounded-full border-4 border-background bg-primary md:left-[0.6rem]" />
-
-              <Card className="rounded-2xl border border-border bg-card p-6">
-                <div className="space-y-5">
-                  <div className="flex flex-wrap items-center gap-3">
-                    <Badge>{item.id}</Badge>
-                    <Badge variant="outline">Iteration {item.iteration}</Badge>
-                  </div>
-
-                  <div>
-                    <h3 className="text-xl font-semibold text-foreground">{item.title}</h3>
-                  </div>
-
-                  <div className="grid gap-4 md:grid-cols-2">
-                    <DetailPanel
-                      label="Trigger"
-                      value={`${item.trigger.type}: ${item.trigger.description}`}
-                    />
-                    <DetailPanel
-                      label="Change"
-                      value={item.whatChanged}
-                    />
-                    <DetailPanel
-                      label="Evidence"
-                      value={item.evidence}
-                    />
-                    <DetailPanel
-                      label="Impact"
-                      value={item.whyChanged}
-                    />
-                  </div>
-                </div>
-              </Card>
-            </div>
-          ))}
-        </div>
-      </PhaseSection> */}
 
       {/* Final Reflection */}
       <PhaseSection
