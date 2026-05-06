@@ -18,10 +18,23 @@ export function ReflectionSection() {
       {/* 5.1 Usability Testing (The "Cold" Data) */}
       <PhaseSection
         id="usability-testing"
-        title="Usability Testing: Validation with Real Users"
-        description="Summative evaluation of the Alpha prototype using a Think-Aloud protocol."
-      >
+        title="Usability Testing: Alpha Prototype Feedback"
+        description="Evaluation of the Alpha prototype with users from the original requirement-gathering stage."
+        >
         <div className="space-y-8">
+        <Card className="p-6 bg-muted/20 border border-border">
+          <h4 className="text-sm font-bold uppercase tracking-widest text-primary mb-3">
+            Evaluation Approach
+          </h4>
+          <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+            The Alpha evaluation was conducted as a semi-controlled prototype walkthrough with
+            9 participants: 4 Chinese visitors and 5 international visitors. The aim was to check
+            whether the prototype still addressed the original user requirements and to identify
+            refinement opportunities. This was a usability-oriented evaluation rather than a formal
+            experiment, so the findings are reported as qualitative themes and design implications
+            rather than statistical results.
+          </p>
+        </Card>
           {/* Methodology Summary */}
           <div className="grid md:grid-cols-3 gap-4">
             <Card className="p-4 border-l-4 border-primary bg-muted/30">
@@ -50,31 +63,62 @@ export function ReflectionSection() {
           {/* Quantitative Metrics Table/Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { label: "Task Success Rate", value: "100%", desc: "All users successfully triggered location-based audio." },
-              { label: "User Satisfaction", value: "4.6/5.0", desc: "High 'Immersion' scores with low cognitive load reported." },
-              { label: "Interaction Frequency", value: "~2/site", desc: "Significant drop in screen-checking vs. standard map apps." }
+              {
+                label: 'Overall Response',
+                value: 'Positive',
+                desc: 'Participants understood the concept and liked the cultural companion direction.',
+              },
+              {
+                label: 'Main Issue',
+                value: 'Crowd Data',
+                desc: 'Users felt the crowd information needed clearer structure and location-specific detail.',
+              },
+              {
+                label: 'Refinement',
+                value: 'Structured',
+                desc: 'The crowd feature was changed into Today, This Week, By Spot, and Upcoming Events.',
+              },
             ].map((metric, i) => (
-              <div key={i} className="text-center p-6 rounded-2xl bg-stone-50 border border-stone-200 shadow-sm">
-                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-400 mb-2">{metric.label}</p>
-                <p className="text-4xl font-serif font-bold text-primary mb-2">{metric.value}</p>
-                <p className="text-xs text-muted-foreground">{metric.desc}</p>
+              <div
+                key={i}
+                className="text-center p-6 rounded-2xl bg-stone-50 border border-stone-200 shadow-sm"
+              >
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-400 mb-2">
+                  {metric.label}
+                </p>
+                <p className="text-3xl font-serif font-bold text-primary mb-2">
+                  {metric.value}
+                </p>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  {metric.desc}
+                </p>
               </div>
             ))}
           </div>
 
-          {/* Qualitative Insights */}
+          {/* Qualitative Feedback */}
           <div className="space-y-4">
             <h4 className="text-sm font-bold uppercase tracking-widest text-primary flex items-center gap-2">
-               <TrendingUp size={14} /> Qualitative Feedback
+              <TrendingUp size={14} /> Key Feedback Theme
             </h4>
-            <div className="grid md:grid-cols-2 gap-4 italic text-sm text-muted-foreground">
-               <blockquote className="p-4 border-l-2 border-stone-200">
-                 "I didn't have to look at my phone to know I was at the Bell Tower... the chime felt like the bridge was talking to me."
-               </blockquote>
-               <blockquote className="p-4 border-l-2 border-stone-200">
-                 "It removes the 'Language Wall.' I actually understand why this bridge is famous now, not just that it's old."
-               </blockquote>
+
+            <div className="grid md:grid-cols-2 gap-4 text-sm text-muted-foreground">
+              <blockquote className="p-4 border-l-2 border-stone-200 bg-muted/20 rounded-r-xl">
+                “The crowd feature is useful, but I want to know which place is crowded, not just whether
+                the whole area is crowded.”
+              </blockquote>
+
+              <blockquote className="p-4 border-l-2 border-stone-200 bg-muted/20 rounded-r-xl">
+                “It would be clearer if I could check today, this week, and whether any event affects a
+                specific spot.”
+              </blockquote>
             </div>
+
+            <p className="text-xs text-muted-foreground leading-relaxed">
+              These comments were paraphrased from the feedback discussion rather than treated as formal
+              survey quotes. The purpose of this Alpha test was to identify design problems and guide
+              refinement, not to produce statistically generalisable results.
+            </p>
           </div>
         </div>
       </PhaseSection>

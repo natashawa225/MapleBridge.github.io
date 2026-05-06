@@ -700,27 +700,28 @@ export const portfolioData = {
     {
       id: 'E1',
       method: 'prototype testing',
-      context: 'Audio-first navigation prototype walkthrough',
+      context: 'Alpha prototype walkthrough with previous interview participants',
       findings:
-        'When audio narration was active, users spent noticeably less time looking at their phones and described feeling more absorbed in the environment. Several mentioned that they almost forgot they were using an app at all — which felt like the right kind of feedback.',
+        'Participants generally understood and liked the prototype direction, especially the idea of combining cultural storytelling with lightweight planning support. The strongest issue was not the overall concept, but the structure of the crowd information. Users felt that a single general crowd indicator was not specific enough for planning a real visit.',
       evidence:
-        'Across informal walkthroughs, participants generally reached for their phones less when audio was guiding them compared to the visual-only version. A few specifically said they felt like they could "actually look around" rather than manage the interface. These were small sessions and not formally measured, but the pattern was consistent enough to shape the final direction.',
-      linkedDesignDecisions: ['Decision-2', 'decision-3'],
+        'The Alpha version was tested with 9 participants from the original requirement-gathering stage: 4 Chinese participants and 5 international participants. During feedback, users asked for crowd information to be organised by time period, by specific landmark or spot, and by upcoming events that might affect crowd levels.',
+      linkedDesignDecisions: ['decision-1'],
       iterationImpact:
-        'Confirmed that audio should be the primary channel and pushed the visual interface toward being a support layer rather than the main event.',
-      participants: 12,
+        'The crowd feature was redesigned from a general crowd display into a more structured forecast system with Today, This Week, By Spot, and event-related crowd notifications.',
+      participants: 9,
     },
     {
       id: 'E2',
-      method: 'interview',
-      context: 'Post-visit reflection interviews',
+      method: 'walkthrough',
+      context: 'Review of audio-first cultural exploration flow',
       findings:
-        'Most participants cared far more about whether the visit felt meaningful than whether it was interactive. The features that stuck with people were the ones that helped them understand something — not the ones that gave them something to do.',
+        'Participants responded positively to the audio-first direction because it supported cultural understanding without requiring constant screen attention. This reinforced the decision to keep the interface lightweight and make deeper interaction optional.',
       evidence:
-        'In post-visit conversations,  many participants mentioned being able to recall specific stories or facts from the site, which they contrasted with previous visits where they mostly just took photos. A few actively said they would have found badges or quest mechanics out of place. These interviews were informal rather than structured, but the direction of feedback was clear and consistent across most participants.',
-      linkedDesignDecisions: ['decision-4'],
+        'Feedback from the walkthrough suggested that users valued explanations, landmark context, and a calmer interaction style more than heavy gamification. This matched the earlier requirement-gathering interviews, where several participants preferred audio or light guidance while exploring.',
+      linkedDesignDecisions: ['decision-2', 'decision-3', 'decision-4'],
       iterationImpact:
-        'Led directly to scaling back the gamification layer, not because it was technically difficult, but because it didn’t seem to match what visitors actually wanted.',
+        'The design kept audio storytelling as the core experience, while visual details, narrative paths, and chatbot interaction remained secondary and optional.',
+      participants: 9,
     },
   ] as Evaluation[],
 
@@ -728,20 +729,22 @@ export const portfolioData = {
     {
       id: 'I1',
       iteration: 1,
-      title: 'Added a clearer pre-visit planning layer',
+      title: 'Refined crowd information from a general indicator to structured forecasts',
       trigger: {
-        type: 'requirement',
-        refId: 'R2',
-        description: 'Planning needs became more explicit through persona and journey-map evidence.',
+        type: 'evaluation',
+        refId: 'E1',
+        description:
+          'Alpha testing showed that users liked the crowd feature, but found the information too general. They wanted to understand crowd levels by time, by specific spot, and by events that might affect their visit.',
       },
       whatChanged:
-        'Introduced a dedicated pre-visit layer for crowd awareness, landmark previews, and route confidence before arrival.',
-      whyChanged: 'To shift decision-making earlier and reduce uncertainty during the on-site experience.',
-      evidence: 'Persona scenarios and journey-map planning pain points repeatedly highlighted anxiety before arrival.',
+        'The crowd feature was redesigned into a clearer forecast module. Instead of presenting crowd information as one broad status, the refined version separates it into Today, This Week, By Spot, and Upcoming Events. This makes the information easier to interpret before and during a visit.',
+      whyChanged:
+        'The change made crowd information more actionable. Users can now decide when to visit, which landmark to prioritise, and whether an upcoming event may affect the atmosphere of a specific spot.',
+      evidence:
+        'This change was based on feedback from 9 Alpha test participants, including 4 Chinese participants and 5 international participants, who asked for more coherent and location-specific crowd information.',
       affectedDesignDecisions: ['decision-1'],
       affectedRequirements: ['R2'],
     },
-  
   ] as IterationChange[],
 
   // ===== PHASE 4: DESIGN DEVELOPMENT =====
@@ -964,17 +967,18 @@ export const portfolioData = {
 
     finalReflection: {
       learning: [
-        'User research is essential—initial assumptions about what would make the experience engaging (e.g. gamification) did not match what visitors actually wanted.',
-        'Reducing features can improve the experience; focusing on simplicity and immersion was more effective than adding more interaction. This project highlighted that adding more features does not necessarily improve user experience. Instead, focusing on fewer, well-aligned interactions (such as audio storytelling and simple navigation) created a more coherent and immersive design.',
-        'Designing for real-world contexts requires thinking beyond the interface, including when and where interaction happens.',
-        'AI tools are most useful for rapid prototyping, but design decisions still need to be guided by user needs and critical evaluation.',
+        'The Alpha test showed that users may like a feature in principle but still struggle with how the information is organised. The crowd feature was useful, but only became meaningful after it was broken down by time, location, and event context.',
+        'The project reinforced the importance of connecting requirements, prototype decisions, and evaluation evidence. The strongest design changes came from feedback that was specific enough to act on, such as the request for clearer crowd information by spot.',
+        'The final prototype works best when technology stays in the background. Audio storytelling, light planning support, and optional engagement were more appropriate for a heritage setting than a feature-heavy tourist app.',
+        'AI tools helped speed up prototyping and interface exploration, but the design direction still had to be judged against user feedback. Some AI-generated ideas looked polished but did not match the calm, low-distraction experience users wanted.',
       ],
-      evolution: 'This project shifted my approach from trying to design an engaging feature-rich app to focusing on how to support the visitor experience with minimal disruption. Instead of asking how technology could add more interaction, I focused on how it could stay in the background and support understanding in a more natural way.',      
+      evolution:
+        'The project evolved from a broad tourist app concept into a more focused cultural companion. Early ideas included AI guides, quests, crowd detection, rewards, and interactive story layers. After interviews and Alpha testing, the design became more restrained: audio storytelling became the core experience, crowd information was reorganised into a clearer forecast system, and optional features were kept secondary. This shift made the prototype better aligned with how visitors actually wanted to explore Maple Bridge.',
       futureDirections: [
-        'Test the prototype with real users to better understand how the audio experience fits into an actual site visit',
-        'Refine the balance between audio and visual cues, especially for different user preferences and environments',
-        'Explore more accurate location-awareness (e.g. GPS or beacon-based triggers) to improve contextual interaction',
-        'Expand cultural content depth while maintaining a simple and non-intrusive user experience',
+        'Conduct a more structured usability test using task completion, time-on-task, and satisfaction ratings',
+        'Replace simulated crowd data with a clearly labelled real data source if the system is developed further',
+        'Improve accessibility by adding captions or transcript alternatives for all audio content',
+        'Continue testing the balance between cultural storytelling and screen-light interaction in an actual site visit',
       ],
     },
 
