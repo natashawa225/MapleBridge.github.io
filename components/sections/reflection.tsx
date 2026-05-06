@@ -15,7 +15,6 @@ export function ReflectionSection() {
 
   return (
     <>
-      {/* 5.1 Usability Testing (The "Cold" Data) */}
       <PhaseSection
         id="usability-testing"
         title="Usability Testing: Alpha Prototype Feedback"
@@ -37,30 +36,31 @@ export function ReflectionSection() {
         </Card>
           {/* Methodology Summary */}
           <div className="grid md:grid-cols-3 gap-4">
-            <Card className="p-4 border-l-4 border-primary bg-muted/30">
-              <div className="flex items-center gap-3 mb-2 text-primary">
-                <Users size={18} />
-                <span className="text-xs font-bold uppercase">Participants</span>
-              </div>
-              <p className="text-sm font-medium">3 Representative Users (Inc. "Glinda" types)</p>
-            </Card>
+          <Card className="p-4 border-l-4 border-primary bg-muted/30">
+            <div className="flex items-center gap-3 mb-2 text-primary">
+              <Users size={18} />
+              <span className="text-xs font-bold uppercase">Participants</span>
+            </div>
+            <p className="text-sm font-medium">
+              9 participants: 4 Chinese visitors, 5 international visitors
+            </p>
+          </Card>
             <Card className="p-4 border-l-4 border-primary bg-muted/30">
               <div className="flex items-center gap-3 mb-2 text-primary">
                 <MessageSquare size={18} />
                 <span className="text-xs font-bold uppercase">Methodology</span>
               </div>
-              <p className="text-sm font-medium">"Think-Aloud" Protocol & Semi-structured Interviews</p>
+              <p className="text-sm font-medium">Think-aloud walkthrough and semi-structured feedback</p>
             </Card>
             <Card className="p-4 border-l-4 border-primary bg-muted/30">
               <div className="flex items-center gap-3 mb-2 text-primary">
                 <MousePointer2 size={18} />
                 <span className="text-xs font-bold uppercase">Environment</span>
               </div>
-              <p className="text-sm font-medium">Controlled Walkthrough (Vercel High-Fi Prototype)</p>
+              <p className="text-sm font-medium">Guided walkthrough of the deployed prototype</p>
             </Card>
           </div>
 
-          {/* Quantitative Metrics Table/Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               {
@@ -99,18 +99,17 @@ export function ReflectionSection() {
           {/* Qualitative Feedback */}
           <div className="space-y-4">
             <h4 className="text-sm font-bold uppercase tracking-widest text-primary flex items-center gap-2">
-              <TrendingUp size={14} /> Key Feedback Theme
+              <TrendingUp size={14} /> Paraphrased Feedback Themes
             </h4>
 
             <div className="grid md:grid-cols-2 gap-4 text-sm text-muted-foreground">
               <blockquote className="p-4 border-l-2 border-stone-200 bg-muted/20 rounded-r-xl">
-                “The crowd feature is useful, but I want to know which place is crowded, not just whether
-                the whole area is crowded.”
+              Participants wanted to know which specific places were crowded, not just whether the whole area was busy.
               </blockquote>
 
               <blockquote className="p-4 border-l-2 border-stone-200 bg-muted/20 rounded-r-xl">
-                “It would be clearer if I could check today, this week, and whether any event affects a
-                specific spot.”
+              Participants wanted crowd information to be organised by today, this week, and events affecting specific spots.
+
               </blockquote>
             </div>
 
@@ -123,11 +122,11 @@ export function ReflectionSection() {
         </div>
       </PhaseSection>
 
-      {/* 5.2 Iterative Refinement (The "Action") */}
+      {/* 5.2 Iterative Refinement */}
       <PhaseSection
         id="iteration-timeline-section"
         title="Iterative Refinement: Before & After"
-        description="Visual evidence of UI/UX improvements. Note the evolution from single-screen Alpha concepts to integrated multi-frame user flows."
+        description="Visual evidence of how feedback shaped the prototype over time."
       >
         <div className="relative space-y-16">
           <div className="absolute left-[0.75rem] top-4 bottom-4 w-px bg-border md:left-6" />
@@ -162,7 +161,7 @@ export function ReflectionSection() {
                           <p className="text-[11px] font-black uppercase tracking-[0.15em] text-muted-foreground">
                             Alpha Version
                           </p>
-                          <p className="text-[10px] text-muted-foreground/70 lowercase font-medium">Initial Concept</p>
+                          <p className="text-[10px] text-muted-foreground/70 lowercase font-medium">General crowd preview</p>
                         </div>
                         <div className="bg-muted/5 rounded-2xl border border-dashed border-muted p-4 md:p-6 h-[520px] md:h-[580px] flex items-center justify-center">
                           <img 
@@ -188,7 +187,7 @@ export function ReflectionSection() {
                           <p className="text-[11px] font-black uppercase tracking-[0.15em] text-primary">
                             Refined Version
                           </p>
-                          <p className="text-[10px] text-primary/70 lowercase font-medium">Comprehensive Flow</p>
+                          <p className="text-[10px] text-primary/70 lowercase font-medium">Structured crowd forecast</p>
                         </div>
                         <div className="bg-primary/5 rounded-2xl border border-primary/10 p-4 md:p-6 h-[520px] md:h-[580px] flex items-center justify-center overflow-hidden">
                           <img 
@@ -267,7 +266,7 @@ export function ReflectionSection() {
       <PhaseSection
         id="evaluation-section"
         title="Evaluation Evidence"
-        description="How testing and reflection informed concrete changes to the concept"
+        description="How prototype testing informed concrete changes to the design."
       >
         <div className="grid gap-6 lg:grid-cols-2">
           {evaluation.map((item) => (

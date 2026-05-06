@@ -729,19 +729,19 @@ export const portfolioData = {
     {
       id: 'I1',
       iteration: 1,
-      title: 'Refined crowd information from a general indicator to structured forecasts',
+      title: 'Refining crowd information from a general indicator to a structured forecast',
       trigger: {
         type: 'evaluation',
         refId: 'E1',
         description:
-          'Alpha testing showed that users liked the crowd feature, but found the information too general. They wanted to understand crowd levels by time, by specific spot, and by events that might affect their visit.',
+          'Alpha testing showed that users liked the idea of crowd information, but found the original display too general. They wanted to understand crowd levels by time, by specific spot, and by events that might affect their visit.',
       },
       whatChanged:
         'The crowd feature was redesigned into a clearer forecast module. Instead of presenting crowd information as one broad status, the refined version separates it into Today, This Week, By Spot, and Upcoming Events. This makes the information easier to interpret before and during a visit.',
       whyChanged:
         'The change made crowd information more actionable. Users can now decide when to visit, which landmark to prioritise, and whether an upcoming event may affect the atmosphere of a specific spot.',
       evidence:
-        'This change was based on feedback from 9 Alpha test participants, including 4 Chinese participants and 5 international participants, who asked for more coherent and location-specific crowd information.',
+        'This refinement was based on feedback from 9 Alpha test participants, including 4 Chinese participants and 5 international participants. The revised structure made the feature more actionable by helping users decide when to visit, which landmark to prioritise, and whether upcoming events might affect the atmosphere at specific spots.',
       affectedDesignDecisions: ['decision-1'],
       affectedRequirements: ['R2'],
     },
@@ -849,7 +849,7 @@ export const portfolioData = {
         {
           painPoint: 'Language friction and inaccessible signage',
           addressed:
-            'One of the clearest gaps identified during research was that most on-site signage was only available in Chinese, making it difficult for international visitors to understand the stories connected to the site. The final prototype addresses this through English–Mandarin interface content and English audio narration, reducing the need to rely entirely on external translation tools during exploration.',
+            'One of the clearest issues identified during research was that most on-site signage was only available in Chinese, which made it difficult for international visitors to understand the stories connected to the site. The final prototype addresses this through English–Mandarin interface content and English audio narration, reducing the need to rely entirely on external translation tools during exploration.',
           evidence:
             'During walkthrough sessions and informal feedback discussions, several participants said the English narration and bilingual written content made the site easier to understand and helped them connect landmarks to the poem and surrounding history. While this was not formally measured, participants generally appeared more engaged once contextual explanations were introduced.',
         },
