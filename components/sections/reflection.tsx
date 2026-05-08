@@ -244,7 +244,7 @@ export function ReflectionSection() {
                     <div className="space-y-2">
                       <div>
                         <p className="text-xs uppercase tracking-widest text-primary font-semibold mb-1">
-                          How Addressed
+                          How it was Addressed
                         </p>
                         <p className="text-sm text-muted-foreground">{item.addressed}</p>
                       </div>

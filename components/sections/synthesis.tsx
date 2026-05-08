@@ -4,6 +4,7 @@ import { InsightCard } from '@/components/content-blocks/insight-card';
 import { TraceabilityWorkbench } from '@/components/content-blocks/traceability-workbench';
 import { Card } from '@/components/ui/card';
 import { ArrowRight, Headphones, Map, Sparkles } from 'lucide-react';
+import { withBasePath } from '@/lib/basePath';
 
 export function SynthesisSection() {
   const { synthesis, requirements, designGoals, evaluation } = portfolioData;
@@ -172,13 +173,18 @@ export function SynthesisSection() {
 
           {/* This is a great place to put your grid of sketches */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-              <Card key={i} className="aspect-[4/3] overflow-hidden border-dashed border-2 flex items-center justify-center bg-muted/30">
-                <span className="text-xs text-muted-foreground italic">Sketch {i}</span>
-                {/* <img src={`/sketches/crazy-eight-${i}.jpg`} alt={`Sketch ${i}`} className="object-cover" /> */}
-              </Card>
-            ))}
+      {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+        <Card key={i} className="overflow-hidden border-dashed border-2 flex items-center justify-center bg-muted/30">
+          <div className="relative w-[500px] h-[500px] flex items-center justify-center">
+            <img 
+              src={withBasePath(`/sketches/${i}.png`)} 
+              alt={`Sketch ${i}`}
+              className="w-full h-full object-contain"
+            />
           </div>
+        </Card>
+      ))}
+    </div>
         </div>
       </PhaseSection>
 

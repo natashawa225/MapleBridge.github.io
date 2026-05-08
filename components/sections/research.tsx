@@ -72,12 +72,13 @@ export function ResearchSection() {
 
     // Define your 5 images here if they aren't in portfolioData yet
     const evidencePhotos = [
-      { path: withBasePath('/artifacts/placeholder-user.png'), label: 'Site Observation' },
-      { path: withBasePath('/artifacts/placeholder-user.png'), label: 'User Interview' },
-      { path: withBasePath('/artifacts/placeholder-user.png'), label: 'Grand Canal Walkthrough' },
-      { path: withBasePath('/artifacts/placeholder-user.png'), label: 'Team Discussion' },
-      { path: withBasePath('/artifacts/placeholder-user.png'), label: 'Stakeholder Meeting' },
+      { path: '/sketches/evidence1.jpg', label: 'Interview with participant' },
+      { path: '/sketches/evidence2.jpg', label: 'Interview with participant' },
+      { path: '/sketches/evidence3.jpg', label: 'Interview with participant' },
+      { path: '/sketches/evidence4.jpg', label: 'Our member observing the site' },
+      { path: '/sketches/evidence5.jpg', label: 'Our member observing the site' },
     ];
+
 
   return (
     <>
@@ -284,35 +285,34 @@ export function ResearchSection() {
       </PhaseSection>
 
       <PhaseSection
-        id="evidence-of-life"
-        title="Evidence of Life"
-        description="Field research: 5 photos of our group interviewing potential users and observing the Suzhou Grand Canal site."
-      >
-        <div className="space-y-8">
-
-          {/* Simple Grid using the manual evidencePhotos array */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-            {evidencePhotos.map((photo, idx) => (
-              <div 
-                key={idx} 
-                className="group relative overflow-hidden rounded-xl border border-border bg-muted aspect-[3/4]"
-              >
-                <img 
-                  src={withBasePath(photo.path)} 
-                  alt={photo.label}
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                
-                <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/70 to-transparent">
-                  <p className="text-[10px] text-white font-medium">
-                    {photo.label}
-                  </p>
-                </div>
-              </div>
-            ))}
+  id="evidence-of-life"
+  title="Evidence of Life"
+  description="Field research: 5 photos of our group interviewing potential users and observing the Suzhou Grand Canal site."
+>
+  <div className="space-y-8">
+    {/* Simple Grid using the manual evidencePhotos array */}
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+      {evidencePhotos.map((photo, idx) => (
+        <div 
+          key={idx} 
+          className="group relative overflow-hidden rounded-xl border border-border bg-muted aspect-[3/4]"
+        >
+          <img 
+            src={withBasePath(photo.path)} 
+            alt={photo.label}
+            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+          
+          <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/70 to-transparent">
+            <p className="text-[10px] text-white font-medium">
+              {photo.label}
+            </p>
           </div>
         </div>
-      </PhaseSection>
+      ))}
+    </div>
+  </div>
+</PhaseSection>
     </>
   );
 }

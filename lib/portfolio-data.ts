@@ -251,7 +251,7 @@ export const portfolioData = {
     personas: [
       {
         id: 'persona-1',
-        name: 'Glinda cottrill',
+        name: 'Glinda Cottrill',
         role: 'Curious Cultural Explorer',
         background:'Studying abroad in Suzhou, she often visits cultural sites but struggles to access their deeper meaning.',
         tagline: 'I want to understand the story behind what I see.',
@@ -973,7 +973,7 @@ export const portfolioData = {
       learning: [
         'The Alpha test showed that users may like a feature in principle but still struggle with how the information is organised. The crowd feature was useful, but only became meaningful after it was broken down by time, location, and event context.',
         'The project reinforced the importance of connecting requirements, prototype decisions, and evaluation evidence. The strongest design changes came from feedback that was specific enough to act on, such as the request for clearer crowd information by spot.',
-        'The later versions worked better once the interface stopped competing with the physical environment.',
+        'The switch to a more subtle approach as compared to overreliance on AI and gamified features proved to be more beneficial as most of the participants opted for more of a hands-free experience.',
         'AI tools helped speed up prototyping and interface exploration, but the design direction still had to be judged against user feedback. Some AI-generated ideas looked polished but did not match the calm, low-distraction experience users wanted.',
       ],
       evolution:
