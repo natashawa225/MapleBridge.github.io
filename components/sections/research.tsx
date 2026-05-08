@@ -242,25 +242,25 @@ export function ResearchSection() {
           <div className="space-y-16">
             <div className="space-y-6">
               <h3 className="text-xl font-semibold text-foreground">
-                3 “Must-Haves” for a Playful System
+              Our Key "Playful" Features
               </h3>
 
               <div className="grid sm:grid-cols-2 gap-6 animate-stagger">
                 {[
                   {
-                    title: "Serendipity",
+                    title: "Location-Based Audio Storytelling",
                     description:
-                      'Audio triggers automatically when users approach “hidden” landmarks, creating unexpected moments of discovery.',
+                      'Automatically plays immersive audio tied to specific locations, allowing users to experience stories hands-free while staying present in the environment.',
                   },
                   {
-                    title: "Narrative Discovery",
+                    title: "Optional Exploration Quests",
                     description:
-                      "Poetic story fragments are unlocked through physical movement, not just tapping or clicking.",
+                      "Light, self-guided challenges that encourage discovery (e.g., finding hidden details or following themed routes) without disrupting users who prefer a passive experience.",
                   },
                   {
-                    title: "Low-Friction AI",
+                    title: "Digital Collectibles",
                     description:
-                      'A voice-activated “Spirit of the Bridge” enables open-ended, non-linear exploration through natural conversation.',
+                      'Unlockable items such as stamps or story fragments collected at landmarks, giving users a playful and personalized way to remember their visit.',
                   },
                 ].map((item, idx) => (
                   <div

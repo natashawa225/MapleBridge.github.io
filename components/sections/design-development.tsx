@@ -177,7 +177,7 @@ export function DesignDevelopmentSection() {
               </tr>
               <tr>
                 <td className="p-4 font-medium">Cherie Toh</td>
-                <td className="p-4 text-sm text-muted-foreground"><b>Research & Content Lead:</b> Conducted the academic literature review and user interviews. Produced the narrative scripts, curated the primary audio/visual library, and assisted in final video production.</td>
+                <td className="p-4 text-sm text-muted-foreground"><b>Research & Content Lead:</b> Conducted the academic literature review and user interviews. Produced the narrative scripts, curated the primary audio/visual library, and directed the video production.</td>
               </tr>
               <tr>
                 <td className="p-4 font-medium">Darren Tjendera</td>
