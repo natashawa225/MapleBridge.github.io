@@ -526,21 +526,23 @@ export const portfolioData = {
         id: 'insight-3',
         insight: 'Planning support matters before the visit begins',
         explanation:
-          'Crowd awareness, landmark previews, and timing information were especially valuable before arrival. Visitors wanted to make decisions in advance so they could avoid uncertainty, choose calmer times, and enter the site with a better sense of direction.',
+          'Crowd awareness, landmark previews, and timing information were especially valuable before arrival. Visitors wanted to make decisions in advance so they could avoid uncertainty, choose calmer times, and enter the site with a better sense of direction (Zhang et al., 2025).',
         derivedFrom: ['R2', 'finding-planning', 'persona-2'],
         leadsTo: ['DG3', 'decision-1'],
-        // artifact: {
-        //   id: 'insight-visual-3',
-        //   // src: withBasePath('/artifacts/brainstorm-1.jpg'),
-        //   alt: 'Storyboard of pre-visit planning and crowd awareness',
-        //   type: 'diagram',
-        // },
+      },
+      {
+        id: 'insight-screen',
+        insight: 'Excessive phone interaction creates cognitive and experiential friction',
+        explanation:
+          'Constantly looking down at mobile screens to piece together fragmented translations and map pins disrupts the atmosphere and turns what should be a peaceful cultural visit into a fragmented, task-heavy chore. Interaction must stay in the background.',
+        derivedFrom: ['R4', 'finding-screen'],
+        leadsTo: ['DG2', 'decision-3'],
       },
       {
         id: 'insight-4',
         insight: 'Deeper interaction should be optional, not the default',
         explanation:
-          'Interactive stories, collectibles, and AI-based features appealed to some visitors, but others found them distracting, childish, or unnecessary. This suggested that engagement features should deepen the experience only when invited, rather than define the core system.',
+          'Interactive stories, collectibles, and AI-based features appealed to some visitors, but others found them distracting, childish, or unnecessary. This suggested that engagement features should deepen the experience only when invited, rather than define the core system (Peng et al., 2023; Pasca et al., 2021).',
         derivedFrom: ['R3', 'finding-balance'],
         leadsTo: ['DG4', 'decision-4'],
       },
@@ -573,6 +575,15 @@ export const portfolioData = {
           'Before arrival, the system should help visitors anticipate the experience through crowd forecasts, landmark previews, and best visiting windows, reducing uncertainty and supporting smoother decisions.',
         tradeoff:
           'Pre-visit tools improve confidence and comfort, but require more up-front content and reliable crowd information.',
+      },
+      {
+        id: 'map-screen',
+        insight: 'Excessive phone interaction creates cognitive and experiential friction',
+        decision: 'Minimal visual interface with subtle navigation cues',
+        rationale:
+          'Visual screens should avoid dense text or complex UI controls while walking; orientation cues and audio triggers keep visitors looking outward at the architecture.',
+        tradeoff:
+          'A minimal interface preserves physical immersion, but requires very clear, well-timed ambient audio cues so visitors do not feel lost.',
       },
       {
         id: 'map-4',

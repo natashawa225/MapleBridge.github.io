@@ -1,76 +1,44 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
-@custom-variant dark (&:is(.dark *));
-
 :root {
-  --background: #fdf8f0;
-  --foreground: #121212;
-  --card: #fffdf9;
-  --card-foreground: #121212;
-  --popover: #fbf6ef;
-  --popover-foreground: #121212;
-  --primary: #3f6c5a;
-  --primary-foreground: #fdf9f4;
-  --secondary: #b04134;
-  --secondary-foreground: #fff5f0;
-  --muted: #ede8df;
-  --muted-foreground: #6a6157;
-  --accent: #6f4b3f;
-  --accent-foreground: #fdf7f3;
-  --destructive: #a2261d;
-  --destructive-foreground: #fff1ec;
-  --border: #d7cfc4;
-  --input: #f3efe6;
-  --ring: #cfc6b7;
-  --chart-1: #3f6c5a;
-  --chart-2: #b04134;
-  --chart-3: #7f6e5f;
-  --chart-4: #bfa587;
-  --chart-5: #8e6a52;
-  --radius: 0.85rem;
-  --sidebar: #f7f3ec;
-  --sidebar-foreground: #121212;
-  --jade: #3f6c5a;
-  --seal: #a23f2a;
-  --ink: #0b0b0b;
-  --stone: #d7d1c5;
-}
+  --background: #F4EEE3;
+  --foreground: #292C28;
+  --card: #FCFAF6;
+  --card-foreground: #292C28;
+  --popover: #FAF6EF;
+  --popover-foreground: #292C28;
+  --primary: #344B40;
+  --primary-foreground: #F4EEE3;
+  --secondary: #B76B4B;
+  --secondary-foreground: #FFFFFF;
+  --muted: #E8E0D1;
+  --muted-foreground: #6A6760;
+  --accent: #E4D9C7;
+  --accent-foreground: #292C28;
+  --destructive: #A23F2A;
+  --destructive-foreground: #FFFFFF;
+  --border: #DCD3C3;
+  --input: #EFE8DC;
+  --ring: #344B40;
+  --radius: 0.75rem;
 
-.dark {
-  --background: #0b0b0d;
-  --foreground: #f8f5ef;
-  --card: #141418;
-  --card-foreground: #f8f5ef;
-  --popover: #16161b;
-  --popover-foreground: #f8f5ef;
-  --primary: #5fb196;
-  --primary-foreground: #0b0b0d;
-  --secondary: #f1886d;
-  --secondary-foreground: #0b0b0d;
-  --muted: #1b1b1f;
-  --muted-foreground: #cfc9bf;
-  --accent: #a45a43;
-  --accent-foreground: #f8f5ef;
-  --destructive: #f18b7d;
-  --destructive-foreground: #1a1a1d;
-  --border: #27272a;
-  --input: #1e1e22;
-  --ring: #37373a;
-  --chart-1: #5fb196;
-  --chart-2: #f1886d;
-  --chart-3: #9c8e7f;
-  --chart-4: #c09c7f;
-  --chart-5: #8c6f5a;
-  --jade: #5fb196;
-  --seal: #f28b6c;
-  --ink: #fefefe;
-  --stone: #1f1f23;
+  /* Editorial palette tokens */
+  --ivory: #F4EEE3;
+  --forest: #344B40;
+  --terracotta: #B76B4B;
+  --stone: #E4D9C7;
+  --charcoal: #292C28;
+  --grey: #77746D;
+  --jade: #344B40;
+  --seal: #B76B4B;
 }
 
 @theme inline {
-  --font-sans: var(--chakra-fonts, 'Inter', 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+  --font-serif: 'Cormorant Garamond', 'Noto Serif SC', Georgia, Cambria, 'Times New Roman', serif;
+  --font-sans: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono: 'SFMono-Regular', 'Menlo', 'Monaco', monospace;
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -90,106 +58,60 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
+
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
 }
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground relative;
-  }
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      radial-gradient(circle at 10% 20%, rgba(0, 0, 0, 0.05), transparent 45%),
-      radial-gradient(circle at 80% 10%, rgba(160, 63, 42, 0.08), transparent 40%);
-    opacity: 0.14;
-    pointer-events: none;
-    z-index: -1;
-  }
-  body::after {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0, rgba(255, 255, 255, 0) 60%);
-    opacity: 0.25;
-    pointer-events: none;
-    mix-blend-mode: multiply;
-    z-index: -1;
+    @apply border-border;
   }
 
   html {
     scroll-behavior: smooth;
+    color-scheme: light;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-secondary/20 selection:text-secondary;
+    font-family: var(--font-sans);
+    letter-spacing: -0.011em;
+  }
+
+  h1, h2, h3, h4, .font-editorial {
+    font-family: var(--font-serif);
+    text-wrap: balance;
   }
 }
 
-/* Custom animations for portfolio */
-@layer utilities {
-  @keyframes fade-in-up {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
+/* Subtle editorial paper grain & architectural ornament */
+.paper-pattern {
+  background-image: radial-gradient(rgba(52, 75, 64, 0.04) 1px, transparent 0);
+  background-size: 24px 24px;
+}
 
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
+.chinese-serif {
+  font-family: 'Noto Serif SC', 'Cormorant Garamond', serif;
+}
 
-  @keyframes slide-in-left {
-    from {
-      opacity: 0;
-      transform: translateX(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
+/* Custom scrollbar for gallery previews */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
 
-  .animate-fade-in-up {
-    animation: fade-in-up 0.6s ease-out;
-  }
+::-webkit-scrollbar-track {
+  background: transparent;
+}
 
-  .animate-fade-in {
-    animation: fade-in 0.6s ease-out;
-  }
+::-webkit-scrollbar-thumb {
+  background: #D5CCBA;
+  border-radius: 9999px;
+}
 
-  .animate-slide-in-left {
-    animation: slide-in-left 0.6s ease-out;
-  }
-
-  /* Stagger animations for lists */
-  .animate-stagger > * {
-    animation: fade-in-up 0.6s ease-out;
-  }
-
-  .animate-stagger > *:nth-child(1) { animation-delay: 0.1s; }
-  .animate-stagger > *:nth-child(2) { animation-delay: 0.2s; }
-  .animate-stagger > *:nth-child(3) { animation-delay: 0.3s; }
-  .animate-stagger > *:nth-child(4) { animation-delay: 0.4s; }
-  .animate-stagger > *:nth-child(5) { animation-delay: 0.5s; }
+::-webkit-scrollbar-thumb:hover {
+  background: #B76B4B;
 }

@@ -1,138 +1,80 @@
 import { Card } from '@/components/ui/card';
 import { PersonaData } from '@/lib/portfolio-data';
-import {
-  Target,
-  Lightbulb,
-  AlertCircle,
-  Sparkles,
-} from 'lucide-react';
-import Image from 'next/image';
+import { Target, Compass, Sparkles, AlertCircle, Quote, User } from 'lucide-react';
 
 interface PersonaCardProps {
   persona: PersonaData;
-}
-function PersonaPriorities({
-  priorities,
-}: {
-  priorities: { label: string; value: number }[];
-}) {
-  return (
-    <div className="space-y-4 rounded-2xl border border-border/70 bg-muted/40 p-4">
-      <h4 className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
-        Priorities
-      </h4>
-
-      <div className="space-y-4">
-        {priorities.map((item) => (
-          <div key={item.label} className="space-y-2">
-            <div className="flex items-center justify-between gap-3">
-              <span className="text-sm font-medium text-foreground">
-                {item.label}
-              </span>
-              <span className="text-xs text-muted-foreground">
-                {item.value}%
-              </span>
-            </div>
-
-            <div className="h-3 overflow-hidden rounded-full bg-primary/15">
-              <div
-                className="h-full rounded-full bg-primary transition-all duration-500"
-                style={{ width: `${item.value}%` }}
-              />
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+  variant?: 'terracotta' | 'forest';
 }
 
-function PersonaSection({
-  icon,
-  title,
-  items,
-  bulletColor = 'text-primary',
-}: {
-  icon: React.ReactNode;
-  title: string;
-  items: string[];
-  bulletColor?: string;
-}) {
-  return (
-    <div className="space-y-3">
-      <div className="flex items-center gap-2">
-        {icon}
-        <h4 className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
-          {title}
-        </h4>
-      </div>
+export function PersonaCard({ persona, variant = 'forest' }: PersonaCardProps) {
+  const isTerracotta = variant === 'terracotta';
+  const accentColor = isTerracotta ? 'text-secondary' : 'text-primary';
+  const badgeBorder = isTerracotta ? 'border-secondary/30 bg-secondary/5 text-secondary' : 'border-primary/30 bg-primary/5 text-primary';
+  const quoteBg = isTerracotta ? 'bg-secondary/5 border-l-4 border-secondary' : 'bg-primary/5 border-l-4 border-primary';
 
-      <ul className="space-y-2">
-        {items.map((item, idx) => (
-          <li key={idx} className="flex items-start gap-2 text-sm leading-6 text-muted-foreground">
-            <span className={`${bulletColor} mt-[0.45rem] text-[0.65rem] leading-none`}>
-              •
-            </span>
-            <span>{item}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
-export function PersonaCard({ persona }: PersonaCardProps) {
   const demographics = [
     persona.demographics?.age ? `${persona.demographics.age} years old` : null,
     persona.demographics?.gender ?? null,
     persona.demographics?.nationality ?? null,
     persona.demographics?.education ?? null,
     persona.demographics?.occupation ?? null,
+    persona.demographics?.civilStatus ?? null,
   ].filter(Boolean);
 
   return (
-    <Card className="overflow-hidden border-border/70 bg-card/95 p-7 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
-      <div className="space-y-6">
-        {/* Header */}
-        <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
+    <Card className="overflow-hidden border border-border/80 bg-card rounded-3xl shadow-xs transition-all duration-300 hover:shadow-md">
+      {/* Top Editorial Banner */}
+      <div className="p-6 sm:p-8 space-y-6">
+        
+        {/* Header with Portrait & Metadata */}
+        <div className="flex flex-col sm:flex-row items-start gap-6">
           {persona.image && (
-            <div className="relative h-24 w-24 flex-shrink-0 overflow-hidden rounded-full ring-1 ring-border/60">
-              <Image
+            <div className="relative w-28 h-28 sm:w-32 sm:h-32 shrink-0 rounded-2xl overflow-hidden border border-border shadow-xs bg-muted">
+              <img
                 src={persona.image}
                 alt={persona.name}
-                fill
-                className="object-cover"
-                sizes="96px"
+                className="w-full h-full object-cover"
               />
+              <div className="absolute top-2 left-2">
+                <span className={`text-[9px] font-mono uppercase tracking-widest px-2 py-0.5 rounded-full font-bold ${badgeBorder}`}>
+                  {isTerracotta ? 'Primary' : 'Secondary'}
+                </span>
+              </div>
             </div>
           )}
 
-          <div className="min-w-0 flex-1">
-            <div className="space-y-1.5">
-              <h3 className="text-2xl font-bold tracking-tight text-foreground">
-                {persona.name}
-              </h3>
-              <p className="text-base text-muted-foreground">{persona.role}</p>
-
-              {persona.tagline && (
-                <p className="text-sm italic leading-relaxed text-muted-foreground">
-                  {persona.tagline}
-                </p>
-              )}
+          <div className="flex-1 space-y-2 min-w-0">
+            <div className="space-y-1">
+              <div className="flex flex-wrap items-center gap-2">
+                <h3 className="text-2xl sm:text-3xl font-serif font-bold text-foreground">
+                  {persona.name}
+                </h3>
+              </div>
+              <p className={`text-sm font-semibold tracking-wide uppercase font-mono ${accentColor}`}>
+                {persona.role}
+              </p>
             </div>
 
+            {persona.tagline && (
+              <p className="text-sm font-serif italic text-muted-foreground">
+                “{persona.tagline}”
+              </p>
+            )}
+
             {persona.background && (
-              <p className="mt-3 max-w-[65ch] text-sm leading-6 text-muted-foreground">
+              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed font-light pt-1">
                 {persona.background}
               </p>
             )}
 
+            {/* Demographics Badges */}
             {demographics.length > 0 && (
-              <div className="mt-4 flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1.5 pt-2">
                 {demographics.map((item, idx) => (
                   <span
                     key={idx}
-                    className="rounded-full border border-border/70 bg-muted/60 px-3 py-1 text-xs text-muted-foreground"
+                    className="inline-flex items-center px-2.5 py-1 rounded-md text-[11px] font-mono bg-muted/60 text-muted-foreground border border-border/60"
                   >
                     {item}
                   </span>
@@ -142,44 +84,88 @@ export function PersonaCard({ persona }: PersonaCardProps) {
           </div>
         </div>
 
-        {/* Quote */}
-        <div className="rounded-xl border-l-4 border-primary bg-primary/5 px-4 py-4">
-          <p className="text-[15px] italic leading-7 text-foreground">
+        {/* Authenticated Participant Quote */}
+        <div className={`p-4 rounded-xl ${quoteBg} space-y-1`}>
+          <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-muted-foreground">
+            <Quote className="w-3.5 h-3.5" />
+            <span>Persona Voice</span>
+          </div>
+          <p className="font-serif italic text-base sm:text-lg text-foreground leading-snug">
             “{persona.quote}”
           </p>
         </div>
 
-        {/* Content */}
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-          <PersonaSection
-            icon={<Target className="h-4 w-4 text-primary" />}
-            title="Goals"
-            items={persona.goals}
-          />
+        {/* Structured Dimensions: Goals, Motivations, Attitudes, Pain Points */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-border/60">
+          
+          {/* Goals */}
+          <div className="space-y-2.5">
+            <h4 className="text-xs font-mono uppercase tracking-wider text-foreground font-bold flex items-center gap-2">
+              <Target className={`w-4 h-4 ${accentColor}`} />
+              <span>Core User Goals</span>
+            </h4>
+            <ul className="text-xs text-muted-foreground space-y-1.5 leading-relaxed">
+              {persona.goals.map((goal, idx) => (
+                <li key={idx} className="flex items-start gap-2">
+                  <span className={`mt-1 h-1.5 w-1.5 rounded-full shrink-0 ${isTerracotta ? 'bg-secondary' : 'bg-primary'}`} />
+                  <span>{goal}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-          <PersonaSection
-            icon={<Lightbulb className="h-4 w-4 text-primary" />}
-            title="Motivations"
-            items={persona.motivations}
-          />
+          {/* Motivations */}
+          <div className="space-y-2.5">
+            <h4 className="text-xs font-mono uppercase tracking-wider text-foreground font-bold flex items-center gap-2">
+              <Compass className={`w-4 h-4 ${accentColor}`} />
+              <span>Underlying Motivations</span>
+            </h4>
+            <ul className="text-xs text-muted-foreground space-y-1.5 leading-relaxed">
+              {persona.motivations.map((item, idx) => (
+                <li key={idx} className="flex items-start gap-2">
+                  <span className={`mt-1 h-1.5 w-1.5 rounded-full shrink-0 ${isTerracotta ? 'bg-secondary' : 'bg-primary'}`} />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-          {persona.attitudes?.length ? (
-            <PersonaSection
-              icon={<Sparkles className="h-4 w-4 text-primary" />}
-              title="Attitudes"
-              items={persona.attitudes}
-            />
-          ) : (
-            <div />
+          {/* Attitudes */}
+          {persona.attitudes && persona.attitudes.length > 0 && (
+            <div className="space-y-2.5">
+              <h4 className="text-xs font-mono uppercase tracking-wider text-foreground font-bold flex items-center gap-2">
+                <Sparkles className={`w-4 h-4 ${accentColor}`} />
+                <span>Experiential Attitudes</span>
+              </h4>
+              <ul className="text-xs text-muted-foreground space-y-1.5 leading-relaxed">
+                {persona.attitudes.map((item, idx) => (
+                  <li key={idx} className="flex items-start gap-2">
+                    <span className="mt-1 h-1.5 w-1.5 rounded-full shrink-0 bg-stone-400" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           )}
 
-          <PersonaSection
-            icon={<AlertCircle className="h-4 w-4 text-destructive" />}
-            title="Pain Points"
-            items={persona.painPoints}
-            bulletColor="text-destructive"
-          />
+          {/* Pain Points */}
+          <div className="space-y-2.5">
+            <h4 className="text-xs font-mono uppercase tracking-wider text-destructive font-bold flex items-center gap-2">
+              <AlertCircle className="w-4 h-4 text-destructive" />
+              <span>Pain Points & Friction</span>
+            </h4>
+            <ul className="text-xs text-muted-foreground space-y-1.5 leading-relaxed">
+              {persona.painPoints.map((item, idx) => (
+                <li key={idx} className="flex items-start gap-2">
+                  <span className="mt-1 h-1.5 w-1.5 rounded-full shrink-0 bg-destructive" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
         </div>
+
       </div>
     </Card>
   );

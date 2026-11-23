@@ -1,60 +1,247 @@
+'use client';
+
+import { useState } from 'react';
 import { portfolioData } from '@/lib/portfolio-data';
 import { PhaseSection } from '@/components/phase-section';
-import { InsightCard } from '@/components/content-blocks/insight-card';
 import { TraceabilityWorkbench } from '@/components/content-blocks/traceability-workbench';
 import { Card } from '@/components/ui/card';
-import { ArrowRight, Headphones, Map, Sparkles } from 'lucide-react';
+import {
+  ArrowRight,
+  Headphones,
+  Map,
+  Sparkles,
+  Layers,
+  X,
+  ZoomIn,
+  CheckCircle2,
+  AlertTriangle,
+  Compass,
+  Smartphone,
+  Quote,
+} from 'lucide-react';
 import { withBasePath } from '@/lib/basePath';
+
+interface SketchModalData {
+  id: number;
+  title: string;
+  desc: string;
+  src: string;
+}
+
+const crazyEightsData: SketchModalData[] = [
+  {
+    id: 1,
+    title: 'Spatial Audio Trigger & Waterway Map',
+    desc: 'Exploring proximity-triggered audio narration as the user approaches the stone arch, minimizing visual screen time.',
+    src: '/sketches/1.png',
+  },
+  {
+    id: 2,
+    title: 'Directional Audio Compass',
+    desc: 'Heads-up acoustic orientation allowing users to navigate between Hanshan Temple and Fengqiao by sound cues.',
+    src: '/sketches/2.png',
+  },
+  {
+    id: 3,
+    title: 'Minimalist Cultural Audio Player',
+    desc: 'Distraction-free audio card with bilingual captions, play/pause, and context snippet.',
+    src: '/sketches/3.png',
+  },
+  {
+    id: 4,
+    title: 'Pre-Visit Crowd Forecast by Spot',
+    desc: 'Visualizing crowd density predictions across different time slots (Today, This Week, By Spot) before arriving.',
+    src: '/sketches/4.png',
+  },
+  {
+    id: 5,
+    title: 'Poetic Landmark Detail Modal',
+    desc: 'Contextual overlays linking physical bridge stones to Zhang Ji’s Tang poetry and historical events.',
+    src: '/sketches/5.png',
+  },
+  {
+    id: 6,
+    title: 'Opt-in Digital Keepsake Collector',
+    desc: 'Gentle cultural stamp collection that stays quiet during the walk and becomes available to review after departure.',
+    src: '/sketches/6.png',
+  },
+  {
+    id: 7,
+    title: 'Non-Intrusive Ambient Notification',
+    desc: 'Subtle heads-up notification alerting the visitor when near a point of historical interest without locking the screen.',
+    src: '/sketches/7.png',
+  },
+  {
+    id: 8,
+    title: 'Lightweight Cultural Q&A Drawer',
+    desc: 'Opt-in conversational companion answering specific questions about Song Dynasty canal history when summoned.',
+    src: '/sketches/8.png',
+  },
+];
 
 export function SynthesisSection() {
   const { synthesis, requirements, designGoals, evaluation } = portfolioData;
+  const [activeSketch, setActiveSketch] = useState<SketchModalData | null>(null);
 
   return (
     <>
+      {/* 05. RESEARCH SYNTHESIS */}
       <PhaseSection
         id="synthesis"
-        title="Synthesis: Reframing the Design Direction"
-        description="Using interview findings to refine the concept into a calmer, more grounded cultural experience"
+        number="05"
+        chineseTitle="研究综合 · 从洞察到重构"
+        eyebrow="Research Synthesis & Architectural Framing"
+        title="Reframing the Design Opportunity"
+        description="Translating raw qualitative interview findings into structured design priorities and strategic trade-offs."
       >
-        <div className="space-y-12">
-          {/* Intro */}
-          <div className="max-w-3xl space-y-3">
-          <p className="text-base leading-7 text-muted-foreground">
-              The interview results pushed the project away from a feature-heavy tourist app and toward a more focused design direction. Rather than building a gamified guide with many competing features, the synthesis phase clarified that the core opportunity was to help visitors understand, navigate, and appreciate Maple Bridge without disrupting immersion.
-            </p>
-            <p className="text-base leading-7 text-muted-foreground">
-              This led to a concept shift: from an app that asks for attention to a system that quietly supports the visit through context-aware storytelling, subtle guidance, and optional depth.
-            </p>
+        <div className="space-y-16">
+          
+          {/* Narrative Progression: Findings -> Insights -> Priorities */}
+          <div className="p-6 md:p-8 rounded-3xl border border-border/80 bg-card/90 space-y-6">
+            <span className="text-xs font-mono uppercase tracking-widest text-secondary font-bold">
+              The Synthesis Journey
+            </span>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+              
+              <div className="space-y-2 p-5 rounded-2xl bg-muted/40 border border-border/60">
+                <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground font-bold">
+                  Stage 1: Field Findings
+                </span>
+                <h4 className="font-serif font-bold text-lg text-foreground">Inaccessible Context</h4>
+                <p className="text-xs text-muted-foreground leading-relaxed font-light">
+                  Signboards in Chinese only, screen dependency while walking, anxiety over crowds, and aversion to gimmicky games.
+                </p>
+              </div>
+
+              <div className="space-y-2 p-5 rounded-2xl bg-primary/10 border border-primary/20">
+                <span className="text-[10px] font-mono uppercase tracking-widest text-primary font-bold">
+                  Stage 2: Core Insight
+                </span>
+                <h4 className="font-serif font-bold text-lg text-foreground">Immersion Over Features</h4>
+                <p className="text-xs text-muted-foreground leading-relaxed font-light">
+                  Visitors do not want a busy tourist app demanding attention; they want a quiet cultural companion that explains the space hands-free.
+                </p>
+              </div>
+
+              <div className="space-y-2 p-5 rounded-2xl bg-secondary/10 border border-secondary/20">
+                <span className="text-[10px] font-mono uppercase tracking-widest text-secondary font-bold">
+                  Stage 3: Design Pivot
+                </span>
+                <h4 className="font-serif font-bold text-lg text-foreground">Context-Aware Audio</h4>
+                <p className="text-xs text-muted-foreground leading-relaxed font-light">
+                  Shifted from on-screen gamification to a 3-phase journey: pre-visit foresight, situated audio storytelling, and optional depth.
+                </p>
+              </div>
+
+            </div>
           </div>
 
-          {/* Key insights */}
-          <div>
-            <div className="mb-5">
-              <h3 className="text-2xl font-semibold text-foreground">What the research made clear</h3>
-              <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-                These insights became the foundation for narrowing the concept and deciding what
-                should stay central, what should become optional, and what should be removed.
-              </p>
+          {/* Key Insights Cards */}
+          <div className="space-y-6">
+            <div className="space-y-1">
+              <span className="text-xs font-mono uppercase tracking-widest text-primary font-semibold">
+                Synthesized Insights
+              </span>
+              <h3 className="font-serif font-bold text-2xl text-foreground">
+                Strategic Insights Guiding Architectural Choices
+              </h3>
             </div>
 
-            <div id="insights" className="grid gap-6 md:grid-cols-2">
-              {synthesis.keyInsights.map((insight) => (
-                <InsightCard key={insight.id} insight={insight} />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {synthesis.keyInsights.map((insight, idx) => (
+                <Card
+                  key={insight.id}
+                  className="p-6 rounded-3xl border border-border/80 bg-card/90 shadow-xs space-y-4 hover:shadow-md transition-all"
+                >
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="flex items-center gap-2.5">
+                      <div className="w-8 h-8 rounded-xl bg-primary/10 text-primary font-serif font-bold text-sm flex items-center justify-center shrink-0">
+                        0{idx + 1}
+                      </div>
+                      <h4 className="font-serif font-bold text-base text-foreground leading-snug">
+                        {insight.insight}
+                      </h4>
+                    </div>
+                  </div>
+
+                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed font-light">
+                    {insight.explanation}
+                  </p>
+
+                  <div className="pt-3 border-t border-border/60 flex flex-wrap items-center justify-between gap-2 text-[11px] font-mono text-muted-foreground">
+                    <span>Derived: {insight.derivedFrom?.join(', ')}</span>
+                    <span className="text-primary font-semibold">Leads to: {insight.leadsTo?.join(', ')}</span>
+                  </div>
+                </Card>
               ))}
             </div>
           </div>
+
+          {/* Insight-to-Design Mapping Spread */}
+          <div className="space-y-6 pt-4 border-t border-border/70">
+            <div className="space-y-1">
+              <span className="text-xs font-mono uppercase tracking-widest text-secondary font-semibold">
+                Design Decisions & Trade-Offs
+              </span>
+              <h3 className="font-serif font-bold text-2xl text-foreground">
+                Insight-to-Design Architectural Mapping
+              </h3>
+              <p className="text-xs sm:text-sm text-muted-foreground font-light max-w-2xl">
+                Every architectural move introduces both deliberate benefits and explicit trade-offs that were navigated during the project.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {synthesis.insightToDesignMapping.map((mapItem, idx) => (
+                <Card
+                  key={mapItem.id}
+                  className="p-6 rounded-3xl border border-border/80 bg-card shadow-xs space-y-4 flex flex-col justify-between"
+                >
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest text-secondary font-bold">
+                      <span>Move 0{idx + 1}</span>
+                      <span>•</span>
+                      <span>{mapItem.insight}</span>
+                    </div>
+
+                    <h4 className="font-serif font-bold text-lg text-foreground">
+                      {mapItem.decision}
+                    </h4>
+
+                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed font-light">
+                      {mapItem.rationale}
+                    </p>
+                  </div>
+
+                  <div className="p-3.5 rounded-2xl bg-destructive/5 border border-destructive/20 space-y-1 mt-2">
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-destructive font-bold flex items-center gap-1.5">
+                      <AlertTriangle className="w-3.5 h-3.5" />
+                      <span>Acknowledged Trade-Off</span>
+                    </span>
+                    <p className="text-xs text-muted-foreground leading-relaxed">
+                      {mapItem.tradeoff}
+                    </p>
+                  </div>
+                </Card>
+              ))}
+            </div>
+          </div>
+
         </div>
       </PhaseSection>
 
+      {/* 06. TRACEABILITY & DESIGN LOGIC */}
       <PhaseSection
-        id="traceability-section"
-        title="Traceability & Design Logic"
-        description="A marking-focused view showing how requirements connect to goals, decisions, and validation"
+        id="traceability"
+        number="06"
+        chineseTitle="设计溯源 · 逻辑验证"
+        eyebrow="Traceability & Decision Logic"
+        title="From Empirical Requirement to Validated Design"
+        description="An unbroken chain of HCI reasoning: linking interview data directly to design goals, prototype implementations, and testing evidence."
       >
         <div className="space-y-6">
-          <p className="max-w-3xl text-base leading-7 text-muted-foreground">
-            This layer makes the reasoning chain explicit: what was required, how that became a design
-            goal, which design move answered it, and what evidence later supported the direction.
+          <p className="text-sm sm:text-base text-muted-foreground leading-relaxed font-light max-w-3xl">
+            In rigorous HCI methodology, no interface feature should appear without empirical justification. The interactive workbench below makes this reasoning chain fully transparent: select any requirement chain to trace its lineage through design goals, interface decisions, and evaluation outcomes.
           </p>
 
           <TraceabilityWorkbench
@@ -66,254 +253,293 @@ export function SynthesisSection() {
         </div>
       </PhaseSection>
 
+      {/* 07. CONCEPT SHIFT */}
       <PhaseSection
-        id="concept-shift-section"
-        title="Concept Shift"
-        description="How user insights reshaped the direction"
+        id="concept-shift"
+        number="07"
+        chineseTitle="概念转变 · 减法艺术"
+        eyebrow="Concept Shift & Divergence to Convergence"
+        title="From Feature-Heavy App to Quiet Cultural Companion"
+        description="How field insights forced us to dismantle an overloaded utility and design for atmospheric presence."
       >
-        <div className="grid gap-6 lg:grid-cols-[1fr_220px_1fr] lg:items-stretch">
-          {/* Before */}
-          <Card className="rounded-2xl border border-border bg-muted/20 p-6">
-            <div className="space-y-5">
-              <div className="space-y-2">
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">
-                  Earlier Direction
-                </p>
-                <h3 className="text-2xl font-semibold text-foreground">
-                  Feature-heavy tourist app
-                </h3>
-                <p className="text-sm leading-7 text-muted-foreground">
-                  The initial concept explored AI guides, quests, live crowd updates, and rewards in one
-                  experience. While engaging on paper, it assumed that more interaction would make the
-                  visit better.
-                </p>
+        <div className="space-y-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+            
+            {/* Earlier Direction */}
+            <Card className="lg:col-span-5 p-6 sm:p-8 rounded-3xl border border-border/80 bg-muted/20 space-y-6 flex flex-col justify-between">
+              <div className="space-y-4">
+                <div className="flex items-center justify-between border-b border-border/60 pb-3">
+                  <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground font-bold">
+                    Week 1 Divergent Direction
+                  </span>
+                  <span className="text-xs font-mono text-destructive font-semibold">Overloaded</span>
+                </div>
+
+                <div className="space-y-2">
+                  <h3 className="font-serif font-bold text-2xl text-foreground">
+                    Feature-Heavy Tourist App
+                  </h3>
+                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed font-light">
+                    The initial concept attempted to cram AI tour guides, gamified story quests, live crowd meters, and collectible reward badges into a single screen-heavy interface.
+                  </p>
+                </div>
+
+                <div className="space-y-2.5 pt-2">
+                  {[
+                    'Screen-based navigation demanded continuous visual gaze',
+                    'Gamified mechanics and badges cheapened the solemn Tang poem atmosphere',
+                    'Too many competing features overwhelmed visitors with decision fatigue',
+                    'Forced app-switching between translation, maps, and camera utilities',
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-start gap-2 text-xs text-muted-foreground leading-relaxed">
+                      <span className="mt-1 h-1.5 w-1.5 rounded-full bg-destructive shrink-0" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
 
-              <div className="space-y-3 border-t border-border pt-4">
-                {[
-                  'Screen-based interaction stayed at the center',
-                  'Gamified mechanics risked distracting from the place itself',
-                  'Too many features competed for attention during the visit',
-                ].map((item) => (
-                  <div key={item} className="flex items-start gap-3 text-sm text-muted-foreground">
-                    <span className="mt-2 h-1.5 w-1.5 rounded-full bg-muted-foreground/40" />
-                    <span>{item}</span>
-                  </div>
-                ))}
+              <div className="p-3.5 rounded-2xl bg-destructive/10 border border-destructive/20 text-xs text-destructive font-medium">
+                ✕ Rejected: Assumed that more digital interaction automatically produces a richer cultural experience.
               </div>
-            </div>
-          </Card>
+            </Card>
 
-          {/* Middle */}
-          <div className="flex items-center justify-center">
-            <div className="flex h-full w-full flex-col items-center justify-center rounded-2xl border border-dashed border-border bg-background px-5 py-6 text-center">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full border border-border bg-muted/30">
-                <ArrowRight className="h-5 w-5 text-primary" />
+            {/* The Pivot Center Column */}
+            <div className="lg:col-span-2 flex flex-col items-center justify-center p-6 rounded-3xl border border-dashed border-border bg-card/60 text-center space-y-3">
+              <div className="w-12 h-12 rounded-full bg-secondary/10 border border-secondary/30 flex items-center justify-center text-secondary">
+                <ArrowRight className="w-5 h-5" />
               </div>
-
-              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-primary">
-                What changed
+              <span className="text-[10px] font-mono uppercase tracking-widest text-secondary font-bold">
+                The Empirical Pivot
+              </span>
+              <p className="font-serif italic text-xs text-foreground leading-relaxed">
+                “Users asked us to remove the clutter so they could simply look up at the stone bridge.”
               </p>
-              <h4 className="mt-2 text-base font-semibold text-foreground">
-                Interview findings reframed the priority
-              </h4>
-              <p className="mt-3 text-sm leading-6 text-muted-foreground">
-                Visitors wanted a calmer, more immersive experience with light cultural support, not a
-                busy app demanding constant attention.
-              </p>
             </div>
+
+            {/* Refined Direction */}
+            <Card className="lg:col-span-5 p-6 sm:p-8 rounded-3xl border border-primary/30 bg-primary/[0.04] space-y-6 flex flex-col justify-between shadow-xs">
+              <div className="space-y-4">
+                <div className="flex items-center justify-between border-b border-primary/20 pb-3">
+                  <span className="text-[10px] font-mono uppercase tracking-widest text-primary font-bold">
+                    Convergent Solution
+                  </span>
+                  <span className="text-xs font-mono text-primary font-semibold">Quiet Companion</span>
+                </div>
+
+                <div className="space-y-2">
+                  <h3 className="font-serif font-bold text-2xl text-foreground">
+                    Context-Aware Audio Companion
+                  </h3>
+                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed font-light">
+                    Shifting from adding features to removing friction. Replaced visual density with location-aware audio narration, pre-visit crowd awareness, and opt-in depth.
+                  </p>
+                </div>
+
+                <div className="space-y-2.5 pt-2">
+                  {[
+                    'Audio-first storytelling supports heads-up exploration while walking',
+                    'Crowd forecasting shifted to pre-visit planning rather than in-situ stress',
+                    'Minimalist UI provides gentle orientation without hijacking attention',
+                    'Deeper cultural Q&A and photo spots remain strictly opt-in',
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-start gap-2 text-xs text-foreground leading-relaxed">
+                      <span className="mt-1 h-1.5 w-1.5 rounded-full bg-primary shrink-0" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="p-3.5 rounded-2xl bg-primary/10 border border-primary/20 text-xs text-primary font-medium">
+                ✓ Adopted: Respects environmental calm while opening access to historical meaning through hands-free sound.
+              </div>
+            </Card>
+
           </div>
-
-          {/* After */}
-          <Card className="rounded-2xl border border-primary/25 bg-primary/5 p-6 shadow-sm">
-            <div className="space-y-5">
-              <div className="space-y-2">
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-primary">
-                  Refined Direction
-                </p>
-                <h3 className="text-2xl font-semibold text-foreground">
-                  A context-aware, audio-first cultural companion
-                </h3>
-                <p className="text-sm leading-7 text-muted-foreground">
-                  The concept shifted from adding features to removing friction. Instead of pulling users
-                  into the screen, the system supports the visit through lightweight audio, subtle
-                  guidance, and optional depth when people want it.
-                </p>
-              </div>
-
-              <div className="space-y-3 border-t border-primary/10 pt-4">
-                {[
-                  'Audio-first storytelling supports heads-up exploration',
-                  'Planning tools help before arrival, not during every moment on site',
-                  'Deeper engagement stays optional rather than forced',
-                ].map((item) => (
-                  <div key={item} className="flex items-start gap-3 text-sm text-foreground">
-                    <span className="mt-2 h-1.5 w-1.5 rounded-full bg-primary" />
-                    <span>{item}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </Card>
         </div>
       </PhaseSection>
 
-      {/* --- INSERT CRAZY EIGHTS HERE --- */}
+      {/* 08. IDEATION — CRAZY EIGHTS */}
       <PhaseSection
-        id="ideation-crazy-eights"
-        title="Ideation: Crazy Eights"
-        description="Rapidly exploring divergent UI solutions for a low-friction experience"
+        id="ideation"
+        number="08"
+        chineseTitle="快速构思 · 疯狂八分钟"
+        eyebrow="Rapid Ideation & Divergent Sketching"
+        title="Crazy Eights: Visualizing a Heads-Up Experience"
+        description="Eight rapid sketching sprints exploring non-intrusive, spatial, and acoustic interaction patterns."
       >
         <div className="space-y-8">
-          <div className="max-w-3xl space-y-4">
-            <p className="text-base leading-7 text-muted-foreground">
-              Once we committed to an audio-first direction, we used the <strong>Crazy Eights</strong> method to push past obvious UI patterns. The goal was to visualize how a "heads-up" interface could look—moving away from heavy text lists and toward spatial exploration.
+          <div className="max-w-3xl space-y-3 text-sm text-muted-foreground leading-relaxed font-light">
+            <p>
+              Once our interviews made clear that screen dependency was destroying the atmosphere of Maple Bridge, we used the <strong>Crazy Eights</strong> ideation method (eight minutes, eight distinct design concepts) to rapidly externalize non-traditional UI patterns.
+            </p>
+            <p>
+              The challenge was: <em>How might a visitor explore an ancient site with zero cognitive friction and minimal screen gaze?</em> Click any sketch below to inspect its interaction logic.
             </p>
           </div>
 
-          {/* This is a great place to put your grid of sketches */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-      {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-        <Card key={i} className="overflow-hidden border-dashed border-2 flex items-center justify-center bg-muted/30">
-          <div className="relative w-[500px] h-[500px] flex items-center justify-center">
-            <img 
-              src={withBasePath(`/sketches/${i}.png`)} 
-              alt={`Sketch ${i}`}
-              className="w-full h-full object-contain"
-            />
-          </div>
-        </Card>
-      ))}
-    </div>
-        </div>
-      </PhaseSection>
+          {/* Crazy Eights Gallery Grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            {crazyEightsData.map((sketch) => (
+              <div
+                key={sketch.id}
+                onClick={() => setActiveSketch(sketch)}
+                className="group relative rounded-2xl overflow-hidden border border-border bg-card cursor-pointer shadow-xs hover:shadow-md transition-all flex flex-col justify-between"
+              >
+                <div className="aspect-square w-full overflow-hidden bg-muted/40 p-3 flex items-center justify-center">
+                  <img
+                    src={withBasePath(sketch.src)}
+                    alt={sketch.title}
+                    className="max-h-full max-w-full object-contain transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
 
-      <PhaseSection
-        id="design-principles-section"
-        title="Design Principles"
-        description="Principles grounded in human-centered design and applied to the Maple Bridge experience"
-      >
-        <div className="grid gap-6 md:grid-cols-3">
-
-          {/* Principle 1 */}
-          <Card className="rounded-2xl p-6">
-            <div className="space-y-4">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
-                <Headphones className="h-5 w-5 text-primary" />
+                <div className="p-3 border-t border-border/60 bg-card space-y-1">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-secondary font-bold">
+                      Sketch 0{sketch.id}
+                    </span>
+                    <ZoomIn className="w-3.5 h-3.5 text-muted-foreground group-hover:text-foreground transition-colors" />
+                  </div>
+                  <h4 className="font-serif font-bold text-xs text-foreground truncate">
+                    {sketch.title}
+                  </h4>
+                </div>
               </div>
-              <div>
-                <h3 className="text-xl font-semibold text-foreground">
-                  Reduce cognitive load through audio-first interaction
-                </h3>
-                <p className="mt-2 text-sm leading-7 text-muted-foreground">
-                  In a dynamic environment like a cultural site, constantly reading and switching
-                  between apps increases mental effort. Delivering information through lightweight,
-                  location-based audio allows visitors to understand the site while staying immersed
-                  in the environment.
+            ))}
+          </div>
+        </div>
+
+        {/* Crazy Eights Lightbox Modal */}
+        {activeSketch && (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+            onClick={() => setActiveSketch(null)}
+          >
+            <div
+              className="relative max-w-2xl w-full bg-card rounded-3xl overflow-hidden border border-border shadow-2xl p-6 space-y-4"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex items-center justify-between pb-3 border-b border-border/70">
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-mono uppercase tracking-wider text-secondary font-bold">
+                    Sketch 0{activeSketch.id} of 08
+                  </span>
+                  <span className="text-xs text-muted-foreground">• Crazy Eights Ideation</span>
+                </div>
+                <button
+                  onClick={() => setActiveSketch(null)}
+                  className="p-1 rounded-full text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              <div className="aspect-[4/3] w-full rounded-2xl overflow-hidden bg-muted/30 p-4 flex items-center justify-center">
+                <img
+                  src={withBasePath(activeSketch.src)}
+                  alt={activeSketch.title}
+                  className="max-h-full max-w-full object-contain"
+                />
+              </div>
+
+              <div className="space-y-1 pt-1">
+                <h4 className="font-serif font-bold text-lg text-foreground">
+                  {activeSketch.title}
+                </h4>
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed font-light">
+                  {activeSketch.desc}
                 </p>
               </div>
+            </div>
+          </div>
+        )}
+      </PhaseSection>
+
+      {/* 09. DESIGN PRINCIPLES */}
+      <PhaseSection
+        id="principles"
+        number="09"
+        chineseTitle="设计原则 · 以人为本"
+        eyebrow="Human-Centered Design Principles"
+        title="Three Grounded Interaction Principles"
+        description="Grounded in cognitive psychology and human-centered heritage interaction research."
+      >
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          {/* Principle 1 */}
+          <Card className="p-6 sm:p-7 rounded-3xl border border-border/80 bg-card shadow-xs space-y-4 hover:shadow-md transition-all">
+            <div className="w-12 h-12 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
+              <Headphones className="w-6 h-6" />
+            </div>
+
+            <div className="space-y-2">
+              <span className="text-[10px] font-mono uppercase tracking-widest text-primary font-bold">
+                Principle 01
+              </span>
+              <h3 className="font-serif font-bold text-xl text-foreground leading-snug">
+                Reduce cognitive load through audio-first interaction
+              </h3>
+            </div>
+
+            <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed font-light">
+              In a dynamic outdoor heritage environment, constantly reading dense mobile typography and toggling apps overtaxes visual attention. Delivering contextual narratives through situated audio lets visitors keep their gaze on the stone canal, water reflections, and architecture.
+            </p>
+
+            <div className="pt-3 border-t border-border/60 text-[11px] font-mono text-muted-foreground">
+              HCI Anchor: Cognitive Load Theory & Ambient Computing
             </div>
           </Card>
 
           {/* Principle 2 */}
-          <Card className="rounded-2xl p-6">
-            <div className="space-y-4">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
-                <Map className="h-5 w-5 text-primary" />
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold text-foreground">
-                  Support user control through when interaction happens
-                </h3>
-                <p className="mt-2 text-sm leading-7 text-muted-foreground">
-                  Visitors should feel in control of their experience. By shifting planning decisions
-                  such as crowd awareness and route selection to the pre-visit phase, the system reduces
-                  pressure during the visit and allows for a calmer, more flexible experience.
-                </p>
-              </div>
+          <Card className="p-6 sm:p-7 rounded-3xl border border-border/80 bg-card shadow-xs space-y-4 hover:shadow-md transition-all">
+            <div className="w-12 h-12 rounded-2xl bg-secondary/10 border border-secondary/20 flex items-center justify-center text-secondary">
+              <Map className="w-6 h-6" />
+            </div>
+
+            <div className="space-y-2">
+              <span className="text-[10px] font-mono uppercase tracking-widest text-secondary font-bold">
+                Principle 02
+              </span>
+              <h3 className="font-serif font-bold text-xl text-foreground leading-snug">
+                Support user control through when interaction happens
+              </h3>
+            </div>
+
+            <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed font-light">
+              Visitors should never feel rushed or blindsided. By shifting spatial decisions and crowd assessments to the pre-visit planning phase, visitors arrive calm and oriented, preserving on-site tranquility for presence rather than logistics.
+            </p>
+
+            <div className="pt-3 border-t border-border/60 text-[11px] font-mono text-muted-foreground">
+              HCI Anchor: Temporal Decoupling & User Agency
             </div>
           </Card>
 
           {/* Principle 3 */}
-          <Card className="rounded-2xl p-6">
-            <div className="space-y-4">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
-                <Sparkles className="h-5 w-5 text-primary" />
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold text-foreground">
-                  Design for different preferences through optional interaction
-                </h3>
-                <p className="mt-2 text-sm leading-7 text-muted-foreground">
-                  Not all visitors want the same level of interaction. Some prefer deeper exploration,
-                  while others want a simple and peaceful experience. Providing optional layers of
-                  engagement ensures the system remains flexible and suitable for a wider range of users.
-                </p>
-              </div>
+          <Card className="p-6 sm:p-7 rounded-3xl border border-border/80 bg-card shadow-xs space-y-4 hover:shadow-md transition-all">
+            <div className="w-12 h-12 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
+              <Sparkles className="w-6 h-6" />
+            </div>
+
+            <div className="space-y-2">
+              <span className="text-[10px] font-mono uppercase tracking-widest text-primary font-bold">
+                Principle 03
+              </span>
+              <h3 className="font-serif font-bold text-xl text-foreground leading-snug">
+                Accommodate diverse preferences through optional interaction
+              </h3>
+            </div>
+
+            <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed font-light">
+              Not all visitors seek the same depth. Some want meditative quiet; others desire historical debates and photo spots. Layering deep engagement as strictly opt-in ensures the default system remains serene, accommodating both personas seamlessly.
+            </p>
+
+            <div className="pt-3 border-t border-border/60 text-[11px] font-mono text-muted-foreground">
+              HCI Anchor: Layered Disclosure & Inclusive Experience
             </div>
           </Card>
 
-        </div>
-      </PhaseSection>
-
-      <PhaseSection
-        id="final-direction-section"
-        title="From Insight to Final Direction"
-        description="How the refined concept translates into the system structure"
-      >
-        <div className="space-y-8">
-        <p className="max-w-3xl text-base leading-7 text-muted-foreground">
-          Instead of focusing on a single feature, the final concept is structured
-          around three moments in the visitor journey. This came directly from the
-          interviews, where participants talked about planning beforehand, feeling
-          lost or distracted during the visit, and wanting something more meaningful
-          to take away afterward.
-        </p>
-
-        <p className="max-w-3xl text-base leading-7 text-muted-foreground">
-          Based on this, the design is split into a pre-visit layer for planning,
-          an on-site layer for lightweight, audio-based understanding, and an optional
-          engagement layer for visitors who want to explore more deeply without forcing
-          interaction on everyone.
-        </p>
-
-          <div className="grid gap-6 md:grid-cols-3">
-            {synthesis.designDecisions.map((decision, idx) => (
-              <Card
-                key={decision.id}
-                className="animate-fade-in-up rounded-2xl border border-border bg-card p-6"
-              >
-                <div className="space-y-3">
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/15">
-                      <span className="text-sm font-semibold text-primary">{idx + 1}</span>
-                    </div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">
-                      Design Move
-                    </p>
-                  </div>
-
-                  <div>
-                    <h4 className="text-lg font-semibold text-foreground">{decision.decision}</h4>
-                    <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                      {decision.rationale}
-                    </p>
-                  </div>
-
-                  {decision.tradeoff && (
-                    <div className="border-t border-border pt-4">
-                      <p className="mb-2 text-xs font-semibold uppercase tracking-[0.22em] text-destructive">
-                        Trade-off
-                      </p>
-                      <p className="text-sm leading-6 text-muted-foreground">
-                        {decision.tradeoff}
-                      </p>
-                    </div>
-                  )}
-                </div>
-              </Card>
-            ))}
-          </div>
         </div>
       </PhaseSection>
     </>
