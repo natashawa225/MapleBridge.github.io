@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { portfolioData } from '@/lib/portfolio-data';
 import { PhaseSection } from '@/components/phase-section';
 import { TraceabilityWorkbench } from '@/components/content-blocks/traceability-workbench';
+import { StrategicInsightsMatrix } from '@/components/content-blocks/strategic-insights-matrix';
+import { ArchitecturalMappingExplorer } from '@/components/content-blocks/architectural-mapping-explorer';
 import { Card } from '@/components/ui/card';
 import {
   ArrowRight,
@@ -136,96 +138,11 @@ export function SynthesisSection() {
             </div>
           </div>
 
-          {/* Key Insights Cards */}
-          <div className="space-y-6">
-            <div className="space-y-1">
-              <span className="text-xs font-mono uppercase tracking-widest text-primary font-semibold">
-                Synthesized Insights
-              </span>
-              <h3 className="font-serif font-bold text-2xl text-foreground">
-                Strategic Insights Guiding Architectural Choices
-              </h3>
-            </div>
+          {/* Strategic Insights Guiding Architectural Choices (Interactive 3-Column Lineage Matrix) */}
+          <StrategicInsightsMatrix />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {synthesis.keyInsights.map((insight, idx) => (
-                <Card
-                  key={insight.id}
-                  className="p-6 rounded-3xl border border-border/80 bg-card/90 shadow-xs space-y-4 hover:shadow-md transition-all"
-                >
-                  <div className="flex items-start justify-between gap-3">
-                    <div className="flex items-center gap-2.5">
-                      <div className="w-8 h-8 rounded-xl bg-primary/10 text-primary font-serif font-bold text-sm flex items-center justify-center shrink-0">
-                        0{idx + 1}
-                      </div>
-                      <h4 className="font-serif font-bold text-base text-foreground leading-snug">
-                        {insight.insight}
-                      </h4>
-                    </div>
-                  </div>
-
-                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed font-light">
-                    {insight.explanation}
-                  </p>
-
-                  <div className="pt-3 border-t border-border/60 flex flex-wrap items-center justify-between gap-2 text-[11px] font-mono text-muted-foreground">
-                    <span>Derived: {insight.derivedFrom?.join(', ')}</span>
-                    <span className="text-primary font-semibold">Leads to: {insight.leadsTo?.join(', ')}</span>
-                  </div>
-                </Card>
-              ))}
-            </div>
-          </div>
-
-          {/* Insight-to-Design Mapping Spread */}
-          <div className="space-y-6 pt-4 border-t border-border/70">
-            <div className="space-y-1">
-              <span className="text-xs font-mono uppercase tracking-widest text-secondary font-semibold">
-                Design Decisions & Trade-Offs
-              </span>
-              <h3 className="font-serif font-bold text-2xl text-foreground">
-                Insight-to-Design Architectural Mapping
-              </h3>
-              <p className="text-xs sm:text-sm text-muted-foreground font-light max-w-2xl">
-                Every architectural move introduces both deliberate benefits and explicit trade-offs that were navigated during the project.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {synthesis.insightToDesignMapping.map((mapItem, idx) => (
-                <Card
-                  key={mapItem.id}
-                  className="p-6 rounded-3xl border border-border/80 bg-card shadow-xs space-y-4 flex flex-col justify-between"
-                >
-                  <div className="space-y-3">
-                    <div className="flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest text-secondary font-bold">
-                      <span>Move 0{idx + 1}</span>
-                      <span>•</span>
-                      <span>{mapItem.insight}</span>
-                    </div>
-
-                    <h4 className="font-serif font-bold text-lg text-foreground">
-                      {mapItem.decision}
-                    </h4>
-
-                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed font-light">
-                      {mapItem.rationale}
-                    </p>
-                  </div>
-
-                  <div className="p-3.5 rounded-2xl bg-destructive/5 border border-destructive/20 space-y-1 mt-2">
-                    <span className="text-[10px] font-mono uppercase tracking-wider text-destructive font-bold flex items-center gap-1.5">
-                      <AlertTriangle className="w-3.5 h-3.5" />
-                      <span>Acknowledged Trade-Off</span>
-                    </span>
-                    <p className="text-xs text-muted-foreground leading-relaxed">
-                      {mapItem.tradeoff}
-                    </p>
-                  </div>
-                </Card>
-              ))}
-            </div>
-          </div>
+          {/* Insight-to-Design Architectural Mapping (Interactive Architectural Explorer with 4-Stage Flow & Trade-Off Audit) */}
+          <ArchitecturalMappingExplorer />
 
         </div>
       </PhaseSection>

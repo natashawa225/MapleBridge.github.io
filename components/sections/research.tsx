@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { PhaseSection } from '@/components/phase-section';
-import { ResearchFindingCard, type EnrichedFinding } from '@/components/content-blocks/research-finding-card';
+import { EmpiricalInsightsExplorer } from '@/components/content-blocks/empirical-insights-explorer';
 import { PersonaCard } from '@/components/content-blocks/persona-card';
 import { EmotionalCurveChart } from '@/components/content-blocks/emotional-curve-chart';
 import { Card } from '@/components/ui/card';
@@ -13,75 +13,6 @@ import { portfolioData } from '@/lib/portfolio-data';
 export function ResearchSection() {
   const { research } = portfolioData;
   const [selectedPhoto, setSelectedPhoto] = useState<{ path: string; label: string; desc: string } | null>(null);
-
-  // The 5 Major Research Insights with authentic evidence and design implications
-  const enrichedFindings: EnrichedFinding[] = [
-    {
-      id: 'finding-lang',
-      number: '01',
-      title: 'Understanding is Blocked by Language and Context',
-      description:
-        'Visitors frequently admire Maple Bridge visually but cannot decipher its historical significance because on-site plaques are primarily in Chinese, fragmented, or inaccessible to non-native visitors. This creates an interpretation disconnect where visitors see the architecture without grasping its cultural resonance (Casillo et al., 2020).',
-      evidenceQuote:
-        'Participants noted they “knew nothing” about the background beforehand and struggled because physical signage offered little English explanation.',
-      designImplication:
-        'Provide bilingual contextual narration (English & Mandarin) directly keyed to landmarks, eliminating reliance on clunky external translation apps.',
-      addressedPersona: 'Directly addresses Glinda Cottrill (Curious Cultural Explorer)',
-      iconName: 'Globe',
-    },
-    {
-      id: 'finding-audio',
-      number: '02',
-      title: 'Hands-Free Audio Interaction Supports Immersion',
-      description:
-        'Participants consistently favored listening over reading during their visit. Staring down at phone screens disrupted the contemplative atmosphere of the water-town, whereas lightweight audio allowed them to keep their eyes on the canal, stone bridges, and foliage (Xue et al., 2025).',
-      evidenceQuote:
-        'Participants repeatedly asked for voiceover or audio guides so they could “just enjoy the scenery” rather than constantly checking their phones.',
-      designImplication:
-        'Prioritize location-aware audio storytelling as the primary sensory modality, relegating screen interactions to quiet confirmation cues.',
-      addressedPersona: 'Benefits both Glinda Cottrill and Li Mei',
-      iconName: 'Headphones',
-    },
-    {
-      id: 'finding-planning',
-      number: '03',
-      title: 'Pre-Visit Awareness Reduces Uncertainty and Stress',
-      description:
-        'Visitors experience anxiety regarding crowding, visiting windows, and spatial layout before they set foot on the grounds. Having clear foresight into crowd patterns and landmark previews allows them to arrive feeling composed and in control (Zhang et al., 2025).',
-      evidenceQuote:
-        'Users described checking crowd forecasts and wanting preview maps of routes and landmarks before traveling to the site.',
-      designImplication:
-        'Introduce a pre-visit planning layer featuring structured crowd forecasts (Today, This Week, By Spot) and landmark previews.',
-      addressedPersona: 'Directly addresses Li Mei (Atmosphere-First Visitor)',
-      iconName: 'Calendar',
-    },
-    {
-      id: 'finding-screen',
-      number: '04',
-      title: 'Excessive Interaction Creates Cognitive Friction',
-      description:
-        'Frequent phone interactions, switching between translation utilities, maps, and camera apps fragments the visit and creates cognitive overload. Rather than feeling like a serene cultural retreat, the visit begins to feel like a high-friction administrative task.',
-      evidenceQuote:
-        'Interview responses highlighted frustration with having to “constantly look down at the phone” to piece together fragmented bits of history.',
-      designImplication:
-        'Design an ultra-minimal visual interface with gentle spatial cues, preventing app switching and visual clutter while walking.',
-      addressedPersona: 'Reduces cognitive load across all visitor profiles',
-      iconName: 'Smartphone',
-    },
-    {
-      id: 'finding-balance',
-      number: '05',
-      title: 'Engagement Should Be Optional, Not Forced',
-      description:
-        'While gamified mechanics and quizzes appeal to some users, others actively reject them as gimmicky and disrespectful to heritage calm. Cultural technology must balance playful curiosity with deep respect for quiet contemplation (Peng et al., 2023; Pasca et al., 2021).',
-      evidenceQuote:
-        'Reactions were strongly mixed: some participants welcomed playful quests, while others insisted that aggressive badges and gamification feel out of place.',
-      designImplication:
-        'Keep deep interaction, chatbot Q&A, and collectible photo spots strictly opt-in, preserving a tranquil default experience.',
-      addressedPersona: 'Respects Li Mei’s quiet preferences while enabling Glinda’s curiosity',
-      iconName: 'Sparkles',
-    },
-  ];
 
   // Authentic field research evidence photos
   const evidencePhotos = [
@@ -124,42 +55,8 @@ export function ResearchSection() {
         description="Grounded findings from contextual interviews, on-site observations, and academic literature analysis."
       >
         <div className="space-y-12">
-          {/* Methodology Context Strip */}
-          <div className="p-6 rounded-3xl border border-border/80 bg-card/80 backdrop-blur-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-            <div className="space-y-1">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-secondary font-bold">
-                Field Research Methodology
-              </span>
-              <h3 className="font-serif font-bold text-lg text-foreground">
-                Mixed-Methods Qualitative In-Situ Investigation
-              </h3>
-              <p className="text-xs text-muted-foreground font-light max-w-2xl">
-                Conducted at Suzhou Maple Bridge Scenic Area and Grand Canal historic corridor with international and local participants, combining contextual observation with semi-structured interviews.
-              </p>
-            </div>
-
-            <div className="flex items-center gap-6 text-center border-t md:border-t-0 md:border-l border-border/60 pt-4 md:pt-0 md:pl-6 shrink-0">
-              <div>
-                <span className="block font-serif text-2xl font-bold text-foreground">9</span>
-                <span className="block text-[10px] font-mono uppercase text-muted-foreground">Participants</span>
-              </div>
-              <div>
-                <span className="block font-serif text-2xl font-bold text-secondary">5</span>
-                <span className="block text-[10px] font-mono uppercase text-muted-foreground">Key Insights</span>
-              </div>
-              <div>
-                <span className="block font-serif text-2xl font-bold text-primary">In-Situ</span>
-                <span className="block text-[10px] font-mono uppercase text-muted-foreground">Grand Canal</span>
-              </div>
-            </div>
-          </div>
-
-          {/* The 5 Insights Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {enrichedFindings.map((finding) => (
-              <ResearchFindingCard key={finding.id} finding={finding} />
-            ))}
-          </div>
+          {/* Interactive Five Empirical Insights Explorer */}
+          <EmpiricalInsightsExplorer />
 
           {/* Evidence of Life Gallery */}
           <div className="pt-8 border-t border-border/70 space-y-4">
